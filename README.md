@@ -1,8 +1,3 @@
----
-output: github_document
-bibliography: miretrieve.bib
----
-
 # miRetrieve
 
 miRetrieve is designed for microRNA text mining in abstracts. 
@@ -13,7 +8,7 @@ period of time.
 ## Getting Started
 
 An online version with the most important functions of miRetrieve is available 
-under ...
+under https://miretrieve.shinyapps.io/miRetrieve/.
 
 To install miRetrieve locally, run
 
@@ -25,7 +20,7 @@ devtools::install_git("JulFriedrich/miRetrieve",
 ```
 
 An overview of the mechanisms behind miRetrieve are detailed in the
-Vignette, whereas a full documentation is available under ... 
+Vignette, whereas a full documentation is available in ... 
 
 
 ## Authors
@@ -34,8 +29,7 @@ Vignette, whereas a full documentation is available under ...
 
 ## License
 
-This project is licensed under the GPL-3 license - see 
-the [LICENSE.md](LICENSE.md) file for details.
+miRetrieve is published under the GPL-3 license.
 
 ## Reference
 
@@ -47,5 +41,5 @@ the [LICENSE.md](LICENSE.md) file for details.
 Silge and Robinson (https://www.tidytextmining.com/). In addition, "tidytext"
 provides a valuable resource of general text mining in R.
 
-* Key packages for miRetrieve are *tidytext* [@tidytext], *topicmodels* [@topicmodels], 
-and the packages included in the *tidyverse* [@tidyverse].
+* Key packages for miRetrieve are *tidytext*, *topicmodels*, 
+and the packages included in the *tidyverse* (see Vignette).
