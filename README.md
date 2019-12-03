@@ -1,3 +1,8 @@
+---
+output: github_document
+bibliography: miretrieve.bib
+---
+
 # miRetrieve
 
 miRetrieve is designed for microRNA text mining in abstracts. 
@@ -7,18 +12,20 @@ period of time.
 
 ## Getting Started
 
-An online version of the most important functions of miRetrieve is available 
+An online version with the most important functions of miRetrieve is available 
 under ...
 
-To use the miRetrieve package, you further need to install the following
-dependencies:
+To install miRetrieve locally, run
 
 ```
-
+install.packages("devtools")
+devtools::install_git("JulFriedrich/miRetrieve",
+        dependencies = TRUE,
+        repos = "https://cran.r-project.org/")
 ```
 
-For a detailed overview on how to use miRetrieve, please consult the attached
-vignette under ... .
+An overview of the mechanisms behind miRetrieve are detailed in the
+Vignette, whereas a full documentation is available under ... 
 
 
 ## Authors
@@ -34,5 +41,11 @@ the [LICENSE.md](LICENSE.md) file for details.
 
 ## Acknowledgments
 
-* Some graph types were inspired by ... Additionally, this source provides
-a valuable reference for text mining in general.
+* `compare_mir_terms_log2()`, `compare_mir_count_log2()`, and 
+`compare_mir_terms_scatter()` are greatly inspired by 
+“tidytext: Text Mining and Analysis Using Tidy Data Principles in R.” by
+Silge and Robinson (https://www.tidytextmining.com/). In addition, "tidytext"
+provides a valuable resource of general text mining in R.
+
+* Key packages for miRetrieve are *tidytext* [@tidytext], *topicmodels* [@topicmodels], 
+and the packages included in the *tidyverse* [@tidyverse].
