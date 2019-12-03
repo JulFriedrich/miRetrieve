@@ -20,7 +20,8 @@ devtools::install_git("JulFriedrich/miRetrieve",
 ```
 
 An overview of the mechanisms behind miRetrieve are detailed in the
-Vignette, whereas a full documentation is available in ... 
+[Vignette](doc/miRetrieve.html), whereas a full documentation is available 
+[here](miRetrieve_1.0.0.pdf).
 
 
 ## Authors
