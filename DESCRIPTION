@@ -1,0 +1,42 @@
+Package: miRetrieve
+Type: Package
+Title: miRNA Text Mining in Abstracts
+Version: 1.0.0
+Authors@R:
+Author: Julian Friedrich [aut, cre],
+    Hans-Peter Hammes [aut],
+    Guido Krenning [aut]
+Maintainer: Julian Friedrich <julian.friedrich@medma.uni-heidelberg.de>
+Description: miRetrieve is designed for microRNA (miRNA) text mining. 
+    It summarizes miRNA literature by extracting, counting, and analyzing miRNA 
+    names, thus aiming at gaining biological insights into a large amount of 
+    text within a short period of time.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr (>= 0.8.3),
+    forcats (>= 0.4.0),
+    ggplot2 (>= 3.2.1),
+    magrittr (>= 1.5),
+    openxlsx (>= 4.1.0.1),
+    plotly (>= 4.9.0),
+    purrr (>= 0.3.2),
+    readr (>= 1.3.1),
+    readxl (>= 1.3.1),
+    scales (>= 1.0.0),
+    stringr (>= 1.4.0),
+    tidyr (>= 1.0.0),
+    tidytext (>= 0.2.1),
+    topicmodels (>= 0.2-8),
+    wordcloud (>= 2.6),
+    xml2 (>= 1.2.0),
+    zoo (>= 1.8-6)
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.1.1
+Suggests: 
+    bookdown,
+    knitr,
+    rmarkdown
+VignetteBuilder: 
+    knitr
