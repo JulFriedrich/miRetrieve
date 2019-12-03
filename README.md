@@ -14,14 +14,19 @@ To install miRetrieve locally, run
 
 ```
 install.packages("devtools")
-devtools::install_git("JulFriedrich/miRetrieve",
+devtools::install_github("JulFriedrich/miRetrieve",
         dependencies = TRUE,
-        repos = "https://cran.r-project.org/")
+        repos = "https://cran.r-project.org/",
+        build_vignettes = TRUE)
 ```
 
 An overview of the mechanisms behind miRetrieve are detailed in the
-vignette in [doc/miRetrieve.html](doc/), whereas a full documentation is available 
-[here](miRetrieve_1.0.0.pdf).
+vignette, that can be accessed with
+```
+vignette("miRetrieve")
+```
+
+A full documentation is available [here](miRetrieve_1.0.0.pdf).
 
 
 ## Authors
