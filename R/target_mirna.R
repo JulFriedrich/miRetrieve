@@ -154,7 +154,7 @@ plot_target_count <- function(df,
              fill = colour) +
     coord_flip() +
     xlab("Target") +
-    ylab("Mentioned in at least # abstracts") +
+    ylab("Validated in at least # studies") +
     theme_classic() +
     ggtitle(title)
 
