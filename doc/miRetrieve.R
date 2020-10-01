@@ -30,7 +30,7 @@ knitr::include_graphics(tokenization_img)
 #  plot_mir_terms(df,
 #                 mir = "miR-34",
 #                 token = "words")
-#
+#  
 #  # Analyze miRNA-term association of miR-34 by 2-gram tokenization
 #  plot_mir_terms(df,
 #                 mir = "miR-34",
@@ -42,7 +42,7 @@ knitr::include_graphics(tokenization_img)
 #  plot_mir_terms(df,
 #                 mir = "miR-34",
 #                 tf.idf = TRUE)
-#
+#  
 #  # Analyze miRNA-term association of miR-34 without tf-idf
 #  plot_mir_terms(df,
 #                 mir = "miR-34",
@@ -66,12 +66,12 @@ knitr::include_graphics(stopword_img)
 ## ----customstop, eval = FALSE--------------------------------------------
 #  # Vector of custom stop words
 #  custom_stopwords <- c("these", "are", "some", "custom", "stop", "words")
-#
+#  
 #  # Generate custom stop words data frame
 #  # Combine custom stop words with `stopwords_miretrieve`
 #  custom_stopwords_df <- generate_stopwords(custom_stopwords,
 #                                            combine_with = stopwords_miretrieve)
-#
+#  
 #  # Generate custom stop words data frame
 #  # Combine with `tidytext::stop_words` separately
 #  custom_stopwords_df <- generate_stopwords(custom_stopwords)
@@ -91,7 +91,7 @@ knitr::include_graphics(stopword_img)
 ## ----plotscore, eval = FALSE---------------------------------------------
 #  # Plot score distribution, determine threshold
 #  plot_score_patients(df)
-#
+#  
 #  # Calculate score for abstracts investigating miRNAs in patients
 #  calculate_score_patients(df,
 #                           threshold = 5)
@@ -100,12 +100,12 @@ knitr::include_graphics(stopword_img)
 #  # Define keywords of custom topic "angiogenesis"
 #  keywords_angiogenesis <- c("angiogenesis", "vegf", "vascularization",
 #                             "sprouting")
-#
+#  
 #  # Plot distribution of "angiogenesis" scores
 #  plot_score_topic(df,
 #                   keywords = keywords_angiogenesis,
 #                   name.topic = "Angiogenesis")
-#
+#  
 #  # Calculate angiogenesis score for each abstract
 #  df_angio <- calculate_score_topic(df,
 #                                    keywords = keywords_angiogenesis,
@@ -114,20 +114,20 @@ knitr::include_graphics(stopword_img)
 ## ----assigntopic, eval = FALSE-------------------------------------------
 #  # Define keywords for type 1 diabetes
 #  keywords_t1dm <- c("pancreas", "beta cells", "gada")
-#
+#  
 #  # Define keywords for type 2 diabetes
 #  keywords_t2dm <- c("insulin resistance", "obesity", "metformin")
-#
+#  
 #  # Calculate type 1 diabetes scores for each abstract
 #  df_diabetes <- calculate_score_topic(df,
 #                                       keywords = keywords_t1dm,
 #                                       name.topic = "T1DM")
-#
+#  
 #  # Calculate type 2 diabetes scores for each abstract
 #  df_diabetes <- calculate_score_topic(df_diabetes,
 #                                       keywords = keywords_t2dm,
 #                                       name.topic = "T2DM")
-#
+#  
 #  # Assign abstracts with a score of >= 3 in "T1DM" to type 1 diabetes
 #  # Assign abstracts with a score of >= 3 in "T2DM" to type 2 diabetes
 #  # Abstracts with a score < 3 in "T1DM" and "T2DM" are assigned to
@@ -144,10 +144,10 @@ knitr::include_graphics(lda_img)
 #  # Identify 4 topics in df
 #  lda_model <- fit_lda(df,
 #                       k = 4)
-#
+#  
 #  # Identify subject of topics
 #  plot_lda_term(lda_model)
-#
+#  
 #  # Assign LDA topics
 #  assign_topic_lda(df,
 #                   lda_model = lda_model,
@@ -159,9 +159,9 @@ perplex_value <- c(2000, 1800, 1600, 1550, 1500, 1450)
 perplexity <- dplyr::tibble("Perplexity" = perplex_value,
                             "Topics" = seq(2, length(perplex_value) + 1))
 
-ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
-    ggplot2::geom_point(color = "#188CDF") +
-    ggplot2::geom_line(color = "#188CDF") +
+ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) + 
+    ggplot2::geom_point(color = "#188CDF") + 
+    ggplot2::geom_line(color = "#188CDF") + 
     ggplot2::theme_classic() +
     ggplot2::xlab("Number of topics k")
 
@@ -173,21 +173,21 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 ## ----loaddata, eval = FALSE----------------------------------------------
 #  # Read in PubMed-file from diabetes abstracts
 #  # Denote abstracts as "Diabetes"
-#  df <- read_pubmed("medlinefile_diabetes.txt", topic = "Diabetes")
-#
+#  df <- read_pubmed("pubmedfile_diabetes.txt", topic = "Diabetes")
+#  
 #  # Is the same as
-#  df <- read_pubmed("medlinefile_diabetes.txt")
+#  df <- read_pubmed("pubmedfile_diabetes.txt")
 #  df <- add_col_topic(df, topic.name = "Diabetes")
 
 ## ----combinedata, eval = FALSE-------------------------------------------
 #  # Load first PubMed-file
-#  df1 <- read_pubmed("medlinefile1.txt",
+#  df1 <- read_pubmed("pubmedfile1.txt",
 #                             topic = "cANCA")
-#
+#  
 #  # Load second PubMed-file
-#  df2 <- read_pubmed("medlinefile2.txt",
+#  df2 <- read_pubmed("pubmedfile2.txt",
 #                             topic = "pANCA")
-#
+#  
 #  # Combine df1 and df2
 #  df_large <- combine_df(df1, df2)
 
@@ -200,7 +200,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 #  extract_mir_df(df,
 #                 threshold = 2,
 #                 extract_letters = FALSE)
-#
+#  
 #  # Extract miRNA names from a string with trailing letters
 #  extract_mir_string("miR-146a is an important miRNA in inflammation.",
 #                     extract_letters = TRUE)
@@ -209,7 +209,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 #  # Keep only abstracts with miR-126 and miR-146
 #  df_mir126_miR_146 <- subset_mir(df,
 #                                  mir.retain = c("miR-126", "miR-146"))
-#
+#  
 #  # Keep only abstracts with miRNAs mentioned in at least 5% of all abstracts
 #  df_five_ab <- subset_mir_threshold(df,
 #                                     threshold = 0.05)
@@ -218,7 +218,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 #  # Indicate abstracts with miR-126 and miR-146
 #  df_mir126_miR_146 <- indicate_mir(df,
 #                                    indicate.mir = c("miR-126", "miR-146"))
-#
+#  
 #  # Save data frame as an .xlsx file
 #  # Filter for miR-126 and miR-146 in excel
 #  save_excel(df_mir126_miR_146,
@@ -229,7 +229,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 #  subset_df(df,
 #            col.filter = miRNA,
 #            filter_for = "miR-126")
-#
+#  
 #  # `subset_df()` is a more general version of
 #  subset_mir(df, "miR-126")
 
@@ -253,7 +253,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 ## ---- eval = FALSE-------------------------------------------------------
 #  # Count how many abstracts mention a miRNA
 #  count_mir(df)
-#
+#  
 #  # Plot the count of the five most frequently mentioned miRNAs
 #  plot_mir_count(df,
 #                 top = 5)
@@ -262,7 +262,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 #  # Count how many miRNAs are mentioned in at least 5 abstracts
 #  count_mir_threshold(df,
 #                      threshold = 5)
-#
+#  
 #  # Plot how many miRNAs are mentioned in at least 5 to 10 abstracts
 #  plot_mir_count_threshold(df,
 #                           start = 5,
@@ -284,7 +284,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 #  # Plot top terms of miR-126
 #  plot_mir_terms(df,
 #                 mir = "miR-126")
-#
+#  
 #  # Plot top 2-grams of miR-126
 #  plot_mir_terms(df,
 #                 mir = "miR-126",
@@ -302,7 +302,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 #                                       term = "metformin",
 #                                       threshold = 2,
 #                                       discard = TRUE)
-#
+#  
 #  # Count miRNAs in "metformin" abstracts
 #  count_mir(abstracts_metformin)
 
@@ -317,7 +317,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 ## ---- eval = FALSE-------------------------------------------------------
 #  # Count target frequency
 #  count_target(df_targets)
-#
+#  
 #  # Plot target frequency
 #  plot_target_count(df_targets)
 
@@ -325,7 +325,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 #  # Plot most frequently targeted genes
 #  plot_target_mir_scatter(df_targets,
 #                          filter_for = "target")
-#
+#  
 #  # Plot most frequently targeting miRNAs
 #  plot_target_mir_scatter(df_targets,
 #                          filter_for = "miRNA")
@@ -339,22 +339,22 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 ## ---- eval = FALSE-------------------------------------------------------
 #  # Count SNPs
 #  snp_count_df <- count_snp(snp_df)
-#
+#  
 #  # Extract SNP name in the second row of snp_count_df
 #  second_snp_string <- get_snp(snp_count_df,
 #                               row = 2)
-#
+#  
 #  # Subset `snp_df` for abstracts containing `second_snp_string`
 #  subset_snp(snp_df,
 #             snp.retain = second_snp_string)
 
 ## ---- eval = FALSE-------------------------------------------------------
 #  # Load abstracts of the first topic
-#  df1 <- read_pubmed(medline_file1, topic = "Virus")
-#
+#  df1 <- read_pubmed(pubmed_file1, topic = "Virus")
+#  
 #  # Load abstracts of the second topic
-#  df2 <- read_pubmed(medline_file2, topic = "Bacteria")
-#
+#  df2 <- read_pubmed(pubmed_file2, topic = "Bacteria")
+#  
 #  # Combine abstracts of topics
 #  df_combined <- combine_df(df1, df2)
 
@@ -362,7 +362,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 #  # Get top 5 miRNAs of all topics
 #  get_mir(df_combined,
 #          top = 5)
-#
+#  
 #  # Get top 5 miRNAs of the topic "Atherosclerosis"
 #  get_mir(df_combined,
 #          top = 5,
@@ -384,22 +384,22 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 #  top_topic1 <- get_mir(df_combined,
 #                        top = 5,
 #                        topic = "CML")
-#
+#  
 #  # Get top 5 miRNAs of "CLL"
 #  top_topic2 <- get_mir(df_combined,
 #                        top = 5,
 #                        topic = "CLL")
-#
+#  
 #  # Combine vectors
 #  top_combined <- combine_mir(top_topic1, top_topic2)
 
 ## ---- eval = FALSE-------------------------------------------------------
 #  # Use `top_combined` from the previous code chunk
-#
+#  
 #  # Compare miRNA frequency between topics
 #  compare_mir_count(df_combined,
 #                    mir = top_combined)
-#
+#  
 #  # Compare miRNA frequency between subjects on a log2-scale
 #  compare_mir_count_log2(df_combined,
 #                         mir = top_combined)
@@ -413,7 +413,7 @@ ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) +
 #  # Compare term frequency for miR-126 between topics
 #  compare_mir_terms(df_combined,
 #                    mir = "miR-126")
-#
+#  
 #  # Compare term frequency for miR-126 between two topics on a log2-scale
 #  compare_mir_terms_log2(df_combined,
 #                         mir = "miR-126")
@@ -435,21 +435,21 @@ library(miRetrieve)
 library(magrittr)
 
 # Path to PubMed-file
-crc_medline <- "CRC_Medline.txt"
+crc_pubmed <- "CRC_PubMed.txt"
 
 # Load PubMed-file
-df_crc <- read_pubmed(crc_medline,
-                              topic = "CRC") %>%
+df_crc <- read_pubmed(crc_pubmed,
+                      topic = "CRC") %>%
   # Keep abstracts of original research articles
-  subset_research() %>%
+  subset_research() %>% 
   # Extract miRNA names
-  extract_mir_df()
+  extract_mir_df() 
 
 ## ---- eval=FALSE---------------------------------------------------------
 #  # Label all abstracts mentioning miR-21 with "Yes"
 #  df_mir21 <- indicate_mir(df_crc,
 #                           indicate.mir = "miR-21")
-#
+#  
 #  # Save as an .xlsx file
 #  save_excel(df_mir21,
 #             excel_file = "miR21_crc.xlsx")
@@ -490,13 +490,13 @@ plot_mir_count(crc_biomarker,
 
 ## ---- fig.show='hold', out.width='50%'-----------------------------------
 # Path to PubMed-file
-panc_medline <- "Pancreas_Medline.txt"
+panc_pubmed <- "Pancreas_PubMed.txt"
 
 # Load PubMed-file
-df_panc <- read_pubmed(panc_medline,
-                              topic = "Pancreas") %>%
+df_panc <- read_pubmed(panc_pubmed,
+                       topic = "Pancreas") %>% 
   # Keep original research articles
-  subset_research() %>%
+  subset_research() %>% 
   # Extract miRNA names
   extract_mir_df()
 
