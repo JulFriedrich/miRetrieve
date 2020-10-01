@@ -233,6 +233,7 @@ plot_target_mir_scatter <- function(df,
     title <- "miRNA-target interaction"
   }
 
+
   if(is.null(top) & is.null(threshold)) {
     top <- 5
   }
@@ -247,13 +248,13 @@ plot_target_mir_scatter <- function(df,
   }
 
   if(!"Topic" %in% colnames(df)) {
-    col.topic <- NULL
+    df <- df %>%
+      dplyr::mutate(Topic = "NA")
   }
 
   # Make all targets uppercase
   df <- df %>%
     dplyr::mutate({{col.target}}:= stringr::str_to_upper({{col.target}}))
-
 
   # Filter for mir
   if(!is.null(mir)) {
@@ -262,11 +263,21 @@ plot_target_mir_scatter <- function(df,
   }
 
 
+
   # Filter for target
   if(!is.null(target)) {
     df <- df %>%
       dplyr::filter({{col.target}} %in% target)
   }
+
+  if(filter_for == "mirna") {
+    df <- df %>%
+      tidyr::drop_na({{col.mir}})
+  } else {
+    df <- df %>%
+      tidyr::drop_na({{col.target}})
+  }
+
 
   df_count <- df %>%
     dplyr::select({{col.target}}, {{col.mir}}, {{col.topic}}, {{col.pmid}}) %>%
@@ -274,6 +285,8 @@ plot_target_mir_scatter <- function(df,
     dplyr::add_count({{col.mir}}, name = "miRNA_count") %>%
     dplyr::mutate(miRNA = forcats::fct_reorder({{col.mir}}, miRNA_count)) %>%
     dplyr::mutate(Target = forcats::fct_reorder({{col.target}}, Target_count))
+
+
 
   # Specifies if count is based on targets or miRNAs.
   if(filter_for == "target") {
@@ -285,7 +298,6 @@ plot_target_mir_scatter <- function(df,
       dplyr::select(Target, miRNA, miRNA_count, {{col.topic}}, {{col.pmid}}) %>%
       dplyr::rename(n = 3)
   }
-
 
   # Specifies if count is filtered for threshold or targets.
   if(!is.null(threshold)) {
@@ -321,6 +333,7 @@ plot_target_mir_scatter <- function(df,
   df_count <- df_count %>%
     dplyr::distinct({{col.pmid}}, miRNA, Target, {{col.topic}})
 
+
   # Scatterplot.
   plot <- ggplot(df_count, aes(x = Target,
                                y = miRNA,
@@ -328,7 +341,7 @@ plot_target_mir_scatter <- function(df,
     geom_jitter(height = height,
                 width = width,
                 alpha = alpha,
-                size = 1,
+                size = 2,
                 show.legend = TRUE) +
     theme_minimal() +
     theme(axis.text.x = element_text(angle = 60,

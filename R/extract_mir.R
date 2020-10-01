@@ -6,7 +6,7 @@ pattern_mir <- '[Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\‑\\-\\s]?\\d+[a-zA-Z]?
 #' Regex let-7
 #' @noRd
 #' @export
-pattern_let <- '[Ll][Ee][Tt][\\‑\\-\\s]?\\d+[a-zA-Z]?[\\‑\\-]?[35]?[Pp]'
+pattern_let <- '[Ll][Ee][Tt][\\‑\\-\\s]?\\d+[a-zA-Z]?[\\‑\\-]?[35]?[Pp]?'
 
 #' Extract miRNAs from abstracts - Helper.
 #'
@@ -27,23 +27,52 @@ retrieve_mir <- function(string,
   # This algorithm is trickier than expected; on the one hand, you would
   # like to make look ahead work, on the other hand, it might lead to trouble;
 
+  # Insert "-" between "miRNA[number]". This is necessary as the next step would
+  # otherwise remove the trailing digit behind the "A".
+  string <- stringr::str_replace_all(string,
+                                     "(?<=[Rr][Nn][Aa])([0-9])",
+                                     "-\\1")
+
   # Clean string from miR2Disease, trailing digits right behind a letter (e.g. MiR7a2)
 
   string <- stringr::str_remove_all(string, "miR2Disease") %>% # removes miR2Disease
     stringr::str_remove_all("(?<=[a-fA-F])([0-9])") %>%   # removes any trailing digit right behind a letter
-    stringr::str_remove_all("(?<=\\d[a-fA-F]?)(-2[s\\.])")
+    stringr::str_remove_all("(?<=\\d[a-fA-F]?)(-2[s\\.])") %>%
+    stringr::str_remove_all("3'") %>%
+    stringr::str_remove_all("5'")
 
   #Extract first miRNAs
 
   miR <-  stringr::str_extract_all(string, pattern_mir) %>%
     unlist()
 
-
-  #Check if miRNAs are chained (e.g. miR-34/-27/-29 etc.)
-
    mir_catcher <- c()
+
+   # Catch chained letters (e.g. miR-33a/b)
+   mir_chained_letter <- stringr::str_extract_all(string,
+                                                  "([Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\‑\\-\\s]?\\d+)([a-z][/]?)+",
+                                                  simplify = TRUE) %>%
+     stringr::str_match("([Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\‑\\-\\s]?\\d+)(.*)")
+
+
+   # Vectorize over chained letters (e.g. miR-33a/b to miR-33a and miR-33b)
+   mir_chained_letter <- mir_chained_letter %>%
+     as.data.frame(stringsAsFactors = FALSE) %>%
+     dplyr::as_tibble() %>%
+     dplyr::select(2:3) %>%
+     # Get rid of / if / is last character (e.g. miR-146a/TRAF6-axis might cause trouble)
+     dplyr::mutate(V3 = stringr::str_replace_all(V3, "(.*)(/$)", "\\1")) %>%
+     tidyr::separate_rows(V3, sep = "/") %>%
+     tidyr::unite(col = "Coerced", sep = "") %>%
+     dplyr::pull() %>%
+     unique()
+
+   mir_catcher <- c(mir_catcher, mir_chained_letter)
+
+   #Check if miRNAs are chained (e.g. miR-34/-27/-29 etc.)
+
   for (miRNA in miR) {
-    pattern_look_ahead <- stringr::str_c("(?<=", miRNA, ")([/,and\\s?]+[-]?\\d+[a-z]?[-]?[1-5]?[-]?[53]?[pP]?\\s?)+",
+    pattern_look_ahead <- stringr::str_c("(?<=", miRNA, ")([/,;and\\s?]+[-]?\\d+[a-z]?[-]?[1-5]?[-]?[53]?[pP]?\\s?)+",
                                          collapse = "")
     miR_2 <- stringr::str_extract_all(string, pattern_look_ahead) %>%
       unlist()
@@ -86,10 +115,14 @@ retrieve_mir <- function(string,
 
   vec <- vec[!is.na(vec)]
 
-
   if(extract_letters == FALSE) {
     vec <- stringr::str_replace_all(vec, "(?<=\\d)([a-zA-Z])", "") #%>%
       #unique() Here as well the deprecation of "unique" for the new addition (below)
+  }
+
+  # Turns trailing letter behind number to lowercase (e.g. miR-125B to miR-125b)
+  if(extract_letters == TRUE) {
+    vec <- sub("(?<=\\d)([A-Z])", "\\L\\1", vec, perl = TRUE)
   }
 
   # New Addition --------------------------

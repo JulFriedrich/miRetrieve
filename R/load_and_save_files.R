@@ -104,7 +104,7 @@ read_pubmed_xml <- function(xml_file, topic = NULL) {
 #' `read_pubmed()` is faster than `read_pubmed_xml()` and thus
 #' recommended.
 #'
-#' @param pubmed_file MEDLINE-file as .txt, downloaded from PubMed.
+#' @param pubmed_file PubMed-file as .txt, downloaded from PubMed.
 #' @param topic String. Optional. If provided, adds a "Topic" column containing
 #' `topic`.
 #'

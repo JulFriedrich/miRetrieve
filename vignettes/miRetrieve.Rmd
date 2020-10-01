@@ -450,25 +450,23 @@ landscape of multiple subjects.
 
 ### Load data
 
-miRetrieve is optimized to work with PubMed abstracts in MEDLINE or xml-format, 
-which can be downloaded from PubMed via *Send to* --> *File* --> 
-*Format: MEDLINE/xml* --> *Create File*.  
+miRetrieve is optimized to work with PubMed abstracts in PubMed-format, which 
+can be downloaded from PubMed via *Save* --> *Selection: All results*, 
+*Format: PubMed* --> *Create File*.  
 
-The resulting MEDLINE/.xml-file can be loaded into R with either `read_pubmed_medline()` 
-or `read_pubmed_xml()` respectively. As `read_pubmed_medline()` is faster than 
-`read_pubmed_xml()`, it is recommended to use MEDLINE-files.  
+The resulting PubMed-file can be loaded into R with `read_pubmed()` .
 
-When loading abstracts with `read_pubmed_*()`, all abstracts can be assigned a `Topic` column, which denotes the subject of a file and facilitates miRNA comparison
+When loading abstracts with `read_pubmed()`, all abstracts can be assigned a `Topic` column, which denotes the subject of a file and facilitates miRNA comparison
 between topics. If a `Topic` column is not specified while loading, it 
 can also be added with `add_col_topic()`.
 
 ```{r loaddata, eval = FALSE}
-# Read in MEDLINE-file from diabetes abstracts
+# Read in PubMed-file from diabetes abstracts
 # Denote abstracts as "Diabetes"
-df <- read_pubmed_medline("medlinefile_diabetes.txt", topic = "Diabetes")
+df <- read_pubmed("pubmedfile_diabetes.txt", topic = "Diabetes")
 
 # Is the same as
-df <- read_pubmed_medline("medlinefile_diabetes.txt")
+df <- read_pubmed("pubmedfile_diabetes.txt")
 df <- add_col_topic(df, topic.name = "Diabetes")
 ```
 
@@ -476,12 +474,12 @@ Multiple files can be combined into one data frame with `combine_df()`,
 which is crucial when comparing miRNAs of multiple topics.
 
 ```{r combinedata, eval = FALSE}
-# Load first MEDLINE-file
-df1 <- read_pubmed_medline("medlinefile1.txt",
+# Load first PubMed-file
+df1 <- read_pubmed("pubmedfile1.txt",
                            topic = "cANCA")
 
-# Load second MEDLINE-file
-df2 <- read_pubmed_medline("medlinefile2.txt",
+# Load second PubMed-file
+df2 <- read_pubmed("pubmedfile2.txt",
                            topic = "pANCA")
 
 # Combine df1 and df2
@@ -875,10 +873,10 @@ are combined for further analysis with `combine_df()`.
 
 ```{r, eval = FALSE}
 # Load abstracts of the first topic
-df1 <- read_pubmed_medline(medline_file1, topic = "Virus")
+df1 <- read_pubmed(pubmed_file1, topic = "Virus")
 
 # Load abstracts of the second topic
-df2 <- read_pubmed_medline(medline_file2, topic = "Bacteria")
+df2 <- read_pubmed(pubmed_file2, topic = "Bacteria")
 
 # Combine abstracts of topics
 df_combined <- combine_df(df1, df2)
@@ -1055,7 +1053,7 @@ to its role in pancreatic cancer.
 ## Data preparation
 
 To investigate the role of miR-21 in CRC, we load all PubMed abstracts matching 
-the keywords *colorectal cancer mirna* with `read_pubmed_medline()`. Then, 
+the keywords *colorectal cancer mirna* with `read_pubmed()`. Then, 
 we keep only abstracts of original research articles, using `subset_research()`, and 
 subsequently extract their miRNA names with `extract_mir_df()`.  
 
@@ -1069,12 +1067,12 @@ library(miRetrieve)
 # Load magrittr
 library(magrittr)
 
-# Path to MEDLINE-file
-crc_medline <- "CRC_Medline.txt"
+# Path to PubMed-file
+crc_pubmed <- "CRC_PubMed.txt"
 
-# Load MEDLINE-file
-df_crc <- read_pubmed_medline(crc_medline,
-                              topic = "CRC") %>%
+# Load PubMed-file
+df_crc <- read_pubmed(crc_pubmed,
+                      topic = "CRC") %>%
   # Keep abstracts of original research articles
   subset_research() %>% 
   # Extract miRNA names
@@ -1205,12 +1203,12 @@ top biomarker miRNAs in pancreatic cancer, we subset all biomarker abstracts for
 with `subset_df()` and count miR-21 selectively with `count_mir()`.
 
 ```{r, fig.show='hold', out.width='50%'}
-# Path to MEDLINE-file
-panc_medline <- "Pancreas_Medline.txt"
+# Path to PubMed-file
+panc_pubmed <- "Pancreas_PubMed.txt"
 
-# Load MEDLINE-file
-df_panc <- read_pubmed_medline(panc_medline,
-                              topic = "Pancreas") %>% 
+# Load PubMed-file
+df_panc <- read_pubmed(panc_pubmed,
+                       topic = "Pancreas") %>% 
   # Keep original research articles
   subset_research() %>% 
   # Extract miRNA names

@@ -50,6 +50,7 @@ stopwords_2gram <- miRetrieve::generate_stopwords(
       "rt qpcr", "knockdown mir", "low expression", "differentially expressed",
       "compared normal", "patients early", "differential expression", "methylation mir",
       "pri mir", "receiver operating", "decreased expression", "control group", "group mir",
-      "short term", ""))
+      "short term", "", "a significant", "significantly reduced", "expression increased",
+      "increased levels"))
 
 usethis::use_data(stopwords_2gram, overwrite = TRUE)
