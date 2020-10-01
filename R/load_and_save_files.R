@@ -18,7 +18,7 @@
 #' If `topic` is provided, a "Topic" column is added, assigning all abstracts in
 #' `df` to `topic`.
 #'
-#' `read_pubmed_medline()` is faster than `read_pubmed_xml()` and thus
+#' `read_pubmed()` is faster than `read_pubmed_xml()` and thus
 #' recommended.
 #'
 #' @param xml_file xml-file, downloaded from PubMed.
@@ -28,7 +28,7 @@
 #' @return Data frame containing PubMed-IDs, abstracts, abstract titles,
 #' publication years, languages, and article types.
 #'
-#' @seealso [read_pubmed_medline()]
+#' @seealso [read_pubmed()]
 #'
 #' @family external data functions
 #'
@@ -81,13 +81,13 @@ read_pubmed_xml <- function(xml_file, topic = NULL) {
   return(df)
 }
 
-#' Convert MEDLINE-file from PubMed into a data frame
+#' Convert PubMed-file from PubMed into a data frame
 #'
-#' Convert MEDLINE-file from PubMed into a data frame.
+#' Convert PubMed-file from PubMed into a data frame.
 #'
-#' Convert an MEDLINE-file from PubMed into a data
+#' Convert an PubMed-file from PubMed into a data
 #' frame.
-#' The MEDLINE-file should contain PubMed-IDs, abstracts from research articles,
+#' The PubMed-file should contain PubMed-IDs, abstracts from research articles,
 #' abstract title, publication year, abstract language, and article type.
 #' The data frame created holds at least six columns, namely
 #'
@@ -101,10 +101,10 @@ read_pubmed_xml <- function(xml_file, topic = NULL) {
 #' If `topic` is provided, a "Topic" column is added, assigning all abstracts in
 #' `df` to `topic`.
 #'
-#' `read_pubmed_medline()` is faster than `read_pubmed_xml()` and thus
+#' `read_pubmed()` is faster than `read_pubmed_xml()` and thus
 #' recommended.
 #'
-#' @param medline_file MEDLINE-file as .txt, downloaded from PubMed.
+#' @param pubmed_file MEDLINE-file as .txt, downloaded from PubMed.
 #' @param topic String. Optional. If provided, adds a "Topic" column containing
 #' `topic`.
 #'
@@ -119,10 +119,10 @@ read_pubmed_xml <- function(xml_file, topic = NULL) {
 #' @importFrom dplyr mutate
 #'
 #' @export
-read_pubmed_medline <- function(medline_file, topic = NULL) {
+read_pubmed <- function(pubmed_file, topic = NULL) {
 
   # Read in .txt file
-  df <- suppressMessages(readr::read_table(medline_file,
+  df <- suppressMessages(readr::read_table(pubmed_file,
                                     col_names = c("Term", "Content")))
 
   # Clean Term column
