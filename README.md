@@ -31,7 +31,7 @@ vignette, that can be accessed with
 vignette("miRetrieve")
 ```
 
-A full documentation is available [here](miRetrieve_1.0.0.pdf).
+A full documentation is available [here](miRetrieve_1.1.0.pdf).
 
 
 ## Authors
