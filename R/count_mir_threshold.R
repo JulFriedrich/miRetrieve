@@ -209,7 +209,7 @@ plot_mir_count_threshold <- function(df,
     geom_col(fill = colour) +
     xlab("Threshold, # of abstracts mentioning at least # of miRNAs") +
     ylab("# of distinct miRNAs") +
-    theme_classical() +
+    theme_classic() +
     ggtitle(title)
 
   plot <- pretty_breaks_miretrieve(plot, df_count$number_mirnas)

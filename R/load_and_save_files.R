@@ -131,8 +131,7 @@ read_pubmed <- function(pubmed_file, topic = NULL) {
     mutate(Term = stringr::str_replace_all(Term, "-", ""),
            Term = stringr::str_trim(Term),
            Term = ifelse(Term == "", NA, Term),
-           Term = zoo::na.locf(Term)) %>%
-    mutate(Abstract_no = NA)
+           Term = zoo::na.locf(Term))
 
   # Filter for terms of interest
   terms_interest <- c("PMID", "DP", "TI", "AB", "LA", "PT")
@@ -141,7 +140,7 @@ read_pubmed <- function(pubmed_file, topic = NULL) {
   # Enumerate abstracts
   indices_pubmed <- which(df$Term == "PMID")
   abstract_names <- stringr::str_c("Abstract_", seq_along(indices_pubmed))
-  df[indices_pubmed, 3] <- abstract_names
+  df[indices_pubmed, "Abstract_no"] <- abstract_names
 
   # Fill abstract enumeration
   # Spread data frame

@@ -29,11 +29,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, include=FALSE, echo=FALSE}
-path <- "/Users/Julian/Documents/Jupyter/miRetrieve_pkg_files/"
-fig_path <- "figure/"
 require("knitr")
-knitr::opts_knit$set(base.dir = path, base.url = path, root.dir = path)
-knitr::opts_chunk$set(fig.path = fig_path)
 library(kableExtra)
 library(magrittr)
 library(dplyr)
@@ -342,12 +338,12 @@ keywords_t2dm <- c("insulin resistance", "obesity", "metformin")
 # Calculate type 1 diabetes scores for each abstract
 df_diabetes <- calculate_score_topic(df,
                                      keywords = keywords_t1dm,
-                                     name.topic = "T1DM")
+                                     col.score = "T1DM")
 
 # Calculate type 2 diabetes scores for each abstract
 df_diabetes <- calculate_score_topic(df_diabetes,
                                      keywords = keywords_t2dm,
-                                     name.topic = "T2DM")
+                                     col.score = "T2DM")
 
 # Assign abstracts with a score of >= 3 in "T1DM" to type 1 diabetes
 # Assign abstracts with a score of >= 3 in "T2DM" to type 2 diabetes
@@ -580,7 +576,7 @@ data frame can also be individually subset with `subset_df()`.
 ```{r, eval = FALSE}
 # Subset data frame with customized arguments
 subset_df(df,
-          col.filter = miRNA,
+          col.filter = "miRNA",
           filter_for = "miR-126")
 
 # `subset_df()` is a more general version of
@@ -1026,7 +1022,7 @@ The most frequent terms a miRNA is associated with in one, but not another topic
 can be displayed with `compare_mir_terms_unique()`. 
 
 ```{r, eval = FALSE}
-# Identify most frequent unique terms of miR-126 per topc
+# Identify most frequent unique terms of miR-126 per topic
 compare_mir_terms_unique(df_combined,
                          mir = "miR-126")
 ```
@@ -1061,7 +1057,7 @@ During our analysis, we use the `%>%` operator from the **magrittr** package.
 `%>%` passes the result of one function straight into
 the following function, making our code easier to write, read, and maintain.
 
-```{r}
+```{r, eval=FALSE}
 # Load miRetrieve
 library(miRetrieve)
 # Load magrittr
@@ -1078,6 +1074,16 @@ df_crc <- read_pubmed(crc_pubmed,
   # Extract miRNA names
   extract_mir_df() 
 ```
+
+```{r, include=FALSE, eval=TRUE}
+# Load miRetrieve
+library(miRetrieve)
+# Load magrittr
+library(magrittr)
+
+df_crc <- miRetrieve::df_crc
+```
+
 
 After loading and filtering the abstracts, we have a data frame with
 `r nrow(df_crc)` rows and `r ncol (df_crc)` columns, named
@@ -1198,11 +1204,8 @@ namely pancreatic cancer.
 
 First, we load abstracts matching the keywords *pancreatic cancer mirna*, 
 keep only abstracts of original research articles, and extract their miRNA names.
-Next, we identify the top possible biomarker miRNAs with `plot_score_biomarker()`, `calculate_score_biomarker()`, and `plot_mir_count`. If miR-21 is not among the
-top biomarker miRNAs in pancreatic cancer, we subset all biomarker abstracts for miR-21
-with `subset_df()` and count miR-21 selectively with `count_mir()`.
 
-```{r, fig.show='hold', out.width='50%'}
+```{r, eval=FALSE}
 # Path to PubMed-file
 panc_pubmed <- "Pancreas_PubMed.txt"
 
@@ -1213,7 +1216,14 @@ df_panc <- read_pubmed(panc_pubmed,
   subset_research() %>% 
   # Extract miRNA names
   extract_mir_df()
+```
 
+
+Next, we identify the top possible biomarker miRNAs with `plot_score_biomarker()`, `calculate_score_biomarker()`, and `plot_mir_count`. If miR-21 is not among the
+top biomarker miRNAs in pancreatic cancer, we subset all biomarker abstracts for miR-21
+with `subset_df()` and count miR-21 selectively with `count_mir()`.
+
+```{r, fig.show='hold', out.width='50%'}
 # Plot score distribution for biomarker in pancreatic cancer
 plot_score_biomarker(df_panc,
                      title = "Biomarker score distribution in pancreatic cancer")
@@ -1240,10 +1250,9 @@ if miR-21 also shares miRNA-target interactions in both tumor entities.
 
 First, we combine the CRC and pancreatic cancer data frames with `combine_df()`. 
 Next, we look up the experimentally validated targets by adding the *miRTarBase*[@mirtarbase] 
-database with `join_targets()`. Finally, we plot the targets of miR-21 with
-`plot_target_mir_scatter()`.
+database with `join_targets()`. 
 
-```{r,fig.show='hold', out.width='50%', fig.align='center'}
+```{r, eval=FALSE}
 # Combine CRC and pancreatic cancer data frames
 df_crc_panc <- combine_df(df_crc, df_panc)
 
@@ -1257,7 +1266,13 @@ df_targets <- join_targets(df_crc_panc,
                            col.target.excel = "Target Gene",
                            col.mir.excel = "miRNA",
                            stem_mir_excel = TRUE)
+```
 
+
+Finally, we plot the targets of miR-21 with
+`plot_target_mir_scatter()`.
+
+```{r,fig.show='hold', out.width='50%', fig.align='center'}
 # Plot top targets for miR-21 in CRC and pancreatic cancer
 plot_target_mir_scatter(df_targets,
                         mir = "miR-21",
