@@ -27,7 +27,7 @@
 #'
 #' @return Elbow plot displaying perplexity scores of different LDA models.
 #'
-#' @seealso [fit_lda()], [topicmodels::LDA()]
+#' @seealso [fit_lda()]
 #'
 #' @family LDA functions
 #'
@@ -119,7 +119,7 @@ plot_perplexity <- function(df,
 #'
 #' @return LDA-model.
 #'
-#' @seealso [plot_perplexity()], [topicmodels::LDA()]
+#' @seealso [plot_perplexity()]
 #'
 #' @family LDA functions
 #'

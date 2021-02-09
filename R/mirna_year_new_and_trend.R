@@ -117,8 +117,6 @@ plot_mir_new <- function(df,
 #'
 #' @return Line plot displaying how often a miRNA name was mentioned per year..
 #'
-#' @seealso [ggplot2::geom_line()]
-#'
 #' @family miR development functions
 #'
 #' @export

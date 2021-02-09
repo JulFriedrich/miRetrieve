@@ -14,8 +14,6 @@
 #' @return Character vector containing miRNA names in common between two
 #' vectors.
 #'
-#' @seealso [get_shared_mir_df(), get_distinct_mir_vec(), get_distinct_mir_df()]
-#'
 #' @family get functions
 #'
 #' @export
@@ -45,8 +43,6 @@ get_shared_mir_vec <- function(mirna.vec.1, mirna.vec.2) {
 #'
 #' @return Character vector containing miRNA names in common between two
 #' topics.
-#'
-#' @seealso [get_shared_mir_vec(), get_distinct_mir_vec(), get_distinct_mir_df()]
 #'
 #' @family get functions
 #'
@@ -102,8 +98,6 @@ get_shared_mir_df <- function(df,
 #' @return Character vector containing miRNA names distinct for `mirna.vec.1`
 #' compared to `mirna.vec.2`.
 #'
-#' @seealso [get_distinct_mir_df(), get_shared_mir_vec(), get_shared_mir_df()]
-#'
 #' @family get functions
 #'
 #' @export
@@ -137,8 +131,6 @@ get_distinct_mir_vec <- function(mirna.vec.1, mirna.vec.2) {
 #'
 #' @return Character vector containing miRNA names distinct for `distinct`
 #' compared to the second topic provided in `topic`.
-#'
-#' @seealso [get_distinct_mir_vec(), get_shared_mir_vec(), get_shared_mir_df()]
 #'
 #' @family get functions
 #'

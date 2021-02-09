@@ -39,7 +39,7 @@ Fit LDA-model with \code{k} topics from a data frame.
 \pkg{topicmodels}.
 }
 \seealso{
-\code{\link[=plot_perplexity]{plot_perplexity()}}, \code{\link[topicmodels:LDA]{topicmodels::LDA()}}
+\code{\link[=plot_perplexity]{plot_perplexity()}}
 
 Other LDA functions: \code{\link{assign_topic_lda}},
   \code{\link{plot_lda_term}},

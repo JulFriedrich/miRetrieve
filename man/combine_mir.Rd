@@ -20,7 +20,7 @@ Combine miRNA vectors into one. miRNA names occurring more than once
 are reduced to one instance.
 }
 \seealso{
-\code{\link[=get_mir]{get_mir()}}, \code{\link[=get_mir_top]{get_mir_top()}}
+\code{\link[=get_mir]{get_mir()}}
 
 Other combine functions: \code{\link{combine_df}}
 }

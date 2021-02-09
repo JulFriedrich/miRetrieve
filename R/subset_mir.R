@@ -14,7 +14,7 @@
 #' with a warning saying *"No miRNA name in 'mir.retain' matches a miRNA name in 'col.mir'.
 #' Could not filter for miRNA name."*.
 #'
-#' @seealso [get_mir()], [get_mir_top()], [subset_mir_threshold()]
+#' @seealso [get_mir()], [subset_mir_threshold()]
 #'
 #' @family subset functions
 #'
@@ -68,7 +68,7 @@ subset_mir <- function(df,
 #' @return Data frame, subset for miRNA names whose frequency exceeds a
 #' threshold.
 #'
-#' @seealso [get_mir()], [get_mir_top()], [subset_mir()]
+#' @seealso [get_mir()], [subset_mir()]
 #'
 #' @family subset functions
 #'

@@ -44,8 +44,6 @@ Plot development of miRNA name mentioning over time.
 Plot how often a miRNA name was mentioned per year.
 }
 \seealso{
-\code{\link[ggplot2:geom_line]{ggplot2::geom_line()}}
-
 Other miR development functions: \code{\link{plot_mir_new}}
 }
 \concept{miR development functions}

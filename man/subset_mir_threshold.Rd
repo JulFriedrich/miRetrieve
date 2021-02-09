@@ -37,7 +37,7 @@ miRNA names mentioned in at least \code{threshold} abstracts
 of all abstracts in \code{df}.
 }
 \seealso{
-\code{\link[=get_mir]{get_mir()}}, \code{\link[=get_mir_top]{get_mir_top()}}, \code{\link[=subset_mir]{subset_mir()}}
+\code{\link[=get_mir]{get_mir()}}, \code{\link[=subset_mir]{subset_mir()}}
 
 Other subset functions: \code{\link{subset_df}},
   \code{\link{subset_mir}}, \code{\link{subset_research}},

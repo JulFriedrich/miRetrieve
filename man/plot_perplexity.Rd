@@ -48,7 +48,7 @@ can help in identifying the optimal number of topics to fit an LDA model for.
 \pkg{topicmodels}.
 }
 \seealso{
-\code{\link[=fit_lda]{fit_lda()}}, \code{\link[topicmodels:LDA]{topicmodels::LDA()}}
+\code{\link[=fit_lda]{fit_lda()}}
 
 Other LDA functions: \code{\link{assign_topic_lda}},
   \code{\link{fit_lda}}, \code{\link{plot_lda_term}}

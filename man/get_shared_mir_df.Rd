@@ -35,8 +35,6 @@ Get top miRNA names in common between two topics of a data frame.
 in a data frame and returns the miRNA names in common.
 }
 \seealso{
-\code{\link[=get_shared_mir_vec(), get_distinct_mir_vec(), get_distinct_mir_df]{get_shared_mir_vec(), get_distinct_mir_vec(), get_distinct_mir_df()}}
-
 Other get functions: \code{\link{get_distinct_mir_df}},
   \code{\link{get_distinct_mir_vec}},
   \code{\link{get_mir}}, \code{\link{get_pmid}},

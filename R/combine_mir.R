@@ -9,7 +9,7 @@
 #'
 #' @return Combined character vector containing miRNA names.
 #'
-#' @seealso [get_mir()], [get_mir_top()]
+#' @seealso [get_mir()]
 #'
 #' @family combine functions
 #'

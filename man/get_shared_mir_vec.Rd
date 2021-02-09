@@ -26,8 +26,6 @@ Get miRNA names in common between two vectors.
 returns the miRNA names that are in both vectors.
 }
 \seealso{
-\code{\link[=get_shared_mir_df(), get_distinct_mir_vec(), get_distinct_mir_df]{get_shared_mir_df(), get_distinct_mir_vec(), get_distinct_mir_df()}}
-
 Other get functions: \code{\link{get_distinct_mir_df}},
   \code{\link{get_distinct_mir_vec}},
   \code{\link{get_mir}}, \code{\link{get_pmid}},
