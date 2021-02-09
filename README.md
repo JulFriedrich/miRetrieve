@@ -14,6 +14,11 @@ To install miRetrieve locally, run
 
 ```
 install.packages("devtools")
+```
+
+first, followed by
+
+```
 devtools::install_github("JulFriedrich/miRetrieve",
         dependencies = TRUE,
         repos = "https://cran.r-project.org/",
