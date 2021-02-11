@@ -33,7 +33,6 @@ vignette("miRetrieve")
 
 A full documentation is available [here](miRetrieve_1.1.0.pdf).
 
-
 ## Authors
 
 **Julian Friedrich**, **Hans-Peter Hammes**, **Guido Krenning**
@@ -41,6 +40,37 @@ A full documentation is available [here](miRetrieve_1.1.0.pdf).
 ## License
 
 miRetrieve is published under the GPL-3 license.
+
+### Note
+
+miRetrieve runs smoothly with
+
+```
+    dplyr (1.0.3),
+    forcats (0.5.1),
+    ggplot2 (3.3.3),
+    knitr (1.31),
+    kableExtra (1.3.1),
+    magrittr (2.0.1),
+    openxlsx (4.2.3),
+    plotly (4.9.3),
+    purrr (0.3.4),
+    readr (1.4.0),
+    readxl (1.3.1),
+    renv (0.12.5),
+    scales (1.1.1),
+    stringr (1.4.0),
+    tidyr (1.1.2),
+    tidytext (0.3.0),
+    topicmodels (0.2.12),
+    wordcloud (2.6),
+    xml2 (1.3.2),
+    zoo (1.8.8)
+```
+In case you run into trouble, please install the 
+[renv package](https://rstudio.github.io/renv/articles/renv.html) and use 
+the *renv.lock* file to restore the needed libraries. A detailed explanation is
+[here](https://rstudio.github.io/renv/articles/renv.html).
 
 ## Reference
 
