@@ -36,7 +36,7 @@ function of \code{ggsave()} from \pkg{ggplot2}.
 \seealso{
 \code{\link[ggplot2:ggsave]{ggplot2::ggsave()}}
 
-Other external data functions: \code{\link{read_pubmed_xml}},
+Other external data functions: \code{\link{read_pubmed_jats}},
   \code{\link{read_pubmed}}, \code{\link{save_excel}}
 }
 \concept{external data functions}

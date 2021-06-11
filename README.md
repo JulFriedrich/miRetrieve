@@ -41,6 +41,16 @@ A full documentation is available [here](miRetrieve_1.1.0.pdf).
 
 miRetrieve is published under the GPL-3 license.
 
+## Publication
+
+miRetrieve and its functions are presented in a manuscript,
+currently under review.
+
+Supplementary Files referenced in the manuscript are located
+in a different repository, freely available under
+
+https://github.com/JulFriedrich/miRetrieve-paper
+
 ### Note
 
 miRetrieve runs smoothly with
@@ -57,7 +67,6 @@ miRetrieve runs smoothly with
     purrr (0.3.4),
     readr (1.4.0),
     readxl (1.3.1),
-    renv (0.12.5),
     scales (1.1.1),
     stringr (1.4.0),
     tidyr (1.1.2),
@@ -67,14 +76,18 @@ miRetrieve runs smoothly with
     xml2 (1.3.2),
     zoo (1.8.8)
 ```
-In case you run into trouble, please install the 
-[renv package](https://rstudio.github.io/renv/articles/renv.html) and use 
-the *renv.lock* file to restore the needed libraries. A detailed explanation is
-[here](https://rstudio.github.io/renv/articles/renv.html).
 
 ## Reference
 
 ## Acknowledgments
+
+* `join_mirtarbase` is based on the latest miRTarBase version 8.0
+(http://miRTarBase.cuhk.edu.cn/). If you use miRetrieve to visualize
+miRNA-mRNA interactions based on miRTarBase, please make sure to cite
+*Hsi-Yuan Huang, Yang-Chi-Dung Lin, Jing Li, et al.,
+miRTarBase 2020: updates to the experimentally validated microRNA–target
+interaction database, Nucleic Acids Research, Volume 48, Issue D1,
+08 January 2020, Pages D148–D154, https://doi.org/10.1093/nar/gkz896.*
 
 * `compare_mir_terms_log2()`, `compare_mir_count_log2()`, and 
 `compare_mir_terms_scatter()` are greatly inspired by 

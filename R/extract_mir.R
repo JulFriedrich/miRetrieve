@@ -115,14 +115,25 @@ retrieve_mir <- function(string,
 
   vec <- vec[!is.na(vec)]
 
-  if(extract_letters == FALSE) {
-    vec <- stringr::str_replace_all(vec, "(?<=\\d)([a-zA-Z])", "") #%>%
-      #unique() Here as well the deprecation of "unique" for the new addition (below)
-  }
-
   # Turns trailing letter behind number to lowercase (e.g. miR-125B to miR-125b)
   if(extract_letters == TRUE) {
     vec <- sub("(?<=\\d)([A-Z])", "\\L\\1", vec, perl = TRUE)
+  }
+
+  # Replace old miRNA name versions with new miRNA name as of
+  # miRBase version 22
+  vec <- vec %>%
+    gsub("miR-97$", "miR-30a", .) %>%
+    gsub("miR-102$", "miR-29b", .) %>%
+    gsub("miR-180a$", "miR-172a", .) %>%
+    gsub("miR-180b$", "miR-172b", .) %>%
+    gsub("miR-180$", "miR-172", .)
+
+
+  if(extract_letters == FALSE) {
+    # drop trailing letters
+    vec <- stringr::str_replace_all(vec, "(?<=\\d)([a-zA-Z])", "") #%>%
+      #unique() Here as well the deprecation of "unique" for the new addition (below)
   }
 
   # New Addition --------------------------
@@ -134,6 +145,7 @@ retrieve_mir <- function(string,
   # Get miRNA names
   vec <- mir_subset[["vec"]] %>%
     unique()
+
 
   if (!purrr::is_empty(vec)) {
     return (vec)
@@ -148,7 +160,10 @@ retrieve_mir <- function(string,
 #'
 #' Extract miRNA names from abstracts in a data frame. miRNA names can
 #' either be extracted with their stem only, e.g. *miR-23*, or with their trailing
-#' letter, e.g. *miR-23a*. Additionally, how often a miRNA must be mentioned in an
+#' letter, e.g. *miR-23a*. miRNA names are adapted to the most recent miRBase
+#' version (e.g. miR-97, miR-102, miR-180(a/b) become miR-30a, miR-29a,
+#' and miR-172(a/b), respectively). Additionally, how often a miRNA must be
+#' mentioned in an
 #' abstract to be extracted can be regulated via the `threshold` argument.
 #' Ultimately, abstracts not containing any miRNA names
 #' are silently dropped.
@@ -191,7 +206,10 @@ extract_mir_df <- function(df,
 #'
 #' Extract miRNA names from a string. miRNA names can
 #' either be extracted with their stem only, e.g. *miR-23*, or with their trailing
-#' letter, e.g. *miR-23a*.
+#' letter, e.g. *miR-23a*. Furthermore, miRNA names are adapted to the most recent
+#' miRBase
+#' version (e.g. miR-97, miR-102, miR-180(a/b) become miR-30a, miR-29a,
+#' and miR-172(a/b), respectively).
 #'
 #' @param string String. String to search for miRNA names.
 #' @param threshold Integer. Specifies how often a miRNA must be mentioned in `string`
@@ -264,6 +282,21 @@ extract_mir_string <- function(string,
     #unique()
 
   vec <- vec[!is.na(vec)]
+
+
+  # Turns trailing letter behind number to lowercase (e.g. miR-125B to miR-125b)
+  if(extract_letters == TRUE) {
+    vec <- sub("(?<=\\d)([A-Z])", "\\L\\1", vec, perl = TRUE)
+  }
+
+  # Replace old miRNA name versions with new miRNA name as of
+  # miRBase version 22
+  vec <- vec %>%
+    gsub("miR-97$", "miR-30a", .) %>%
+    gsub("miR-102$", "miR-29b", .) %>%
+    gsub("miR-180a$", "miR-172a", .) %>%
+    gsub("miR-180b$", "miR-172b", .) %>%
+    gsub("miR-180$", "miR-172", .)
 
   if(extract_letters == FALSE) {
     vec <- stringr::str_replace_all(vec, "(?<=\\d)([a-zA-Z])", "") #%>%

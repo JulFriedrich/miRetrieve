@@ -155,11 +155,11 @@ plot_score_patients <- function(df,
                    center = 0,
                    binwidth = 1) +
     theme_classic() +
-    scale_x_continuous(breaks = scales::pretty_breaks()) +
     xlab("Patient score") +
     ylab("# of abstracts")+
     ggtitle(title) +
-    scale_x_continuous(expand = c(0,0)) +
+    scale_x_continuous(expand = c(0,0),
+                       breaks = scales::pretty_breaks()) +
     scale_y_continuous(expand = c(0,0))
 
   return(plot)

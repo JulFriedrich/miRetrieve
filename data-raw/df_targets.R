@@ -1,29 +1,7 @@
-#Adjust path as necessary
-panc_pubmed <- "Pancreas_PubMed.txt"
-
-# Load PubMed-file
-df_panc <- read_pubmed(panc_pubmed,
-                       topic = "Pancreas") %>%
-    # Keep original research articles
-    subset_research() %>%
-    # Extract miRNA names
-    extract_mir_df()
-
-
-crc_pubmed <- "CRC_PubMed.txt"
-
-#Adjust path as necessary
-df_crc <- read_pubmed(crc_pubmed,
-                      topic = "CRC") %>%
-    # Keep abstracts of original research articles
-    subset_research() %>%
-    # Extract miRNA names
-    extract_mir_df()
-
-df_crc_panc <- combine_df(df_crc, df_panc)
+df_crc_panc <- rbind(miRetrieve::df_crc, miRetrieve::df_panc)
 
 # Path to miRTarBase (see "References")/Adjust path as necessary
-target_db <- "miRTarBase_MTI.xlsx"
+target_db <- "/Users/Julian/Documents/Jupyter/miRetrieve_pkg_files/miRTarBase_MTI.xlsx"
 
 # Add miRTarBase targets to `df_crc_panc`
 df_targets <- join_targets(df_crc_panc,

@@ -28,7 +28,10 @@ Extract miRNA names from a string.
 \details{
 Extract miRNA names from a string. miRNA names can
 either be extracted with their stem only, e.g. \emph{miR-23}, or with their trailing
-letter, e.g. \emph{miR-23a}.
+letter, e.g. \emph{miR-23a}. Furthermore, miRNA names are adapted to the most recent
+miRBase
+version (e.g. miR-97, miR-102, miR-180(a/b) become miR-30a, miR-29a,
+and miR-172(a/b), respectively).
 }
 \seealso{
 \code{\link[=extract_mir_df]{extract_mir_df()}}

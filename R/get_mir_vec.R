@@ -185,14 +185,14 @@ get_mir <- function(df,
   if(!is.null(top)) {
     top_mirnas <- get_mir_top(df = df,
                 top = top,
-                col.mir = miRNA)
+                col.mir = {{col.mir}})
 
     return(top_mirnas)
   } else if(!is.null(threshold)) {
     thresh_mirnas <- get_mir_threshold(df = df,
                       threshold = threshold,
-                      col.mir = miRNA,
-                      col.pmid = PMID)
+                      col.mir = {{col.mir}},
+                      col.pmid = {{col.pmid}})
     return(thresh_mirnas)
   }
 }

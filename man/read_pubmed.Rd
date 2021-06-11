@@ -37,13 +37,13 @@ The data frame created holds at least six columns, namely
 If \code{topic} is provided, a "Topic" column is added, assigning all abstracts in
 \code{df} to \code{topic}.
 
-\code{read_pubmed()} is faster than \code{read_pubmed_xml()} and thus
+\code{read_pubmed()} is faster than \code{read_pubmed_jats()} and thus
 recommended.
 }
 \seealso{
-\code{\link[=read_pubmed_xml]{read_pubmed_xml()}}
+\code{\link[=read_pubmed_jats]{read_pubmed_jats()}}
 
-Other external data functions: \code{\link{read_pubmed_xml}},
+Other external data functions: \code{\link{read_pubmed_jats}},
   \code{\link{save_excel}}, \code{\link{save_plot}}
 }
 \concept{external data functions}

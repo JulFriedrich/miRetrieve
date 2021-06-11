@@ -1,7 +1,4 @@
-library(magrittr)
-library(dplyr)
 
-setwd("/Users/Julian/Documents/Jupyter/miRetrieve pkg/miRetrieve/data-raw")
 
 stopwords_pubmed <-
     openxlsx::read.xlsx("stopwords.xlsx") %>%

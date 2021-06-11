@@ -152,7 +152,7 @@ plot_score_topic <- function(df,
     xlab(stringr::str_c("Score for topic '", name.topic, "'")) +
     ylab("# of abstracts")+
     ggtitle(title) +
-    scale_x_continuous(expand = c(0,0)) +
+    scale_x_continuous(breaks = scales::pretty_breaks(), expand = c(0,0)) +
     scale_y_continuous(expand = c(0,0))
 
   return(plot)

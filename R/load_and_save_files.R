@@ -1,10 +1,10 @@
-#' Convert xml-file from PubMed into a data frame
+#' Convert JATS-file from PubMed into a data frame
 #'
-#' Convert xml-file from PubMed into a data frame.
+#' Convert JATS-file from PubMed into a data frame.
 #'
-#' Converts an xml-file from PubMed into a data
+#' Converts an JATS-file from PubMed into a data
 #' frame.
-#' The xml-file should contain PubMed-IDs, abstracts from research articles,
+#' The JATS-file should contain PubMed-IDs, abstracts from research articles,
 #' abstract title, publication year, abstract language, and article type.
 #' The data frame created holds at least six columns, namely
 #'
@@ -18,10 +18,10 @@
 #' If `topic` is provided, a "Topic" column is added, assigning all abstracts in
 #' `df` to `topic`.
 #'
-#' `read_pubmed()` is faster than `read_pubmed_xml()` and thus
+#' `read_pubmed()` is faster than `read_pubmed_jats()` and thus
 #' recommended.
 #'
-#' @param xml_file xml-file, downloaded from PubMed.
+#' @param jats_file JATS-file, downloaded from PubMed.
 #' @param topic String. Optional. If provided, adds a "Topic" column containing
 #' `topic`.
 #'
@@ -35,9 +35,9 @@
 #' @importFrom magrittr %>%
 #'
 #' @export
-read_pubmed_xml <- function(xml_file, topic = NULL) {
-  #Read in xml-file
-  mirna_file <- xml2::read_xml(xml_file)
+read_pubmed_jats <- function(jats_file, topic = NULL) {
+  #Read in jats-file
+  mirna_file <- xml2::read_xml(jats_file)
   #Find Pubmed articles
   node_articles <- xml2::xml_find_all(mirna_file, "//PubmedArticle")
   #Create empty df
@@ -101,7 +101,7 @@ read_pubmed_xml <- function(xml_file, topic = NULL) {
 #' If `topic` is provided, a "Topic" column is added, assigning all abstracts in
 #' `df` to `topic`.
 #'
-#' `read_pubmed()` is faster than `read_pubmed_xml()` and thus
+#' `read_pubmed()` is faster than `read_pubmed_jats()` and thus
 #' recommended.
 #'
 #' @param pubmed_file PubMed-file as .txt, downloaded from PubMed.
@@ -112,7 +112,7 @@ read_pubmed_xml <- function(xml_file, topic = NULL) {
 #' @return Data frame containing PubMed-IDs, abstracts, abstract titles,
 #' publication years, languages, and article types.
 #'
-#' @seealso [read_pubmed_xml()]
+#' @seealso [read_pubmed_jats()]
 #'
 #' @family external data functions
 #'

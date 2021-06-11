@@ -39,7 +39,7 @@ generate_stopwords <- function(stopwords,
   if(is.null(combine_with)) {
     return(stopwords_new)
   } else {
-    if(colnames(combine_with) != colnames(stopwords_new)) {
+    if(!identical(colnames(combine_with), colnames(stopwords_new))) {
       stop("The data frame provided in 'combine_with' does not have two
            columns named 'word' and 'lexicon'. Please provide a
            data frame with two columns named 'word' and 'lexicon'.")

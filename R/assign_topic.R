@@ -94,8 +94,17 @@ assign_topic <- function(df,
       dplyr::rename(!!sym(topic.names[i]) := col.topic[i])
   }
 
+  for (i in seq_along(col.topic)) {
+    df_topic <- df_topic %>%
+      dplyr::mutate(!!sym(col.topic[i]) := ifelse(!!sym(col.topic[i]) >= threshold[i],
+                                                  !!sym(col.topic[i]),
+                                                  10000))
+  }
+
+
   df_topic <- df_topic %>%
     tidyr::gather("key", "value", -PMID) %>%
+    dplyr::filter(value != 10000) %>%
     dplyr::group_by(!!sym(col.pmid)) %>%
     dplyr::mutate(max_score = max(value)) %>%
     dplyr::ungroup() %>%

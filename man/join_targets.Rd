@@ -68,6 +68,7 @@ must contain a column with miRNA names.
 }
 \seealso{
 Other target functions: \code{\link{count_target}},
+  \code{\link{join_mirtarbase}},
   \code{\link{plot_target_count}},
   \code{\link{plot_target_mir_scatter}}
 }

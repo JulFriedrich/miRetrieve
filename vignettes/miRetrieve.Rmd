@@ -66,6 +66,45 @@ and extracting insights from a collection of texts, which are contained in a
 While this list is not exhaustive, it illustrates the mechanisms
 underlying many functions in miRetrieve and makes their use transparent.  
 
+To demonstrate these techniues, we are going to use a toy dataset, generated from
+abstracts about *diabetes*. The abstracts have a heavy focus on miR-34 and include
+some sampled abstracts and therefore do not represent the real data on miRNAs
+in diabetes.
+
+## Regular expressions {#regex}
+
+Regular expressions are "a sequence of characters that specify a search
+pattern"^[https://en.wikipedia.org/wiki/Regular_expression]. 
+
+In miRetrieve, regular expressions help to extract miRNA names in a multi-steps 
+process:
+First, minor modifications such as inserting a “-“ between any combination of “RNA” 
+and a digit are made to prepare further extraction. Afterwards, 
+miRNA-like strings are extracted with the regular expression
+
+```{r, eval=FALSE}
+'[Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\‑\\-\\s]?\\d+[a-zA-Z]?[\\‑\\-]?[12345]?[\\‑\\-]?[35]?[Pp]?'
+```
+
+while let-7 is extracted using the regular expression
+
+```{r, eval=FALSE}
+'[Ll][Ee][Tt][\\‑\\-\\s]?\\d+[a-zA-Z]?[\\‑\\-]?[35]?[Pp]?'
+```
+
+Then, summarized (e.g. *miR-33a/b*) and chained miRNA names (e.g. *miR-34/-27/-29*) 
+are separated, and possible -3, -5 suffices or trailing letters are removed. 
+
+What remains are miRNAs that are a combination of 
+*miR-/miRNA-/MIR-/microRNA/… + number + (trailing letter)*. The miRNA numbers and 
+trailing letters are extracted and joined with “miR-“ to unify the name. 
+For let-7, any combination of *let-/LET-/Let/…* is converted to lower case “let-“.
+
+Finally, miRNA names of older miRBase versions are converted to the most recent 
+miRBase^[http://www.mirbase.org] version (version 22 as of time of writing) 
+(e.g. *miR-97, miR-102, miR-180(a/b)* become *miR-30a, miR-29a, and miR-172(a/b)*, 
+respectively).
+
 ## Tokenization
 
 **Tokenization** refers to splitting text into smaller pieces, called *tokens*.   
@@ -109,19 +148,34 @@ into 2-grams, however, the token *low grade* hints that *low* is neither associa
 with *expression* nor with *low-density lipoprotein*, which already provides more insight
 into the context of *low*.
 
+miRetrieve uses tokenization to generate term associations from text. 
+Per miRNA, all abstracts mentioning this miRNA are tokenized, and stop words are 
+removed. The tokens/terms are then displayed in decreasing frequency, thus 
+displaying terms commonly used in combination with this miRNA throughout different
+abstracts.
+
 When a function depends on tokenization in miRetrieve, the tokenization type
 can usually be set via the `token` argument. `token = "words"` performs
 single word tokenization, while `token = "ngrams"` and a specified
 `n` argument performs n-gram tokenization.
 
-```{r tokenizeexample, eval = FALSE}
+```{r, include=FALSE, eval=TRUE}
+# Load miRetrieve
+library(miRetrieve)
+# Load magrittr
+library(magrittr)
+
+df_diabetes <- miRetrieve::df_diabetes
+```
+
+```{r tokenizeexample, fig.show='hold', out.width='50%'}
 # Analyze miRNA-term association of miR-34 by single word tokenization
-plot_mir_terms(df,
+plot_mir_terms(df_diabetes,
                mir = "miR-34",
                token = "words")
 
 # Analyze miRNA-term association of miR-34 by 2-gram tokenization
-plot_mir_terms(df,
+plot_mir_terms(df_diabetes,
                mir = "miR-34",
                token = "ngrams",
                n = 2)
@@ -158,16 +212,11 @@ When a miRetrieve function offers tf-idf analysis, such as `plot_mir_terms()` or
 `plot_wordcloud()`, it can be applied by 
 setting `tf.idf = TRUE`. 
   
-```{r tfidfexample, eval = FALSE}
+```{r tfidfexample,  fig.show='hold', out.width='50%', fig.align='center'}
 # Analyze miRNA-term association of miR-34 with tf-idf
-plot_mir_terms(df,
+plot_mir_terms(df_diabetes,
                mir = "miR-34",
                tf.idf = TRUE)
-
-# Analyze miRNA-term association of miR-34 without tf-idf
-plot_mir_terms(df,
-               mir = "miR-34",
-               tf.idf = FALSE)
 ```
   
 ## Stop words
@@ -194,19 +243,17 @@ words^[English stop words are based on `tidytext::stop_words`[@tidytext].],
 such as *a*, *is*, or *whether*, with stop words of PubMed abstracts, such as
 *western*, *qpcr*, or *significant*.  
 
-```{r stopwordremoval_miretrieve, eval = FALSE}
-# Remove common English and PubMed words with `stopwords_miretrieve`
-plot_mir_terms(df,
-               mir = "miR-34",
-               stopwords = stopwords_miretrieve)
-```
-
 If only English stop words shall be removed, `stop_words` from the **tidytext**
 package can be used.
 
-```{r stopwordremoval_tidytext, eval = FALSE}
+```{r stopwordremoval_miretrieve_tidytext,  fig.show='hold', out.width='50%'}
+# Remove common English and PubMed words with `stopwords_miretrieve`
+plot_mir_terms(df_diabetes,
+               mir = "miR-34",
+               stopwords = stopwords_miretrieve)
+
 # Remove common English words with `stop_words` from tidytext
-plot_mir_terms(df,
+plot_mir_terms(df_diabetes,
                mir = "miR-34",
                stopwords = tidytext::stop_words)
 ```
@@ -245,10 +292,10 @@ n-grams to be removed must be provided in a data frame. `stopwords_miretrieve`
 removes common 2-grams, while stop words for bigger n-grams must
 be generated manually with `generate_stopwords()`.
 
-```{r stoptwogram, eval = FALSE}
+```{r stoptwogram, fig.show='hold', out.width='50%', fig.align='center'}
 # Remove English stop words for 2-gram tokenization
 # Remove PubMed 2-grams with `stopwords_miretrieve`
-plot_mir_terms(df,
+plot_mir_terms(df_diabetes,
                mir = "miR-34",
                token = "ngrams",
                n = 2,
@@ -292,32 +339,32 @@ has a corresponding `plot_score_*()` function (`plot_score_patients()`,
 plots the distribution of scores across all abstracts, and helps in choosing
 a threshold for topic assignment.
 
-```{r plotscore, eval = FALSE}
+```{r plotscore, fig.show='hold', out.width='50%', fig.align='center'}
 # Plot score distribution, determine threshold
-plot_score_patients(df)
+plot_score_patients(df_diabetes)
 
 # Calculate score for abstracts investigating miRNAs in patients
-calculate_score_patients(df,
-                         threshold = 5)
+df_patients <- calculate_score_patients(df_diabetes,
+                                        threshold = 5)
 ```
 
 Next to the pre-implemented models, custom topics can be defined with custom keywords 
 using `calculate_score_topic()` and its corresponding `plot_score_topic()` function.
 
-```{r customscore, eval = FALSE}
+```{r customscore, eval=FALSE}
 # Define keywords of custom topic "angiogenesis"
 keywords_angiogenesis <- c("angiogenesis", "vegf", "vascularization",
                            "sprouting")
 
 # Plot distribution of "angiogenesis" scores
-plot_score_topic(df,
+plot_score_topic(df_diabetes,
                  keywords = keywords_angiogenesis,
                  name.topic = "Angiogenesis")
 
 # Calculate angiogenesis score for each abstract
-df_angio <- calculate_score_topic(df,
+df_angio <- calculate_score_topic(df_diabetes,
                                   keywords = keywords_angiogenesis,
-                                  threshold = 3)
+                                  threshold = 2)
 ```
 
 While one abstract can belong to multiple topics, abstracts
@@ -336,7 +383,7 @@ keywords_t1dm <- c("pancreas", "beta cells", "gada")
 keywords_t2dm <- c("insulin resistance", "obesity", "metformin")
 
 # Calculate type 1 diabetes scores for each abstract
-df_diabetes <- calculate_score_topic(df,
+df_diabetes <- calculate_score_topic(df_diabetes,
                                      keywords = keywords_t1dm,
                                      col.score = "T1DM")
 
@@ -382,24 +429,36 @@ referred to as *model fitting*. While an LDA model can be fit with `fit_lda()`,
 the topics are ultimately assigned to each text with `assign_topic_lda()`. The 
 subjects of the topics can be identified with `plot_lda_terms()`.
 
-```{r fitlda, eval = FALSE}
-# Fit LDA model with k = 4 topics
-# Identify 4 topics in df
-lda_model <- fit_lda(df,
-                     k = 4)
+```{r fitlda, fig.show='hold', out.width='50%', fig.align='center'}
+# Fit LDA model with k = 3 topics
+# Identify 3 topics in df
+lda_model <- fit_lda(df_diabetes,
+                     k = 3)
 
 # Identify subject of topics
 plot_lda_term(lda_model)
+```
 
+The first topic embraces *insulin*, *t2d(m)*, *metabolic*, and *liver* and might
+therefore summarize abstracts on diabetes type 2 and insulin resistance.
+The second topic, however, stresses *nephropathy*, *urinary*, and *dn* - a
+common abbreviation for *diabetic nephropathy* (or *neuropathy* in some cases) and
+likely encompasses abstracts about diabetic nephropathy. Finally, topic number 3
+enlists *endothelial*, *heart*, and *dr*, an abbreviation for *diabetic retinopathy*,
+which could hint at abstracts about endothelial dysfunction in diabetes.
+
+```{r fitlda_assign, eval=FALSE}
 # Assign LDA topics
-assign_topic_lda(df,
+assign_topic_lda(df_diabetes,
                  lda_model = lda_model,
-                 topic.names = c("Topic1", "Topic2", "Topic3", "Topic4"))
+                 topic.names = c("Insulin resistance",
+                                 "Nephropathy",
+                                 "Endothelial dysfunction"))
 ```
 
 As the optimal number of topics for LDA modeling is often unknown,
 one approach is to fit many LDA models, which differ in topic number, and to compare 
-their *perplexity* (Fig. \@ref(fig:perplexfig)). In LDA, perplexity measures how well a model fits
+their *perplexity*. In LDA, perplexity measures how well a model fits
 the topics, while a lower perplexity corresponds to a better model. When comparing the
 perplexity of LDA models with different topic numbers, an increase in topic number
 often leads to a steep decrease in model perplexity at the beginning,
@@ -409,28 +468,20 @@ decrease in perplexity only, indicating that the model improves only marginally 
 an increase in topic number. The topic number where the decrease in perplexity 
 starts to flatten is usually a good starting point for LDA modeling in practice.
 
-```{r perplexfig, echo=FALSE, fig.cap="<font size='1'><b>Perplexity 'elbow' plot comparing the perplexity of LDA models over a range of topic numbers.</b><br>Fitting LDA models over k = 2, k = 3, and k = 4 topics considerably decreases the perplexity. Fitting LDA models over further k = 5, k = 6, and k = 7 topics, however, decreases the perplexity only slightly, indicating a marginal model improvement with k > 4. This suggests k = 4 topics as a  practical starting point to explore LDA topic modeling in this corpus.</font>"}
-perplex_value <- c(2000, 1800, 1600, 1550, 1500, 1450)
-
-perplexity <- dplyr::tibble("Perplexity" = perplex_value,
-                            "Topics" = seq(2, length(perplex_value) + 1))
-
-ggplot2::ggplot(perplexity, aes(Topics, Perplexity)) + 
-    ggplot2::geom_point(color = "#188CDF") + 
-    ggplot2::geom_line(color = "#188CDF") + 
-    ggplot2::theme_classic() +
-    ggplot2::xlab("Number of topics k")
-```
-
 In miRetrieve, the perplexity of different LDA models can be compared with
 `plot_perplexity()`. `plot_perplexity()` fits LDA models over different
 topic numbers and compares their perplexity in an *elbow plot*.
 
-```{r perplexityplotexplanation, eval = FALSE}
+Using the elbow plot on our diabetes data set, `plot_perplexity()` generates
+
+```{r perplexityplotexplanation, fig.show='hold', out.width='50%', fig.align='center'}
 # Plot perplexity for 2 to 5 topics
 # Identify optimal topic number
-plot_perplexity(df, start = 2, end = 5)
+plot_perplexity(df_diabetes, start = 2, end = 5)
 ```
+
+As the curve describes an "elbow" at `k = 3`, our previous choice with
+`fit_lda(df, k = 3)` seems to have been reasonable.
 
 # miRetrieve functions
 
@@ -441,6 +492,11 @@ First, we are going to outline how to load, prepare,
 and save for and from analysis. Afterwards, we are going to explain how to analyze the
 miRNA landscape in one subject, before describing how to compare the miRNA
 landscape of multiple subjects.
+
+To illustrate miRetrieve's functions, we are going to add another toy dataset that
+contains miRNAs in Colorectal Cancer (CRC). This dataset contains many abstracts
+on miR-21 combined with some sampled abstracts and therefore does not represent
+a real world cross-section on miRNAs in CRC.
 
 ## Load, prepare, and save data
 
@@ -456,14 +512,18 @@ When loading abstracts with `read_pubmed()`, all abstracts can be assigned a `To
 between topics. If a `Topic` column is not specified while loading, it 
 can also be added with `add_col_topic()`.
 
+```{r, include=FALSE, eval=TRUE}
+df_crc <- miRetrieve::df_crc
+```
+
 ```{r loaddata, eval = FALSE}
-# Read in PubMed-file from diabetes abstracts
-# Denote abstracts as "Diabetes"
-df <- read_pubmed("pubmedfile_diabetes.txt", topic = "Diabetes")
+# Read in PubMed-file from colorectal cancer abstracts
+# Denote abstracts as "CRC"
+df_crc <- read_pubmed("CRC_PubMed.txt", topic = "CRC")
 
 # Is the same as
-df <- read_pubmed("pubmedfile_diabetes.txt")
-df <- add_col_topic(df, topic.name = "Diabetes")
+df_crc <- read_pubmed("CRC_PubMed.txt")
+df_crc <- add_col_topic(df, topic.name = "CRC")
 ```
 
 Multiple files can be combined into one data frame with `combine_df()`,
@@ -495,13 +555,14 @@ defined period are dropped.
 
 ```{r subsetresearch, eval = FALSE}
 # Subset for abstracts of original research articles
-df_research <- subset_research(df)
+df_research <- subset_research(df_crc)
 ```
 
 #### Extract miRNA names
 
 One of the core functions of miRetrieve the extraction of miRNA names from
-abstracts with `extract_mir_df()`. Extracted miRNA names are stored in a separate 
+abstracts with `extract_mir_df()`. miRNA names are extracted using
+[regular expressions](#regex), and extracted miRNA names are stored in a separate 
 `miRNA` column, where each miRNA name occupies one row.
 
 Next to extracting miRNA names from abstracts, miRNA names can also be
@@ -516,11 +577,14 @@ the top associated 2-grams of the miRNA with `plot_mir_terms()`, which can displ
 the most frequent combination of miRNA/trailing letter in literature].
 
 Furthermore, `extract_mir_*()` has a `threshold` argument determining how 
-often a miRNA must be in an abstract/string to be extracted.
+often a miRNA must be in an abstract/string to be extracted. As miRNA names
+also change over time, deprecated miRNA names are automatically converted to the 
+most recent miRBase version (e.g. miR-97, miR-102, miR-180(a/b) become miR-30a, 
+miR-29a, and miR-172(a/b), respectively).
 
 ```{r extractmir, eval = FALSE}
 # Extract miRNA names mentioned at least twice in an abstract without trailing letters
-extract_mir_df(df,
+extract_mir_df(df_crc,
                threshold = 2,
                extract_letters = FALSE)
 
@@ -528,6 +592,13 @@ extract_mir_df(df,
 extract_mir_string("miR-146a is an important miRNA in inflammation.",
                    extract_letters = TRUE)
 ```
+
+An exemplary output is
+
+```{r}
+head(df_crc)
+```
+
 
 #### Subset and indicate miRNA names
 
@@ -542,11 +613,11 @@ abstracts a miRNA is mentioned in.
 
 ```{r subsetmir, eval = FALSE}
 # Keep only abstracts with miR-126 and miR-146
-df_mir126_miR_146 <- subset_mir(df,
+df_mir126_miR_146 <- subset_mir(df_crc,
                                 mir.retain = c("miR-126", "miR-146"))
 
 # Keep only abstracts with miRNAs mentioned in at least 5% of all abstracts
-df_five_ab <- subset_mir_threshold(df,
+df_five_ab <- subset_mir_threshold(df_crc,
                                    threshold = 0.05)
 ```
 
@@ -557,7 +628,7 @@ is added indicating the presence of the miRNA in the abstract.
 
 ```{r indicatemir, eval = FALSE}
 # Indicate abstracts with miR-126 and miR-146
-df_mir126_miR_146 <- indicate_mir(df,
+df_mir126_miR_146 <- indicate_mir(df_crc,
                                   indicate.mir = c("miR-126", "miR-146"))
 
 # Save data frame as an .xlsx file
@@ -575,12 +646,12 @@ data frame can also be individually subset with `subset_df()`.
 
 ```{r, eval = FALSE}
 # Subset data frame with customized arguments
-subset_df(df,
+subset_df(df_crc,
           col.filter = "miRNA",
           filter_for = "miR-126")
 
 # `subset_df()` is a more general version of
-subset_mir(df, "miR-126")
+subset_mir(df_crc, "miR-126")
 ```
 
 ### Save data
@@ -595,8 +666,8 @@ than one data frame is passed to `save_excel()`, each data frame is saved as a
 separate work sheet in the same .xlsx-file.
 
 ```{r, eval = FALSE}
-# Save df1 and df2 to the same .xlsx-file
-save_excel(df1, df2,
+# Save df_crc and df_diabetes to the same .xlsx-file
+save_excel(df_crc, df_diabetes,
            excel_file = "miRetrieve_df.xlsx")
 ```
 
@@ -624,7 +695,7 @@ by setting `copy = FALSE`.
 
 ```{r, eval = FALSE}
 # Copy PubMed-IDs to clipboard
-get_pmid(df,
+get_pmid(df_crc,
          copy = TRUE)
 ```
 
@@ -648,12 +719,17 @@ How many abstracts mention a miRNA can be identified either with
 in a data frame, `plot_mir_count()` visualizes the count of the most
 frequently mentioned miRNAs.
 
-```{r, eval = FALSE}
-# Count how many abstracts mention a miRNA
-count_mir(df)
+*Again, please bear in mind that this dataset contains randomly sampled abstracts 
+and many abstracts on miR-21.*
 
+```{r}
+# Count how many abstracts mention a miRNA
+head(count_mir(df_crc))
+```
+
+```{r, fig.show='hold', out.width='50%', fig.align='center'}
 # Plot the count of the five most frequently mentioned miRNAs
-plot_mir_count(df,
+plot_mir_count(df_crc,
                top = 5)
 ```
 
@@ -677,13 +753,13 @@ mentioned in a relative number of abstracts compared to all abstracts.
 Similar to `count_mir_threshold`, the thresholds can
 either be integers or decimals. 
 
-```{r, eval = FALSE}
+```{r, fig.show='hold', out.width='50%', fig.align='center'}
 # Count how many miRNAs are mentioned in at least 5 abstracts
-count_mir_threshold(df,
+count_mir_threshold(df_crc,
                     threshold = 5)
 
 # Plot how many miRNAs are mentioned in at least 5 to 10 abstracts
-plot_mir_count_threshold(df,
+plot_mir_count_threshold(df_crc,
                          start = 5,
                          end = 10)
 ```
@@ -692,10 +768,11 @@ plot_mir_count_threshold(df,
 
 How often a miRNA was mentioned per year can be visualized with `plot_mir_development()`.
 
-```{r, eval = FALSE}
-# Plot development of miR-126 and miR-146
-plot_mir_development(df,
-                     mir = c("miR-126", "miR-146"))
+```{r, fig.show='hold', out.width='50%', fig.align='center'}
+# Plot development of miR-21 until 2018
+plot_mir_development(df_crc,
+                     mir = c("miR-21"),
+                     end = 2018)
 ```
 
 ### Count new miRNAs per year
@@ -712,12 +789,13 @@ in how many abstracts of a year a miRNA must be mentioned to be considered *ment
 By setting a `threshold`, miRNAs that are only sparsely mentioned in
 a year are ignored.
 
-```{r, eval = FALSE}
-# Plot newly mentioned miRNAs per year
+```{r, fig.show='hold', out.width='50%', fig.align='center'}
+# Plot newly mentioned miRNAs per year until 2018;
 # miRNAs need to be reported in at least 3 abstracts/year
 # to be considered "mentioned"
-plot_mir_new(df,
-             threshold = 3)
+plot_mir_new(df_crc,
+             threshold = 3,
+             end = 2018)
 ```
 
 ### Associate miRNAs with terms
@@ -728,14 +806,14 @@ While `plot_mir_terms()` performs single word tokenization
 by default, `plot_mir_terms()` can also perform n-gram tokenization
 by setting `token  = ngrams` and specifying a separate `n` argument.
 
-```{r, eval = FALSE}
-# Plot top terms of miR-126
-plot_mir_terms(df,
-               mir = "miR-126")
+```{r, fig.show='hold', out.width='50%'}
+# Plot top terms of miR-21
+plot_mir_terms(df_crc,
+               mir = "miR-21")
 
-# Plot top 2-grams of miR-126
-plot_mir_terms(df,
-               mir = "miR-126",
+# Plot top 2-grams of miR-21
+plot_mir_terms(df_crc,
+               mir = "miR-21",
                token = "ngrams",
                n = 2)
 ```
@@ -743,10 +821,12 @@ plot_mir_terms(df,
 Next to plotting the top terms as a bar plot, top terms can also be visualized
 as a word cloud with `plot_wordcloud()`.^[`plot_wordcloud()` is based on the **wordcloud** package[@wordcloud].]
 
-```{r, eval = FALSE}
-# Word cloud of miR-126
-plot_wordcloud(df,
-               mir = "miR-126")
+```{r, fig.show='hold', out.width='50%', fig.align='center'}
+# Word cloud of miR-21
+plot_wordcloud(df_crc,
+               mir = "miR-21",
+               max.terms = 40,
+               colours = c("lightblue"))
 ```
 
 ### Indicate terms
@@ -761,15 +841,15 @@ also keep only abstracts containing the term(s) of interest via the
 `discard` argument. A possible application is to keep abstracts that mention
 a certain drug, and to re-count the most frequent miRNAs in this subset.
 
-```{r, eval = FALSE}
-# Indicate and keep abstracts that mention "metformin" at least twice
-abstracts_metformin <- indicate_term(df,
-                                     term = "metformin",
-                                     threshold = 2,
-                                     discard = TRUE)
+```{r}
+# Indicate and keep abstracts that mention "bevacizumab" at least twice
+abstracts_beva <- indicate_term(df_crc,
+                                term = "bevacizumab",
+                                threshold = 2,
+                                discard = TRUE)
 
-# Count miRNAs in "metformin" abstracts
-count_mir(abstracts_metformin)
+# Count miRNAs in "bevacizumab" abstracts
+head(count_mir(abstracts_beva), 2)
 ```
 
 ### Identify miRNA targets
@@ -782,22 +862,24 @@ a miRetrieve data frame by matching their PubMed-IDs.
 
 ```{r, eval = FALSE}
 # Adds targets from miRTarBase (see "References") to df
-df_targets <- join_targets(df,
-                           excel_file ="miRTarBase_MTI.xlsx",
-                           col.pmid.excel = "References (PMID)",
-                           col.target.excel = "Target Gene",
-                           col.mir.excel = "miRNA")
+df_targets_crc <- join_targets(df_crc,
+                               excel_file ="miRTarBase_MTI.xlsx",
+                               col.pmid.excel = "References (PMID)",
+                               col.target.excel = "Target Gene",
+                               col.mir.excel = "miRNA")
 ```
 
 After adding the targets, target frequency can be counted with
 `count_target()` or visualized with `plot_target_count()`. 
 
-```{r, eval = FALSE}
-# Count target frequency
-count_target(df_targets)
+```{r, include=FALSE, eval=TRUE}
+df_targets_crc <- df_targets %>% 
+  dplyr::filter(Topic == "CRC")
+```
 
+```{r, fig.show='hold', out.width='50%', fig.align='center'}
 # Plot target frequency
-plot_target_count(df_targets)
+plot_target_count(df_targets_crc)
 ```
 
 Furthermore, miRNA-target interactions can be plotted with `plot_target_mir_scatter()`.  
@@ -805,14 +887,10 @@ Furthermore, miRNA-target interactions can be plotted with `plot_target_mir_scat
 genes, or it plots the top miRNAs targeting genes. If the focus shall be on the top targets
 or top targeting miRNAs, can be regulated via the `filter_for` argument.
 
-```{r, eval = FALSE}
+```{r, fig.show='hold', out.width='50%', fig.align='center'}
 # Plot most frequently targeted genes
-plot_target_mir_scatter(df_targets,
+plot_target_mir_scatter(df_targets_crc,
                         filter_for = "target")
-
-# Plot most frequently targeting miRNAs
-plot_target_mir_scatter(df_targets,
-                        filter_for = "miRNA")
 ```
 
 ### Single Nucleotide Polymorphism
@@ -828,7 +906,7 @@ can also subset abstracts containing SNPs via the `discard` argument.
 ```{r, eval = FALSE}
 # Exctract SNPs
 # Keep only abstracts with SNPs
-snp_df <- extract_snp(df,
+snp_df <- extract_snp(df_crc,
                       discard = TRUE)
 ```
 
@@ -857,25 +935,34 @@ Next to miRNA text mining in a single subject, miRetrieve also
 offers tools to compare the results of miRNA text mining in multiple subjects.  
 
 In this section, we are going to explain how to compare miRNA count and
-miRNA-term association. Furthermore, we are going to describe how to visualize 
+miRNA-term association, using `df_crc` and `df_diabetes` from previous examples. 
+Furthermore, we are going to describe how to visualize 
 miRNA-target interactions across fields.
 
 ### Data preparation
 
 To compare different subjects, each subject is loaded separately with `read_pubmed_*()`.
 Furthermore, each field must be assigned a distinct topic name, using either
-the `topic` argument of `read_pubmed_*()` or `add_col_topic()`. Afterwards, all files 
-are combined for further analysis with `combine_df()`.
+the `topic` argument of `read_pubmed_*()` or `add_col_topic()`. 
 
 ```{r, eval = FALSE}
-# Load abstracts of the first topic
-df1 <- read_pubmed(pubmed_file1, topic = "Virus")
+# Load abstracts of diabetes
+df_diabetes <- read_pubmed("pubmed_diabetes.txt", topic = "Diabetes")
 
-# Load abstracts of the second topic
-df2 <- read_pubmed(pubmed_file2, topic = "Bacteria")
+# Load abstracts of colorectal cancer
+df_crc <- read_pubmed("pubmed_crc.txt", topic = "CRC")
+```
 
+Afterwards, all files 
+are combined for further analysis with `combine_df()`.
+
+```{r, include=FALSE, eval=TRUE}
+df_diabetes <- df_diabetes[, colnames(df_crc)]
+```
+
+```{r}
 # Combine abstracts of topics
-df_combined <- combine_df(df1, df2)
+df_combined <- combine_df(df_diabetes, df_crc)
 ```
 
 ### Extract miRNA names as strings
@@ -897,10 +984,10 @@ Moreover, `get_mir()` can also extract the top miRNAs of one subject with a
     get_mir(df_combined,
             top = 5)
     
-    # Get top 5 miRNAs of the topic "Atherosclerosis"
+    # Get top 5 miRNAs of the topic "CRC"
     get_mir(df_combined,
             top = 5,
-            topic = "Atherosclerosis")
+            topic = "CRC")
     ```
 
 * `get_shared_mir*()` provides the most frequent miRNAs that are shared 
@@ -909,9 +996,9 @@ from a data frame, while `get_shared_mir_vec()` extracts the shared miRNAs
 from two character vectors.
 
     ```{r, eval=FALSE}
-    # Get top shared miRNAs of "T1DM" and "T2DM"
+    # Get top shared miRNAs of "Diabetes" and "CRC"
     get_shared_mir_df(df_combined,
-                      topic = c("T1DM", "T2DM"))
+                      topic = c("Diabetes", "CRC"))
     ```
 
 * `get_distinct_mir*()` provides the most frequent miRNAs that are distinct 
@@ -923,27 +1010,26 @@ argument.
 character vector from two character vectors.
 
     ```{r, eval=FALSE}
-    # Get top miRNAs distinct for "ALL" compared to "AML"
+    # Get top miRNAs distinct for "CRC" compared to the top miRNAs of "Diabetes"
     get_distinct_mir_df(df_combined, 
-                        distinct = "ALL",
-                        topic = c("ALL", "AML"))
+                        distinct = "CRC")
     ```
 
 * `combine_mir()` combines character vectors with miRNA names into one vector. 
 
-    ```{r, eval=FALSE}
-    # Get top 5 miRNAs of "CML"
-    top_topic1 <- get_mir(df_combined,
+    ```{r}
+    # Get top 5 miRNAs of "CRC"
+    top_crc <- get_mir(df_combined,
                           top = 5,
-                          topic = "CML")
+                          topic = "CRC")
     
-    # Get top 5 miRNAs of "CLL"
-    top_topic2 <- get_mir(df_combined,
+    # Get top 5 miRNAs of "Diabetes"
+    top_diabetes <- get_mir(df_combined,
                           top = 5,
-                          topic = "CLL")
+                          topic = "Diabetes")
     
     # Combine vectors
-    top_combined <- combine_mir(top_topic1, top_topic2)
+    top_combined <- combine_mir(top_crc, top_diabetes)
     ```
 
 ### Compare miRNA count
@@ -957,9 +1043,12 @@ all abstracts per subject.
 Furthermore, the relative count of miRNAs can be comperd between two subjects on a 
 log2-scale with `compare_mir_count_log2()`.
 
-```{r, eval = FALSE}
-# Use `top_combined` from the previous code chunk
+*Please bear in mind that both datasets are randomly sampled. Additionally,
+the diabetes dataset has a heavy focus on miR-34, while the CRC dataset
+stresses miR-34. The following figures are therefore for illustration purposes
+only.*
 
+```{r, fig.show='hold', out.width='50%'}
 # Compare miRNA frequency between topics
 compare_mir_count(df_combined,
                   mir = top_combined)
@@ -974,7 +1063,7 @@ compare_mir_count_log2(df_combined,
 Instead of comparing shared miRNAs, most frequent unique miRNAs of each topic
 can be displayed with `compare_mir_count_unique()`.
 
-```{r, eval = FALSE}
+```{r, fig.show='hold', out.width='50%', fig.align='center'}
 # Identify 5 most frequent unique miRNAs per topic
 compare_mir_count_unique(df_combined,
                          top = 5)
@@ -995,14 +1084,16 @@ term count of a miRNA over two subjects only.
 on a log2-scale.^[The plot created by `compare_mir_terms_log2()`
 is greatly inspired by *Text Mining with R* by Silge and Robinson[@tidytext].]
 
-```{r, eval = FALSE}
-# Compare term frequency for miR-126 between topics
+```{r, fig.show='hold', out.width='50%'}
+# Compare term frequency for miR-21 between topics
 compare_mir_terms(df_combined,
-                  mir = "miR-126")
+                  mir = "miR-21", 
+                  top = 10)
 
-# Compare term frequency for miR-126 between two topics on a log2-scale
+# Compare term frequency for miR-21 between two topics on a log2-scale
 compare_mir_terms_log2(df_combined,
-                       mir = "miR-126")
+                       mir = "miR-21",
+                       top = 10)
 ```
 
 Finally, `compare_mir_terms_scatter()` creates a scatter plot, displaying the
@@ -1010,10 +1101,14 @@ frequency of the shared miRNA-associated terms.^[The plot generated by
 `compare_mir_terms_scatter()` is greatly inspired by 
 *Text Mining with R* by Silge and Robinson[@tidytext].]
 
-```{r, eval=FALSE}
-# Compare terms of miR-126 between two topics
-mir126_terms <- compare_mir_terms_scatter(df_combined,
-                                          mir = "miR-126")
+*Note: The created scatter plot might not be displayed correctly if the vignette
+is downloaded. To see its interactivity in action, please generate the vignette
+straight in R.* 
+
+```{r,fig.show='hold', fig.align='center'}
+# Compare terms of miR-21 between two topics
+compare_mir_terms_scatter(df_combined,
+                          mir = "miR-21")
 ```
 
 ### Identify unique term associations
@@ -1021,12 +1116,11 @@ mir126_terms <- compare_mir_terms_scatter(df_combined,
 The most frequent terms a miRNA is associated with in one, but not another topic 
 can be displayed with `compare_mir_terms_unique()`. 
 
-```{r, eval = FALSE}
-# Identify most frequent unique terms of miR-126 per topic
+```{r, fig.show='hold', out.width='50%', fig.align='center'}
+# Identify top 10 unique terms of miR-21 per topic
 compare_mir_terms_unique(df_combined,
-                         mir = "miR-126")
+                         mir = "miR-21", top = 10)
 ```
-
 
 ### Compare target interactions
 
@@ -1034,6 +1128,7 @@ As described previously, targets can be added from an excel file with `join_targ
 When a data frame contains miRNA-target interactions in multiple subjects, 
 `plot_target_mir_scatter()` colours the miRNA-target interaction by subject, 
 thereby allowing easy comparison of miRNA-target interactions across fields.
+See the Case study below for examples.
 
 # Case study
 
@@ -1052,6 +1147,10 @@ To investigate the role of miR-21 in CRC, we load all PubMed abstracts matching
 the keywords *colorectal cancer mirna* with `read_pubmed()`. Then, 
 we keep only abstracts of original research articles, using `subset_research()`, and 
 subsequently extract their miRNA names with `extract_mir_df()`.  
+
+For illustration purposes (and to keep the size of sample files small), we are
+again going to use a toy dataset on miRNAs in CRC that has a heavy focus on miR-21,
+but also contains some randomly chosen abstracts.
 
 During our analysis, we use the `%>%` operator from the **magrittr** package. 
 `%>%` passes the result of one function straight into
@@ -1075,22 +1174,11 @@ df_crc <- read_pubmed(crc_pubmed,
   extract_mir_df() 
 ```
 
-```{r, include=FALSE, eval=TRUE}
-# Load miRetrieve
-library(miRetrieve)
-# Load magrittr
-library(magrittr)
-
-df_crc <- miRetrieve::df_crc
-```
-
-
 After loading and filtering the abstracts, we have a data frame with
 `r nrow(df_crc)` rows and `r ncol (df_crc)` columns, named
 *`r colnames(df_crc)`*. As each miRNA name occupies one row in the `miRNA` column,
 and each abstract can mention more than one miRNA, there are more rows
 in the data frame than abstracts under investigation.
-
 
 ## Indicate miR-21 in CRC and save file
 
@@ -1123,8 +1211,8 @@ plot_mir_count(df_crc,
                title = "Most frequently mentioned miRNAs in CRC")
 ```
 
-In CRC, miR-21 seems to be the most frequently mentioned miRNA, being
-reported in more than 250 abstracts. Next to miR-21, miR-145, miR-200, and miR-34 
+In our toy dataset of CRC, miR-21 seems to be the most frequently mentioned miRNA, being
+reported in more than 250 abstracts. Next to miR-21, miR-145 and miR-34  
 are also mentioned frequently in CRC.
 
 ## Plot miR-21 associated terms in CRC
@@ -1190,7 +1278,8 @@ crc_biomarker <- calculate_score_biomarker(df_crc,
 
 # Plot top potential biomarker miRNAs in CRC
 plot_mir_count(crc_biomarker,
-               title = "Likely biomarker in CRC")
+               title = "Likely biomarker in CRC",
+               top = 5)
 ```
 
 miR-21 is mentioned in more than 50 abstracts potentially reporting biomarkers,
@@ -1204,6 +1293,8 @@ namely pancreatic cancer.
 
 First, we load abstracts matching the keywords *pancreatic cancer mirna*, 
 keep only abstracts of original research articles, and extract their miRNA names.
+
+This dataset is again very focused on miR-21 to keep the file size small.
 
 ```{r, eval=FALSE}
 # Path to PubMed-file
@@ -1236,12 +1327,13 @@ panc_biomarker <- calculate_score_biomarker(df_panc,
 
 # Plot top potential biomarker miRNAs in pancreatic cancer
 plot_mir_count(panc_biomarker,
-               title = "Likely biomarker in pancreatic cancer")
+               title = "Likely biomarker in pancreatic cancer",
+               top = 5)
 ```
 
 miR-21 is mentioned in about 35 abstracts reporting miRNAs as biomarkers in pancreatic
 cancer. This suggests that miR-21 is most likely a biomarker in pancreatic cancer, but
-hence no biomarker specific for either CRC or pancreatic cancer.
+hence no biomarker that is specific for either CRC or pancreatic cancer.
 
 ## Target interactions of miR-21 in CRC and pancreatic cancer
 
@@ -1305,11 +1397,10 @@ plot_target_mir_scatter(df_targets,
                         title = "Top 3 miRNA targets in CRC and pancreatic cancer")
 ```
 
-According to *miRTarBase*, *PTEN*, *SMAD4*, and *TGFBR2* are the most targeted
-genes in CRC and pancreatic cancer. As more miRNAs have been validated to 
-regulate *PTEN*, *SMAD4*, and *TGFBR2* in CRC than in pancreatic cancer, an interesting
-next step would be to investigate if the same mechanisms also take place in 
-pancreatic cancer.
+According to *miRTarBase*, *PTEN* and *PDCD4* are both genes targetd by miR-21
+in CRC and pancreatic cancer. As these were just toy datasets, an interesting next
+step would be to apply miRTarBase to a larger collection of abstracts and compare
+similarities and difference of miRNA targets between tumor entities!
 
 ## Conclusion
 
@@ -1317,12 +1408,16 @@ With few lines of code, we determined that miR-21 is a frequently mentioned
 and thus most likely well investigated miRNA in CRC. Furthermore, we revealed 
 that miR-21 is possibly a non-specific biomarker for CRC and pancreatic cancer.
 Next to that, we gained insight into common and distinct targets of
-miR-21 in both diseases, while also observing that *PTEN*, *SMAD4*, and
-*TGFBR2* are targeted by multiple miRNAs in both fields.  
+miR-21 in both diseases, while observing that *PTEN* and *PDCD4* are targeted by 
+miR-21 in both fields.  
 
 While the mention of a miRNA and the terms it is associated with in an abstract 
 need to be interpreted carefully, text mining miRNAs with miRetrieve provides the 
 opportunity to generate and test hypotheses on the fly, which can serve as 
 a starting point for subsequent research.
 
+
 # References
+
+
+*Disclaimer: The links to external websites provided below are for further information. Although we try to ensure these links are accurate and safe, we cannot take responsibility for pages maintained by external providers.*

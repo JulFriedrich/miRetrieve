@@ -28,7 +28,10 @@ Extract miRNA names from abstracts in a data frame.
 \details{
 Extract miRNA names from abstracts in a data frame. miRNA names can
 either be extracted with their stem only, e.g. \emph{miR-23}, or with their trailing
-letter, e.g. \emph{miR-23a}. Additionally, how often a miRNA must be mentioned in an
+letter, e.g. \emph{miR-23a}. miRNA names are adapted to the most recent miRBase
+version (e.g. miR-97, miR-102, miR-180(a/b) become miR-30a, miR-29a,
+and miR-172(a/b), respectively). Additionally, how often a miRNA must be
+mentioned in an
 abstract to be extracted can be regulated via the \code{threshold} argument.
 Ultimately, abstracts not containing any miRNA names
 are silently dropped.

@@ -162,13 +162,13 @@ plot_mir_development <- function(df,
                           0,
                           stringsAsFactors = FALSE) %>%
     dplyr::as_tibble() %>%
-    dplyr::rename(miRNA = Var1, Year = Var2)
+    dplyr::rename({{col.mir}} := Var1, {{col.year}} := Var2)
 
   #Select miRNAs of interest
   df_ <- df %>%
-    dplyr::select(miRNA, Year) %>%
-    dplyr::filter(miRNA %in% mir) %>%
-    dplyr::add_count(miRNA, Year, name = "n")
+    dplyr::select({{col.mir}}, {{col.year}}) %>%
+    dplyr::filter({{col.mir}} %in% mir) %>%
+    dplyr::add_count({{col.mir}}, {{col.year}}, name = "n")
 
   #Join dataframes
   df_plot <- dplyr::left_join(df_empty, df_) %>%

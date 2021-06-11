@@ -125,9 +125,12 @@ plot_mir_terms <- function(df,
                fill = colour) +
       coord_flip() +
       theme_classic() +
+      scale_y_discrete(expand=c(0.3, 0.3)) +
       xlab("Terms") +
       ylab(paste0("Tf-idf weight for ", mir)) +
       ggtitle(title)
+
+    plot <- pretty_breaks_miretrieve(plot, df_count$mirna_count)
 
     return(plot)
 
@@ -170,9 +173,9 @@ plot_mir_terms <- function(df,
              fill = colour) +
     coord_flip() +
     theme_classic() +
-    # theme(axis.text.y = element_text(size = 12),
-    #       plot.title = element_text(size = 10),
-    #       axis.title = element_text(size = 10)) +
+    theme(axis.text.y = element_text(size = 12),
+          plot.title = element_text(size = 10),
+          axis.title = element_text(size = 10)) +
     scale_y_discrete(expand=c(0.3, 0.3)) +
     xlab("Terms") +
     ylab(ylab_string) +
@@ -364,9 +367,9 @@ compare_mir_terms <- function(df,
     ggtitle(title) +
     scale_fill_discrete(name = "Topic",
                         guide = guide_legend(reverse=TRUE)) +
-    # theme(axis.text.y = element_text(size = 12),
-    #       plot.title = element_text(size = 10),
-    #       axis.title = element_text(size = 10)) +
+    theme(axis.text.y = element_text(size = 12),
+          plot.title = element_text(size = 10),
+          axis.title = element_text(size = 10)) +
     scale_y_discrete(expand=c(0.3, 0.3))
 
   plot <- pretty_breaks_miretrieve(plot, df_mir$no_of_abstract)

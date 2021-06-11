@@ -45,6 +45,7 @@ to \code{5}.
 \code{\link[=count_target]{count_target()}}, \code{\link[=join_targets]{join_targets()}}
 
 Other target functions: \code{\link{count_target}},
+  \code{\link{join_mirtarbase}},
   \code{\link{join_targets}},
   \code{\link{plot_target_mir_scatter}}
 }

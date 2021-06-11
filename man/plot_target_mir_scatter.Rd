@@ -73,6 +73,7 @@ facilitating comparison of miRNA-target interactions across different topics.
 \code{\link[=join_targets]{join_targets()}}
 
 Other target functions: \code{\link{count_target}},
+  \code{\link{join_mirtarbase}},
   \code{\link{join_targets}},
   \code{\link{plot_target_count}}
 }
