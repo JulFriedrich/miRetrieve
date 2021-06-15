@@ -861,7 +861,7 @@ miRetrieve can integrate miRNA targets from excel files such as *miRTarBase*[@mi
 a miRetrieve data frame by matching their PubMed-IDs.
 
 ```{r, eval = FALSE}
-# Adds targets from miRTarBase (see "References") to df
+# Adds targets from miRTarBase from an excel file (see "References") to df
 df_targets_crc <- join_targets(df_crc,
                                excel_file ="miRTarBase_MTI.xlsx",
                                col.pmid.excel = "References (PMID)",
@@ -869,12 +869,26 @@ df_targets_crc <- join_targets(df_crc,
                                col.mir.excel = "miRNA")
 ```
 
+As miRTarBase is not accessible at [miRTarBase](http://miRTarBase.cuhk.edu.cn/) 
+as of June 2021, miRetrieve comes with the latest miRTarBase version 8.0 and
+can be queried via `join_mirtarbase()`. If you use miRTarBase with miRetrieve, 
+please make sure to cite [@mirtarbase].
+
+```{r, eval = FALSE}
+# Adds targets from miRTarBase (see "References") to df
+df_targets_crc <- join_mirtarbase(df_crc,
+                                  col.topic.df = Topic,
+                                  reduce = TRUE)
+```
+
+
 After adding the targets, target frequency can be counted with
 `count_target()` or visualized with `plot_target_count()`. 
 
 ```{r, include=FALSE, eval=TRUE}
-df_targets_crc <- df_targets %>% 
-  dplyr::filter(Topic == "CRC")
+df_targets_crc <- join_mirtarbase(df_crc,
+                                  reduce = TRUE,
+                                  col.topic.df = Topic)
 ```
 
 ```{r, fig.show='hold', out.width='50%', fig.align='center'}

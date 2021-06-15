@@ -74,5 +74,8 @@ join_mirtarbase <- function(df,
             dplyr::left_join(df_topic)
     }
 
+    df_reduced <- df_reduced %>%
+        dplyr::rename(miRNA = miRNA_tarbase)
+
     return(df_reduced)
 }

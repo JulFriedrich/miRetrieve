@@ -49,7 +49,6 @@ compare_mir_count <- function(df,
     title <- "Comparison of miRNA count"
   }
 
-
   # Add column with total number of distinct abstracts
   # Calculate percentage per topic
   df_count <- df %>%

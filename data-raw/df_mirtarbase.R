@@ -1,3 +1,5 @@
+library(magrittr)
+
 # Path to adjusted miRTarBase 8.0
 mirtarbase_file <- "miRTarBase_shiny.xlsx"
 

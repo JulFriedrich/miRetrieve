@@ -51,3 +51,19 @@ test_that("Tests that get_mir_shared_vec throws an error if more than
           })
 
 
+distinct_df_1 <- get_distinct_mir_df(toy_df,
+                                     "Topic1",
+                                     col.topic = Topic_,
+                                     col.mir = miRNA_)
+
+distinct_df_1_top <- get_distinct_mir_df(toy_df,top = 1,
+                                         "Topic1",
+                                         col.topic = Topic_,
+                                         col.mir = miRNA_)
+
+test_that("Tests that shared miRNAs are received from a dataframe", {
+    expect_type(distinct_df_1, "character")
+    expect_length(distinct_df_1, 2)
+    expect_lte(length(distinct_df_1_top),
+               length(distinct_df_1))
+})
