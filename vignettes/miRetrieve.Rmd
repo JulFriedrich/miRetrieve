@@ -869,8 +869,7 @@ df_targets_crc <- join_targets(df_crc,
                                col.mir.excel = "miRNA")
 ```
 
-As miRTarBase is not accessible at [miRTarBase](http://miRTarBase.cuhk.edu.cn/) 
-as of June 2021, miRetrieve comes with the latest miRTarBase version 8.0 and
+Additionally, miRetrieve comes with the latest miRTarBase version 8.0 and
 can be queried via `join_mirtarbase()`. If you use miRTarBase with miRetrieve, 
 please make sure to cite [@mirtarbase].
 
