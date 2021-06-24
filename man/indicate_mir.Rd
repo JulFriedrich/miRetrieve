@@ -11,7 +11,7 @@ indicate_mir(df, indicate.mir, col.mir = miRNA)
 
 \item{indicate.mir}{Character vector. Vector containing miRNA names to indicate.}
 
-\item{col.miR}{Symbol. Column containing miRNA names.}
+\item{col.mir}{Symbol. Column containing miRNA names.}
 }
 \value{
 Data frame with as many columns added as miRNA names given

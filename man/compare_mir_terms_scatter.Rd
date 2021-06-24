@@ -42,6 +42,8 @@ or static.}
 
 \item{colour.point}{String. Colour of points for scatter plot.}
 
+\item{colour.term}{String. Colour of terms for scatter plot.}
+
 \item{col.mir}{Symbol. Column containing miRNAs.}
 
 \item{col.abstract}{Symbol. Column containing abstracts.}
@@ -51,8 +53,6 @@ or static.}
 \item{col.pmid}{Symbol. Column containing PubMed-IDs.}
 
 \item{title}{String. Plot title.}
-
-\item{colour.text}{String. Colour of terms for scatter plot.}
 }
 \value{
 Scatter plot comparing shared terms of a miRNA between two topics.
