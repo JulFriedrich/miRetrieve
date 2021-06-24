@@ -1,12 +1,10 @@
 #' Regex miRNAs.
 #' @noRd
-#' @export
-pattern_mir <- '[Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\‑\\-\\s]?\\d+[a-zA-Z]?[\\‑\\-]?[12345]?[\\‑\\-]?[35]?[Pp]?'
+pattern_mir <- '[Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\-\\s]?\\d+[a-zA-Z]?[\\-]?[12345]?[\\-]?[35]?[Pp]?'
 
 #' Regex let-7
 #' @noRd
-#' @export
-pattern_let <- '[Ll][Ee][Tt][\\‑\\-\\s]?\\d+[a-zA-Z]?[\\‑\\-]?[35]?[Pp]?'
+pattern_let <- '[Ll][Ee][Tt][\\-\\s]?\\d+[a-zA-Z]?[\\-]?[35]?[Pp]?'
 
 #' Extract miRNAs from abstracts - Helper.
 #'
@@ -50,9 +48,9 @@ retrieve_mir <- function(string,
 
    # Catch chained letters (e.g. miR-33a/b)
    mir_chained_letter <- stringr::str_extract_all(string,
-                                                  "([Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\‑\\-\\s]?\\d+)([a-z][/]?)+",
+                                                  "([Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\-\\s]?\\d+)([a-z][/]?)+",
                                                   simplify = TRUE) %>%
-     stringr::str_match("([Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\‑\\-\\s]?\\d+)(.*)")
+     stringr::str_match("([Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\-\\s]?\\d+)(.*)")
 
 
    # Vectorize over chained letters (e.g. miR-33a/b to miR-33a and miR-33b)
@@ -83,8 +81,8 @@ retrieve_mir <- function(string,
   #Clean miRNA names
 
   miRNAs <- c(miR, mir_catcher) %>%
-    stringr::str_replace_all("[Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\‑\\-\\s]?", "") %>% #clean microRNA- etc.
-    stringr::str_replace_all("[\\‑\\-\\s]?3[Pp]|[\\‑\\-\\s]?5[Pp]", "") %>% #clean -3p/-5p
+    stringr::str_replace_all("[Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\-\\s]?", "") %>% #clean microRNA- etc.
+    stringr::str_replace_all("[\\-\\s]?3[Pp]|[\\-\\s]?5[Pp]", "") %>% #clean -3p/-5p
     #unique() %>% # Getting rid of "unique" here to count the miRNAs subsequently
     stringr::str_c(collapse = " ") %>% #unify string
     stringr::str_replace_all("(?<=\\d[a-zA-Z]?)(-[12345])", "") %>% #clean trailing -1, -2 (e.g. miR-27-1)
@@ -104,8 +102,8 @@ retrieve_mir <- function(string,
 
   let <- stringr::str_extract_all(string, pattern_let) %>%
     unlist() %>%
-    stringr::str_replace_all("[Ll][Ee][Tt][\\‑\\-\\s]?", "let-") %>%
-    stringr::str_replace_all("[\\‑\\-\\s]?3[Pp]|[\\‑\\-\\s]?5[Pp]", "") #%>% #clean -3p/-5p
+    stringr::str_replace_all("[Ll][Ee][Tt][\\-\\s]?", "let-") %>%
+    stringr::str_replace_all("[\\-\\s]?3[Pp]|[\\-\\s]?5[Pp]", "") #%>% #clean -3p/-5p
     #unique() Also keeping the unique here before deprecating it
 
   #Join miRNAs and let
@@ -252,8 +250,8 @@ extract_mir_string <- function(string,
   #Clean miRNA names
 
   miRNAs <- c(miR, mir_catcher) %>%
-    stringr::str_replace_all("[Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\‑\\-\\s]?", "") %>% #clean microRNA- etc.
-    stringr::str_replace_all("[\\‑\\-\\s]?3[Pp]|[\\‑\\-\\s]?5[Pp]", "") %>% #clean -3p/-5p
+    stringr::str_replace_all("[Mm][Ii][Cc]?[Rr][Oo]?[Rr]?[Nn]?[Aa]?[\\-\\s]?", "") %>% #clean microRNA- etc.
+    stringr::str_replace_all("[\\-\\s]?3[Pp]|[\\-\\s]?5[Pp]", "") %>% #clean -3p/-5p
     #unique() %>%
     stringr::str_c(collapse = " ") %>% #unify string
     stringr::str_replace_all("(?<=\\d[a-zA-Z]?)(-[12345])", "") %>% #clean trailing -1, -2 (e.g. miR-27-1)
@@ -272,8 +270,8 @@ extract_mir_string <- function(string,
 
   let <- stringr::str_extract_all(string, pattern_let) %>%
     unlist() %>%
-    stringr::str_replace_all("[Ll][Ee][Tt][\\‑\\-\\s]?", "let-") %>%
-    stringr::str_replace_all("[\\‑\\-\\s]?3[Pp]|[\\‑\\-\\s]?5[Pp]", "") %>% #clean -3p/-5p
+    stringr::str_replace_all("[Ll][Ee][Tt][\\-\\s]?", "let-") %>%
+    stringr::str_replace_all("[\\-\\s]?3[Pp]|[\\-\\s]?5[Pp]", "") %>% #clean -3p/-5p
     unique()
 
   #Join miRNAs and let
