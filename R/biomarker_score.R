@@ -1,7 +1,6 @@
 #' Keywords - biomarkers.
 #'
 #' Keywords to identify abstracts reporting about miRNAs as biomarkers.
-#' @noRd
 #' @export
 biomarker_keywords <- c('circulating', 'biomarker', 'bio-marker',
                         'extracellular vesicles','urine',

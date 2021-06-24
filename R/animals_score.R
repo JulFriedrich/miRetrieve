@@ -1,8 +1,6 @@
 #' Keywords - animals.
 #'
 #' Keywords to identify abstracts using animal models.
-#'
-#' @noRd
 #' @export
 animal_keywords <- c('mice', 'mouse', ' rats ',
                       '. rats ', ' rat ', 'elegans',
