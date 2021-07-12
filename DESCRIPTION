@@ -2,45 +2,52 @@ Package: miRetrieve
 Type: Package
 Title: miRNA Text Mining in Abstracts
 Version: 1.3.0
-Authors@R:
+Authors@R: c(person(given = "Julian",
+           family = "Friedrich",
+           role = c("aut", "cre"),
+           email = "julian.friedrich@medma.uni-heidelberg.de"),
+    person(given = "Hans-Peter",
+           family = "Hammes",
+           role = "aut"),
+    person(given = "Guido",
+           family = "Krenning",
+           role = "aut"))
 Author: Julian Friedrich [aut, cre],
     Hans-Peter Hammes [aut],
     Guido Krenning [aut]
 Maintainer: Julian Friedrich <julian.friedrich@medma.uni-heidelberg.de>
-Description: miRetrieve is designed for microRNA (miRNA) text mining. 
+Description: Providing tools for microRNA (miRNA) text mining. 
     It summarizes miRNA literature by extracting, counting, and analyzing miRNA 
     names, thus aiming at gaining biological insights into a large amount of 
     text within a short period of time.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 3.1.0)
 Imports: 
-    dplyr (>= 1.0.3),
+    dplyr (>= 1.0.7),
     forcats (>= 0.5.1),
-    ggplot2 (>= 3.3.3),
-    knitr (>= 1.31),
-    kableExtra (>= 1.3.1),
+    ggplot2 (>= 3.3.5),
     magrittr (>= 2.0.1),
-    openxlsx (>= 4.2.3),
-    plotly (>= 4.9.3),
+    openxlsx (>= 4.2.4),
+    plotly (>= 4.9.4.1),
     purrr (>= 0.3.4),
     readr (>= 1.4.0),
     readxl (>= 1.3.1),
+    rlang (>= 0.4.11),
     scales (>= 1.1.1),
     stringr (>= 1.4.0),
-    tidyr (>= 1.1.2),
-    tidytext (>= 0.3.0),
-    testthat (>= 3.0.1),
+    tidyr (>= 1.1.3),
+    tidytext (>= 0.3.1),
     topicmodels (>= 0.2.12),
     wordcloud (>= 2.6),
     xml2 (>= 1.3.2),
-    zoo (>= 1.8.8)
+    zoo (>= 1.8-9)
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Suggests: 
-    bookdown,
+    kableExtra,
     knitr,
+    reshape2,
     rmarkdown,
-    testthat (>= 2.1.0)
-VignetteBuilder: 
-    knitr
+    testthat

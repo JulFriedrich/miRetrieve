@@ -23,6 +23,7 @@ Data frames to be combined must have the same number
 of columns and the same column names.
 }
 \seealso{
-Other combine functions: \code{\link{combine_mir}}
+Other combine functions: 
+\code{\link{combine_mir}()}
 }
 \concept{combine functions}

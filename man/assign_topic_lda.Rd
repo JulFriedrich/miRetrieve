@@ -32,8 +32,9 @@ To identify the subject of a topic, use \code{plot_lda_term()}.
 \seealso{
 \code{\link[=fit_lda]{fit_lda()}}, \code{\link[=plot_lda_term]{plot_lda_term()}}, \code{\link[=assign_topic]{assign_topic()}}
 
-Other LDA functions: \code{\link{fit_lda}},
-  \code{\link{plot_lda_term}},
-  \code{\link{plot_perplexity}}
+Other LDA functions: 
+\code{\link{fit_lda}()},
+\code{\link{plot_lda_term}()},
+\code{\link{plot_perplexity}()}
 }
 \concept{LDA functions}

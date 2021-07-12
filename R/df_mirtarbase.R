@@ -14,5 +14,5 @@
 #'
 #' @format A data frame with the columns "miRNA_tarbase", "Target", and "PMID".
 #'
-#' @source \url{http://miRTarBase.cuhk.edu.cn/}
+#' @source \url{https://miRTarBase.cuhk.edu.cn:443/}
 "df_mirtarbase"

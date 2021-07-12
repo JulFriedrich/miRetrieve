@@ -32,6 +32,8 @@
 #'
 #' @family score functions
 #'
+#' @importFrom rlang :=
+#'
 #' @export
 assign_topic <- function(df,
                          col.topic,
@@ -40,6 +42,8 @@ assign_topic <- function(df,
                          col.topic.name = "Topic",
                          col.pmid = "PMID",
                          discard = FALSE) {
+
+  . = NULL
 
   if(is.null(topic.names)) {
     topic.names <- col.topic

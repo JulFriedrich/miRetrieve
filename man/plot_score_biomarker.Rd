@@ -4,9 +4,16 @@
 \alias{plot_score_biomarker}
 \title{Plot frequency of biomarker scores in abstracts}
 \usage{
-plot_score_biomarker(df, keywords = biomarker_keywords, case = FALSE,
-  bins = NULL, colour = "steelblue3", col.abstract = Abstract,
-  col.pmid = PMID, title = NULL)
+plot_score_biomarker(
+  df,
+  keywords = biomarker_keywords,
+  case = FALSE,
+  bins = NULL,
+  colour = "steelblue3",
+  col.abstract = Abstract,
+  col.pmid = PMID,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame containing abstracts.}
@@ -49,13 +56,14 @@ which abstracts are considered to contain use of miRNAs as biomarker.
 \seealso{
 \code{\link[=calculate_score_biomarker]{calculate_score_biomarker()}}
 
-Other score functions: \code{\link{assign_topic}},
-  \code{\link{calculate_score_animals}},
-  \code{\link{calculate_score_biomarker}},
-  \code{\link{calculate_score_patients}},
-  \code{\link{calculate_score_topic}},
-  \code{\link{plot_score_animals}},
-  \code{\link{plot_score_patients}},
-  \code{\link{plot_score_topic}}
+Other score functions: 
+\code{\link{assign_topic}()},
+\code{\link{calculate_score_animals}()},
+\code{\link{calculate_score_biomarker}()},
+\code{\link{calculate_score_patients}()},
+\code{\link{calculate_score_topic}()},
+\code{\link{plot_score_animals}()},
+\code{\link{plot_score_patients}()},
+\code{\link{plot_score_topic}()}
 }
 \concept{score functions}

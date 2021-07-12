@@ -80,6 +80,8 @@ combine_df <- function(...) {
 #'
 #' @seealso [assign_topic()]
 #'
+#' @importFrom rlang :=
+#'
 #' @export
 add_col_topic <- function(df,
                       col.topic = "Topic",
@@ -105,7 +107,7 @@ add_col_topic <- function(df,
 #'
 #' @param df Data frame containing miRNA names.
 #' @param indicate.mir Character vector. Vector containing miRNA names to indicate.
-#' @param col.miR Symbol. Column containing miRNA names.
+#' @param col.mir Symbol. Column containing miRNA names.
 #'
 #' @return Data frame with as many columns added as miRNA names given
 #' in `indicate.mir`.
@@ -116,6 +118,8 @@ add_col_topic <- function(df,
 #' @seealso [extract_mir_df()], [indicate_term()]
 #'
 #' @family indicate functions
+#'
+#' @importFrom rlang :=
 #'
 #' @export
 indicate_mir <- function(df,

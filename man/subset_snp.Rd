@@ -31,9 +31,12 @@ Subset data frame for specific SNPs only.
 \code{\link[=count_snp]{count_snp()}},
 \code{\link[=get_snp]{get_snp()}}
 
-Other subset functions: \code{\link{subset_df}},
-  \code{\link{subset_mir_threshold}},
-  \code{\link{subset_mir}}, \code{\link{subset_research}},
-  \code{\link{subset_review}}, \code{\link{subset_year}}
+Other subset functions: 
+\code{\link{subset_df}()},
+\code{\link{subset_mir_threshold}()},
+\code{\link{subset_mir}()},
+\code{\link{subset_research}()},
+\code{\link{subset_review}()},
+\code{\link{subset_year}()}
 }
 \concept{subset functions}

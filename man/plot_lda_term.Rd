@@ -25,7 +25,9 @@ the top terms are plotted. Plotting \code{top.terms} for each topic can help
 identifying its subject.
 }
 \seealso{
-Other LDA functions: \code{\link{assign_topic_lda}},
-  \code{\link{fit_lda}}, \code{\link{plot_perplexity}}
+Other LDA functions: 
+\code{\link{assign_topic_lda}()},
+\code{\link{fit_lda}()},
+\code{\link{plot_perplexity}()}
 }
 \concept{LDA functions}

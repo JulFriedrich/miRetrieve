@@ -4,8 +4,12 @@
 \alias{extract_mir_df}
 \title{Extract miRNA names from abstracts in data frame}
 \usage{
-extract_mir_df(df, threshold = 1, col.abstract = Abstract,
-  extract_letters = FALSE)
+extract_mir_df(
+  df,
+  threshold = 1,
+  col.abstract = Abstract,
+  extract_letters = FALSE
+)
 }
 \arguments{
 \item{df}{Data frame containing abstracts.}
@@ -42,7 +46,8 @@ it is recommended to extract only the miRNA stem with
 \seealso{
 \code{\link[=extract_mir_string]{extract_mir_string()}}
 
-Other extract functions: \code{\link{extract_mir_string}},
-  \code{\link{extract_snp}}
+Other extract functions: 
+\code{\link{extract_mir_string}()},
+\code{\link{extract_snp}()}
 }
 \concept{extract functions}

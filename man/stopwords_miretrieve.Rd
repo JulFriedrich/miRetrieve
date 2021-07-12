@@ -4,12 +4,14 @@
 \name{stopwords_miretrieve}
 \alias{stopwords_miretrieve}
 \title{Stop words for text mining with miRetrieve}
-\format{Tibble.
+\format{
+Tibble.
 \itemize{
 \item \code{word}: Column containing stop words. Pulled from various PubMed
 abstracts.
 \item \code{lexicon}: Column specifying lexicon.
-}}
+}
+}
 \source{
 tidytext::stop_words; manually created from various PubMed abstracts.
 }

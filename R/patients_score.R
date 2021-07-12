@@ -1,7 +1,7 @@
 #' Keywords - patients.
 #'
 #' Keywords to identify abstracts investigating miRNAs in patients.
-#' @noRd
+#'
 #' @export
 patients_keywords <- c('patients', 'individuals', 'subjects',
                       'biopsies', 'biopsy', 'participant',

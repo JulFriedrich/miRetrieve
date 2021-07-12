@@ -4,9 +4,16 @@
 \alias{compare_mir_count}
 \title{Compare count of miRNA names between different topics}
 \usage{
-compare_mir_count(df, mir, topic = NULL, normalize = TRUE,
-  col.topic = Topic, col.mir = miRNA, col.pmid = PMID,
-  title = NULL)
+compare_mir_count(
+  df,
+  mir,
+  topic = NULL,
+  normalize = TRUE,
+  col.topic = Topic,
+  col.mir = miRNA,
+  col.pmid = PMID,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame containing columns for miRNA names, topics,
@@ -47,11 +54,12 @@ number of abstracts mentioning a miRNA per topic.
 \seealso{
 \code{\link[=compare_mir_count_log2]{compare_mir_count_log2()}}, \code{\link[=compare_mir_count_unique]{compare_mir_count_unique()}}
 
-Other compare functions: \code{\link{compare_mir_count_log2}},
-  \code{\link{compare_mir_count_unique}},
-  \code{\link{compare_mir_terms_log2}},
-  \code{\link{compare_mir_terms_scatter}},
-  \code{\link{compare_mir_terms_unique}},
-  \code{\link{compare_mir_terms}}
+Other compare functions: 
+\code{\link{compare_mir_count_log2}()},
+\code{\link{compare_mir_count_unique}()},
+\code{\link{compare_mir_terms_log2}()},
+\code{\link{compare_mir_terms_scatter}()},
+\code{\link{compare_mir_terms_unique}()},
+\code{\link{compare_mir_terms}()}
 }
 \concept{compare functions}

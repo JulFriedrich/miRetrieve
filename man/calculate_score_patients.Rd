@@ -4,9 +4,15 @@
 \alias{calculate_score_patients}
 \title{Calculate patients scores for abstracts}
 \usage{
-calculate_score_patients(df, keywords = patients_keywords,
-  case = FALSE, threshold = NULL, indicate = FALSE,
-  discard = FALSE, col.abstract = Abstract)
+calculate_score_patients(
+  df,
+  keywords = patients_keywords,
+  case = FALSE,
+  threshold = NULL,
+  indicate = FALSE,
+  discard = FALSE,
+  col.abstract = Abstract
+)
 }
 \arguments{
 \item{df}{Data frame containing abstracts.}
@@ -57,13 +63,14 @@ Choosing the right threshold can be facilitated using \code{plot_score_patients(
 \seealso{
 \code{\link[=plot_score_patients]{plot_score_patients()}}
 
-Other score functions: \code{\link{assign_topic}},
-  \code{\link{calculate_score_animals}},
-  \code{\link{calculate_score_biomarker}},
-  \code{\link{calculate_score_topic}},
-  \code{\link{plot_score_animals}},
-  \code{\link{plot_score_biomarker}},
-  \code{\link{plot_score_patients}},
-  \code{\link{plot_score_topic}}
+Other score functions: 
+\code{\link{assign_topic}()},
+\code{\link{calculate_score_animals}()},
+\code{\link{calculate_score_biomarker}()},
+\code{\link{calculate_score_topic}()},
+\code{\link{plot_score_animals}()},
+\code{\link{plot_score_biomarker}()},
+\code{\link{plot_score_patients}()},
+\code{\link{plot_score_topic}()}
 }
 \concept{score functions}

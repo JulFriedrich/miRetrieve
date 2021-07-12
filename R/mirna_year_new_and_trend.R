@@ -119,6 +119,8 @@ plot_mir_new <- function(df,
 #'
 #' @family miR development functions
 #'
+#' @importFrom rlang :=
+#'
 #' @export
 plot_mir_development <- function(df,
                                  mir,

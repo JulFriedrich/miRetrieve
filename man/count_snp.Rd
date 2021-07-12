@@ -30,9 +30,10 @@ and their respective frequency.
 \code{\link[=get_snp]{get_snp()}},
 \code{\link[=subset_snp]{subset_snp()}}
 
-Other count functions: \code{\link{count_mir_threshold}},
-  \code{\link{count_mir}},
-  \code{\link{plot_mir_count_threshold}},
-  \code{\link{plot_mir_count}}
+Other count functions: 
+\code{\link{count_mir_threshold}()},
+\code{\link{count_mir}()},
+\code{\link{plot_mir_count_threshold}()},
+\code{\link{plot_mir_count}()}
 }
 \concept{count functions}

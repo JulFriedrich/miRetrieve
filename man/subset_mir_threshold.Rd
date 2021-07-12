@@ -4,8 +4,7 @@
 \alias{subset_mir_threshold}
 \title{Subset data frame for miRNA names exceeding a threshold}
 \usage{
-subset_mir_threshold(df, threshold = 1, col.mir = miRNA,
-  col.pmid = PMID)
+subset_mir_threshold(df, threshold = 1, col.mir = miRNA, col.pmid = PMID)
 }
 \arguments{
 \item{df}{Data frame containing miRNA names and a PubMed-IDs.}
@@ -39,9 +38,12 @@ of all abstracts in \code{df}.
 \seealso{
 \code{\link[=get_mir]{get_mir()}}, \code{\link[=subset_mir]{subset_mir()}}
 
-Other subset functions: \code{\link{subset_df}},
-  \code{\link{subset_mir}}, \code{\link{subset_research}},
-  \code{\link{subset_review}}, \code{\link{subset_snp}},
-  \code{\link{subset_year}}
+Other subset functions: 
+\code{\link{subset_df}()},
+\code{\link{subset_mir}()},
+\code{\link{subset_research}()},
+\code{\link{subset_review}()},
+\code{\link{subset_snp}()},
+\code{\link{subset_year}()}
 }
 \concept{subset functions}

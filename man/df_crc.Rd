@@ -4,9 +4,11 @@
 \name{df_crc}
 \alias{df_crc}
 \title{Dataset of PubMed data of miRNAs in Colorectal Cancer}
-\format{A data frame.}
+\format{
+A data frame.
+}
 \source{
-\url{http://pubmed.org/}
+\url{https://pubmed.ncbi.nlm.nih.gov/}
 }
 \usage{
 df_crc

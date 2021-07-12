@@ -4,10 +4,22 @@
 \alias{plot_target_mir_scatter}
 \title{Plot targets and corresponding miRNAs as a scatter plot}
 \usage{
-plot_target_mir_scatter(df, mir = NULL, target = NULL, top = NULL,
-  threshold = NULL, filter_for = "target", col.target = Target,
-  col.mir = miRNA, col.topic = Topic, col.pmid = PMID,
-  title = NULL, height = 0.05, width = 0.05, alpha = 0.6)
+plot_target_mir_scatter(
+  df,
+  mir = NULL,
+  target = NULL,
+  top = NULL,
+  threshold = NULL,
+  filter_for = "target",
+  col.target = Target,
+  col.mir = miRNA,
+  col.topic = Topic,
+  col.pmid = PMID,
+  title = NULL,
+  height = 0.05,
+  width = 0.05,
+  alpha = 0.6
+)
 }
 \arguments{
 \item{df}{Data frame containing targets and miRNA names.}
@@ -72,9 +84,10 @@ facilitating comparison of miRNA-target interactions across different topics.
 \seealso{
 \code{\link[=join_targets]{join_targets()}}
 
-Other target functions: \code{\link{count_target}},
-  \code{\link{join_mirtarbase}},
-  \code{\link{join_targets}},
-  \code{\link{plot_target_count}}
+Other target functions: 
+\code{\link{count_target}()},
+\code{\link{join_mirtarbase}()},
+\code{\link{join_targets}()},
+\code{\link{plot_target_count}()}
 }
 \concept{target functions}

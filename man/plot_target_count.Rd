@@ -4,8 +4,14 @@
 \alias{plot_target_count}
 \title{Plot count of miRNA targets}
 \usage{
-plot_target_count(df, top = NULL, threshold = NULL,
-  colour = "steelblue3", col.target = Target, title = NULL)
+plot_target_count(
+  df,
+  top = NULL,
+  threshold = NULL,
+  colour = "steelblue3",
+  col.target = Target,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame with miRNA targets.}
@@ -44,9 +50,10 @@ to \code{5}.
 \seealso{
 \code{\link[=count_target]{count_target()}}, \code{\link[=join_targets]{join_targets()}}
 
-Other target functions: \code{\link{count_target}},
-  \code{\link{join_mirtarbase}},
-  \code{\link{join_targets}},
-  \code{\link{plot_target_mir_scatter}}
+Other target functions: 
+\code{\link{count_target}()},
+\code{\link{join_mirtarbase}()},
+\code{\link{join_targets}()},
+\code{\link{plot_target_mir_scatter}()}
 }
 \concept{target functions}

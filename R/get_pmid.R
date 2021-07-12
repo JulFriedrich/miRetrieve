@@ -24,6 +24,7 @@
 #' @export
 #'
 #' @importFrom magrittr %>%
+#' @importFrom utils write.table
 get_pmid <- function(df,
                      col.pmid = PMID,
                      copy = TRUE) {

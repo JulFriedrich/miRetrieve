@@ -28,7 +28,9 @@ Wrapper function of \code{write.xlsx()} from \pkg{openxlsx}.
 \seealso{
 \code{\link[openxlsx:write.xlsx]{openxlsx::write.xlsx()}}
 
-Other external data functions: \code{\link{read_pubmed_jats}},
-  \code{\link{read_pubmed}}, \code{\link{save_plot}}
+Other external data functions: 
+\code{\link{read_pubmed_jats}()},
+\code{\link{read_pubmed}()},
+\code{\link{save_plot}()}
 }
 \concept{external data functions}

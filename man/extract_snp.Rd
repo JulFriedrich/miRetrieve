@@ -4,8 +4,13 @@
 \alias{extract_snp}
 \title{Extract SNPs from abstracts in data frame}
 \usage{
-extract_snp(df, pattern = snp_pattern, col.abstract = Abstract,
-  indicate = FALSE, discard = FALSE)
+extract_snp(
+  df,
+  pattern = snp_pattern,
+  col.abstract = Abstract,
+  indicate = FALSE,
+  discard = FALSE
+)
 }
 \arguments{
 \item{df}{Data frame containing abstracts.}
@@ -38,7 +43,8 @@ SNPs are generally present in an abstract.
 \code{\link[=get_snp]{get_snp()}},
 \code{\link[=subset_snp]{subset_snp()}}
 
-Other extract functions: \code{\link{extract_mir_df}},
-  \code{\link{extract_mir_string}}
+Other extract functions: 
+\code{\link{extract_mir_df}()},
+\code{\link{extract_mir_string}()}
 }
 \concept{extract functions}

@@ -4,10 +4,22 @@
 \alias{plot_mir_terms}
 \title{Plot count of top terms associated with a miRNA name}
 \usage{
-plot_mir_terms(df, mir, top = 20, tf.idf = FALSE, token = "words",
-  ..., stopwords = stopwords_miretrieve, stopwords_ngram = TRUE,
-  normalize = TRUE, colour = "steelblue3", col.mir = miRNA,
-  col.abstract = Abstract, col.pmid = PMID, title = NULL)
+plot_mir_terms(
+  df,
+  mir,
+  top = 20,
+  tf.idf = FALSE,
+  token = "words",
+  ...,
+  stopwords = stopwords_miretrieve,
+  stopwords_ngram = TRUE,
+  normalize = TRUE,
+  colour = "steelblue3",
+  col.mir = miRNA,
+  col.abstract = Abstract,
+  col.pmid = PMID,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame containing miRNA names, abstracts, and PubMed-IDs.}
@@ -76,6 +88,7 @@ more weight.
 \seealso{
 \code{\link[=plot_wordcloud]{plot_wordcloud()}}, \code{\link[tidytext:unnest_tokens]{tidytext::unnest_tokens()}}
 
-Other miR term functions: \code{\link{plot_wordcloud}}
+Other miR term functions: 
+\code{\link{plot_wordcloud}()}
 }
 \concept{miR term functions}

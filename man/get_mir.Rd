@@ -4,8 +4,15 @@
 \alias{get_mir}
 \title{Get miRNA names from a data frame}
 \usage{
-get_mir(df, top = NULL, threshold = NULL, topic = NULL,
-  col.mir = miRNA, col.pmid = PMID, col.topic = Topic)
+get_mir(
+  df,
+  top = NULL,
+  threshold = NULL,
+  topic = NULL,
+  col.mir = miRNA,
+  col.pmid = PMID,
+  col.topic = Topic
+)
 }
 \arguments{
 \item{df}{Data frame containing miRNA names. If \code{threshold} is set,
@@ -64,9 +71,12 @@ PubMed IDs.
 If neither \code{top} nor \code{threshold} is set, \code{top} is automatically set to \code{5}.
 }
 \seealso{
-Other get functions: \code{\link{get_distinct_mir_df}},
-  \code{\link{get_distinct_mir_vec}},
-  \code{\link{get_pmid}}, \code{\link{get_shared_mir_df}},
-  \code{\link{get_shared_mir_vec}}, \code{\link{get_snp}}
+Other get functions: 
+\code{\link{get_distinct_mir_df}()},
+\code{\link{get_distinct_mir_vec}()},
+\code{\link{get_pmid}()},
+\code{\link{get_shared_mir_df}()},
+\code{\link{get_shared_mir_vec}()},
+\code{\link{get_snp}()}
 }
 \concept{get functions}

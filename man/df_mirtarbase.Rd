@@ -4,9 +4,11 @@
 \name{df_mirtarbase}
 \alias{df_mirtarbase}
 \title{miRTarBase version 8.0}
-\format{A data frame with the columns "miRNA_tarbase", "Target", and "PMID".}
+\format{
+A data frame with the columns "miRNA_tarbase", "Target", and "PMID".
+}
 \source{
-\url{http://miRTarBase.cuhk.edu.cn/}
+\url{https://miRTarBase.cuhk.edu.cn:443/}
 }
 \usage{
 df_mirtarbase

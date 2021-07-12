@@ -4,7 +4,9 @@
 \name{animal_keywords}
 \alias{animal_keywords}
 \title{Keywords - animals.}
-\format{An object of class \code{character} of length 12.}
+\format{
+An object of class \code{character} of length 12.
+}
 \usage{
 animal_keywords
 }

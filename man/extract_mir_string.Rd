@@ -36,7 +36,8 @@ and miR-172(a/b), respectively).
 \seealso{
 \code{\link[=extract_mir_df]{extract_mir_df()}}
 
-Other extract functions: \code{\link{extract_mir_df}},
-  \code{\link{extract_snp}}
+Other extract functions: 
+\code{\link{extract_mir_df}()},
+\code{\link{extract_snp}()}
 }
 \concept{extract functions}

@@ -703,6 +703,8 @@ compare_mir_terms_log2 <- function(df,
 #' “tidytext: Text Mining and Analysis Using Tidy Data Principles in R.”
 #' JOSS 1 (3). The Open Journal. https://doi.org/10.21105/joss.00037.
 #'
+#' @importFrom rlang :=
+#'
 #' @export
 compare_mir_terms_scatter <- function(df,
                               mir,

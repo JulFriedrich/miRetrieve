@@ -4,9 +4,11 @@
 \name{df_test}
 \alias{df_test}
 \title{Test dataset of PubMed abstracts}
-\format{A data frame.}
+\format{
+A data frame.
+}
 \source{
-\url{http://pubmed.org/}
+\url{https://pubmed.ncbi.nlm.nih.gov/}
 }
 \usage{
 df_test

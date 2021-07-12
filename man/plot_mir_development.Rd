@@ -4,9 +4,18 @@
 \alias{plot_mir_development}
 \title{Plot development of miRNA name mentioning over time}
 \usage{
-plot_mir_development(df, mir, start = NULL, end = NULL,
-  linetype = "miRNA", alpha = 0.8, width = 0.3, col.mir = miRNA,
-  col.year = Year, title = NULL)
+plot_mir_development(
+  df,
+  mir,
+  start = NULL,
+  end = NULL,
+  linetype = "miRNA",
+  alpha = 0.8,
+  width = 0.3,
+  col.mir = miRNA,
+  col.year = Year,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame containing miRNA names and publication years.}
@@ -44,6 +53,7 @@ Plot development of miRNA name mentioning over time.
 Plot how often a miRNA name was mentioned per year.
 }
 \seealso{
-Other miR development functions: \code{\link{plot_mir_new}}
+Other miR development functions: 
+\code{\link{plot_mir_new}()}
 }
 \concept{miR development functions}

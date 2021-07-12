@@ -43,7 +43,9 @@ recommended.
 \seealso{
 \code{\link[=read_pubmed]{read_pubmed()}}
 
-Other external data functions: \code{\link{read_pubmed}},
-  \code{\link{save_excel}}, \code{\link{save_plot}}
+Other external data functions: 
+\code{\link{read_pubmed}()},
+\code{\link{save_excel}()},
+\code{\link{save_plot}()}
 }
 \concept{external data functions}

@@ -33,9 +33,10 @@ data frame provided as an extra column.
 \seealso{
 \code{\link[=join_targets]{join_targets()}}, \code{\link[=plot_target_count]{plot_target_count()}}
 
-Other target functions: \code{\link{join_mirtarbase}},
-  \code{\link{join_targets}},
-  \code{\link{plot_target_count}},
-  \code{\link{plot_target_mir_scatter}}
+Other target functions: 
+\code{\link{join_mirtarbase}()},
+\code{\link{join_targets}()},
+\code{\link{plot_target_count}()},
+\code{\link{plot_target_mir_scatter}()}
 }
 \concept{target functions}

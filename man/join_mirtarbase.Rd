@@ -4,8 +4,13 @@
 \alias{join_mirtarbase}
 \title{Add miRNA targets from miRTarBase version 8.0}
 \usage{
-join_mirtarbase(df, col.pmid.df = PMID, col.topic.df = NULL,
-  filter_na = TRUE, reduce = FALSE)
+join_mirtarbase(
+  df,
+  col.pmid.df = PMID,
+  col.topic.df = NULL,
+  filter_na = TRUE,
+  reduce = FALSE
+)
 }
 \arguments{
 \item{df}{Data frame containing PubMed-IDs
@@ -54,9 +59,10 @@ interaction database, Nucleic Acids Research, Volume 48, Issue D1,
 08 January 2020, Pages D148–D154, https://doi.org/10.1093/nar/gkz896
 }
 \seealso{
-Other target functions: \code{\link{count_target}},
-  \code{\link{join_targets}},
-  \code{\link{plot_target_count}},
-  \code{\link{plot_target_mir_scatter}}
+Other target functions: 
+\code{\link{count_target}()},
+\code{\link{join_targets}()},
+\code{\link{plot_target_count}()},
+\code{\link{plot_target_mir_scatter}()}
 }
 \concept{target functions}

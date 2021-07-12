@@ -4,9 +4,17 @@
 \alias{plot_perplexity}
 \title{Plot perplexity score of various LDA models}
 \usage{
-plot_perplexity(df, start = 2, end = 5,
-  stopwords = stopwords_miretrieve, method = "gibbs", control = NULL,
-  col.abstract = Abstract, col.pmid = PMID, title = NULL)
+plot_perplexity(
+  df,
+  start = 2,
+  end = 5,
+  stopwords = stopwords_miretrieve,
+  method = "gibbs",
+  control = NULL,
+  col.abstract = Abstract,
+  col.pmid = PMID,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame containing abstracts and PubMed-IDs.}
@@ -50,7 +58,9 @@ can help in identifying the optimal number of topics to fit an LDA model for.
 \seealso{
 \code{\link[=fit_lda]{fit_lda()}}
 
-Other LDA functions: \code{\link{assign_topic_lda}},
-  \code{\link{fit_lda}}, \code{\link{plot_lda_term}}
+Other LDA functions: 
+\code{\link{assign_topic_lda}()},
+\code{\link{fit_lda}()},
+\code{\link{plot_lda_term}()}
 }
 \concept{LDA functions}

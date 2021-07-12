@@ -20,6 +20,8 @@
 #' @return Data frame with PubMed-IDs, terms, and terms counted.
 #'
 #' @importFrom magrittr %>%
+#' @importFrom rlang :=
+#'
 #' @noRd
 prepare_dtm <- function(df,
                         token = "words",

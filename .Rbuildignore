@@ -4,3 +4,7 @@
 ^\.Rproj\.user$
 ^doc$
 ^Meta$
+^data-raw$
+^miRetrieve_1\.3\.0\.pdf$
+^comments-cran\.md$
+^df_diabetes\.rda$

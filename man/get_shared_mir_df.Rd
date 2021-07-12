@@ -4,8 +4,14 @@
 \alias{get_shared_mir_df}
 \title{Get top miRNA names in common between two topics of a data frame}
 \usage{
-get_shared_mir_df(df, top = 5, topic = NULL, col.topic = Topic,
-  col.mir = miRNA, col.pmid = PMID)
+get_shared_mir_df(
+  df,
+  top = 5,
+  topic = NULL,
+  col.topic = Topic,
+  col.mir = miRNA,
+  col.pmid = PMID
+)
 }
 \arguments{
 \item{df}{Data frame containing at least two topics and miRNA names.}
@@ -35,9 +41,12 @@ Get top miRNA names in common between two topics of a data frame.
 in a data frame and returns the miRNA names in common.
 }
 \seealso{
-Other get functions: \code{\link{get_distinct_mir_df}},
-  \code{\link{get_distinct_mir_vec}},
-  \code{\link{get_mir}}, \code{\link{get_pmid}},
-  \code{\link{get_shared_mir_vec}}, \code{\link{get_snp}}
+Other get functions: 
+\code{\link{get_distinct_mir_df}()},
+\code{\link{get_distinct_mir_vec}()},
+\code{\link{get_mir}()},
+\code{\link{get_pmid}()},
+\code{\link{get_shared_mir_vec}()},
+\code{\link{get_snp}()}
 }
 \concept{get functions}

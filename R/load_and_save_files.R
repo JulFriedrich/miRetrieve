@@ -121,6 +121,8 @@ read_pubmed_jats <- function(jats_file, topic = NULL) {
 #' @export
 read_pubmed <- function(pubmed_file, topic = NULL) {
 
+  . = NULL
+
   # Read in .txt file
   df <- suppressMessages(readr::read_table(pubmed_file,
                                     col_names = c("Term", "Content")))
@@ -217,6 +219,8 @@ save_excel <- function(...,
 #' @param dpi Integer. Resolution for raster graphics such as .pdf-files.
 #'
 #' @return Plot, locally saved.
+#'
+#' @importFrom graphics par
 #'
 #' @seealso [ggplot2::ggsave()]
 #'

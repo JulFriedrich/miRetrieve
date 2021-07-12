@@ -4,8 +4,14 @@
 \alias{indicate_term}
 \title{Indicate if a term is contained in abstracts}
 \usage{
-indicate_term(df, term, threshold = 1, case = FALSE, discard = FALSE,
-  col.abstract = Abstract)
+indicate_term(
+  df,
+  term,
+  threshold = 1,
+  case = FALSE,
+  discard = FALSE,
+  col.abstract = Abstract
+)
 }
 \arguments{
 \item{df}{Data frame containing abstracts.}
@@ -42,6 +48,7 @@ to be considered "present".
 \seealso{
 \code{\link[=indicate_mir]{indicate_mir()}}
 
-Other indicate functions: \code{\link{indicate_mir}}
+Other indicate functions: 
+\code{\link{indicate_mir}()}
 }
 \concept{indicate functions}

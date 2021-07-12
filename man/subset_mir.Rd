@@ -29,10 +29,12 @@ Subset data frame for specific miRNA names only.
 \seealso{
 \code{\link[=get_mir]{get_mir()}}, \code{\link[=subset_mir_threshold]{subset_mir_threshold()}}
 
-Other subset functions: \code{\link{subset_df}},
-  \code{\link{subset_mir_threshold}},
-  \code{\link{subset_research}},
-  \code{\link{subset_review}}, \code{\link{subset_snp}},
-  \code{\link{subset_year}}
+Other subset functions: 
+\code{\link{subset_df}()},
+\code{\link{subset_mir_threshold}()},
+\code{\link{subset_research}()},
+\code{\link{subset_review}()},
+\code{\link{subset_snp}()},
+\code{\link{subset_year}()}
 }
 \concept{subset functions}

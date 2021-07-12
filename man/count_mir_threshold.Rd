@@ -4,8 +4,7 @@
 \alias{count_mir_threshold}
 \title{Count occurence of miRNA names above threshold}
 \usage{
-count_mir_threshold(df, threshold = 1, col.mir = miRNA,
-  col.pmid = PMID)
+count_mir_threshold(df, threshold = 1, col.mir = miRNA, col.pmid = PMID)
 }
 \arguments{
 \item{df}{Data frame containing miRNA names and
@@ -38,9 +37,10 @@ of all abstracts in \code{df} is returned.
 \seealso{
 \code{\link[=plot_mir_count_threshold]{plot_mir_count_threshold()}}, \code{\link[=count_mir]{count_mir()}}, \code{\link[=plot_mir_count]{plot_mir_count()}}
 
-Other count functions: \code{\link{count_mir}},
-  \code{\link{count_snp}},
-  \code{\link{plot_mir_count_threshold}},
-  \code{\link{plot_mir_count}}
+Other count functions: 
+\code{\link{count_mir}()},
+\code{\link{count_snp}()},
+\code{\link{plot_mir_count_threshold}()},
+\code{\link{plot_mir_count}()}
 }
 \concept{count functions}

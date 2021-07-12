@@ -32,9 +32,12 @@ are copied to the clipboard, they can be used e.g. to search for abstracts on
 PubMed.
 }
 \seealso{
-Other get functions: \code{\link{get_distinct_mir_df}},
-  \code{\link{get_distinct_mir_vec}},
-  \code{\link{get_mir}}, \code{\link{get_shared_mir_df}},
-  \code{\link{get_shared_mir_vec}}, \code{\link{get_snp}}
+Other get functions: 
+\code{\link{get_distinct_mir_df}()},
+\code{\link{get_distinct_mir_vec}()},
+\code{\link{get_mir}()},
+\code{\link{get_shared_mir_df}()},
+\code{\link{get_shared_mir_vec}()},
+\code{\link{get_snp}()}
 }
 \concept{get functions}

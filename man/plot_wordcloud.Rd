@@ -4,11 +4,23 @@
 \alias{plot_wordcloud}
 \title{Create wordcloud of terms associated with a miRNA name}
 \usage{
-plot_wordcloud(df, mir, min.freq = 1, max.terms = 20, tf.idf = FALSE,
-  token = "words", ..., stopwords = stopwords_miretrieve,
-  stopwords_ngram = TRUE, colours = "black", random.colour = TRUE,
-  ordered.colour = FALSE, col.mir = miRNA, col.abstract = Abstract,
-  col.pmid = PMID)
+plot_wordcloud(
+  df,
+  mir,
+  min.freq = 1,
+  max.terms = 20,
+  tf.idf = FALSE,
+  token = "words",
+  ...,
+  stopwords = stopwords_miretrieve,
+  stopwords_ngram = TRUE,
+  colours = "black",
+  random.colour = TRUE,
+  ordered.colour = FALSE,
+  col.mir = miRNA,
+  col.abstract = Abstract,
+  col.pmid = PMID
+)
 }
 \arguments{
 \item{df}{Data frame containing miRNA names, abstracts, and PubMed-IDs.}
@@ -82,6 +94,7 @@ package.
 \seealso{
 \code{\link[=plot_mir_terms]{plot_mir_terms()}}, \code{\link[wordcloud:wordcloud]{wordcloud::wordcloud()}}, \code{\link[tidytext:unnest_tokens]{tidytext::unnest_tokens()}}
 
-Other miR term functions: \code{\link{plot_mir_terms}}
+Other miR term functions: 
+\code{\link{plot_mir_terms}()}
 }
 \concept{miR term functions}

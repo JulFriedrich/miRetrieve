@@ -4,9 +4,17 @@
 \alias{plot_score_topic}
 \title{Plot frequency of self-chosen topic scores in abstracts}
 \usage{
-plot_score_topic(df, keywords, case = FALSE, name.topic = "TOPIC",
-  bins = NULL, colour = "steelblue3", col.abstract = Abstract,
-  col.pmid = PMID, title = NULL)
+plot_score_topic(
+  df,
+  keywords,
+  case = FALSE,
+  name.topic = "TOPIC",
+  bins = NULL,
+  colour = "steelblue3",
+  col.abstract = Abstract,
+  col.pmid = PMID,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame containing abstracts.}
@@ -50,13 +58,14 @@ topic.
 \seealso{
 \code{\link[=calculate_score_topic]{calculate_score_topic()}}, \code{\link[=assign_topic]{assign_topic()}}
 
-Other score functions: \code{\link{assign_topic}},
-  \code{\link{calculate_score_animals}},
-  \code{\link{calculate_score_biomarker}},
-  \code{\link{calculate_score_patients}},
-  \code{\link{calculate_score_topic}},
-  \code{\link{plot_score_animals}},
-  \code{\link{plot_score_biomarker}},
-  \code{\link{plot_score_patients}}
+Other score functions: 
+\code{\link{assign_topic}()},
+\code{\link{calculate_score_animals}()},
+\code{\link{calculate_score_biomarker}()},
+\code{\link{calculate_score_patients}()},
+\code{\link{calculate_score_topic}()},
+\code{\link{plot_score_animals}()},
+\code{\link{plot_score_biomarker}()},
+\code{\link{plot_score_patients}()}
 }
 \concept{score functions}

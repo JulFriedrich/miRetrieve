@@ -41,6 +41,7 @@ JOSS 1 (3). The Open Journal. https://doi.org/10.21105/joss.00037.
 \seealso{
 \code{\link[=combine_stopwords]{combine_stopwords()}}, \link{stopwords_miretrieve}, \link[tidytext:stop_words]{tidytext::stop_words}
 
-Other stopword functions: \code{\link{combine_stopwords}}
+Other stopword functions: 
+\code{\link{combine_stopwords}()}
 }
 \concept{stopword functions}

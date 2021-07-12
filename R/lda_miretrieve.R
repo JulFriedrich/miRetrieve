@@ -173,6 +173,7 @@ fit_lda <- function(df,
 #' @family LDA functions
 #'
 #' @importFrom magrittr %>%
+#' @importFrom stats reorder
 #'
 #' @export
 plot_lda_term <- function(lda_model,

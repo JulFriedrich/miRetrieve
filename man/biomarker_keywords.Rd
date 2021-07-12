@@ -4,7 +4,9 @@
 \name{biomarker_keywords}
 \alias{biomarker_keywords}
 \title{Keywords - biomarkers.}
-\format{An object of class \code{character} of length 18.}
+\format{
+An object of class \code{character} of length 18.
+}
 \usage{
 biomarker_keywords
 }

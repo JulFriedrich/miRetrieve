@@ -20,6 +20,9 @@
 #' @param col.abstract Symbol. Column with abstracts.
 #'
 #' @return Data frame with terms counted in Tf-Idf fashion.
+#'
+#' @importFrom rlang :=
+#'
 #' @noRd
 tfidf_words_mir <- function(df,
                             stopwords = stopwords_miretrieve,

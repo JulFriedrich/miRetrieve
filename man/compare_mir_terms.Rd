@@ -4,11 +4,24 @@
 \alias{compare_mir_terms}
 \title{Compare count of terms associated with a miRNA name over various topics}
 \usage{
-compare_mir_terms(df, mir, top = 20, token = "words", ...,
-  topic = NULL, shared = TRUE, normalize = TRUE,
-  stopwords = stopwords_miretrieve, stopwords_ngram = TRUE,
-  position = "dodge", col.mir = miRNA, col.abstract = Abstract,
-  col.topic = Topic, col.pmid = PMID, title = NULL)
+compare_mir_terms(
+  df,
+  mir,
+  top = 20,
+  token = "words",
+  ...,
+  topic = NULL,
+  shared = TRUE,
+  normalize = TRUE,
+  stopwords = stopwords_miretrieve,
+  stopwords_ngram = TRUE,
+  position = "dodge",
+  col.mir = miRNA,
+  col.abstract = Abstract,
+  col.topic = Topic,
+  col.pmid = PMID,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame containing miRNA names, abstracts, topics, and PubMed-IDs.}
@@ -78,11 +91,12 @@ abstracts containing the miRNA.
 \seealso{
 \code{\link[=compare_mir_terms_log2]{compare_mir_terms_log2()}}, \code{\link[=compare_mir_terms_scatter]{compare_mir_terms_scatter()}}
 
-Other compare functions: \code{\link{compare_mir_count_log2}},
-  \code{\link{compare_mir_count_unique}},
-  \code{\link{compare_mir_count}},
-  \code{\link{compare_mir_terms_log2}},
-  \code{\link{compare_mir_terms_scatter}},
-  \code{\link{compare_mir_terms_unique}}
+Other compare functions: 
+\code{\link{compare_mir_count_log2}()},
+\code{\link{compare_mir_count_unique}()},
+\code{\link{compare_mir_count}()},
+\code{\link{compare_mir_terms_log2}()},
+\code{\link{compare_mir_terms_scatter}()},
+\code{\link{compare_mir_terms_unique}()}
 }
 \concept{compare functions}

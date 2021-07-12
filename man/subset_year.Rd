@@ -34,9 +34,12 @@ dropped.
 \seealso{
 \code{\link[=subset_research]{subset_research()}}, \code{\link[=subset_review]{subset_review()}}
 
-Other subset functions: \code{\link{subset_df}},
-  \code{\link{subset_mir_threshold}},
-  \code{\link{subset_mir}}, \code{\link{subset_research}},
-  \code{\link{subset_review}}, \code{\link{subset_snp}}
+Other subset functions: 
+\code{\link{subset_df}()},
+\code{\link{subset_mir_threshold}()},
+\code{\link{subset_mir}()},
+\code{\link{subset_research}()},
+\code{\link{subset_review}()},
+\code{\link{subset_snp}()}
 }
 \concept{subset functions}

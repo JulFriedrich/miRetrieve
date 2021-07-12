@@ -4,12 +4,14 @@
 \name{stopwords_2gram}
 \alias{stopwords_2gram}
 \title{Stop words for text mining with common PubMed 2-grams}
-\format{Tibble.
+\format{
+Tibble.
 \itemize{
 \item \code{word}: Column containing stop words. Pulled from various PubMed
 abstracts.
 \item \code{lexicon}: Column specifying lexicon.
-}}
+}
+}
 \source{
 Manually created from various PubMed abstracts.
 }

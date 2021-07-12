@@ -4,8 +4,15 @@
 \alias{get_distinct_mir_df}
 \title{Identify top miRNA names distinct for one topic compared to another topic}
 \usage{
-get_distinct_mir_df(df, distinct, top = 5, topic = NULL,
-  col.topic = Topic, col.mir = miRNA, col.pmid = PMID)
+get_distinct_mir_df(
+  df,
+  distinct,
+  top = 5,
+  topic = NULL,
+  col.topic = Topic,
+  col.mir = miRNA,
+  col.pmid = PMID
+)
 }
 \arguments{
 \item{df}{Data frame containing at least two topics and miRNA names.}
@@ -40,9 +47,12 @@ data frame.
 returns the miRNA names that are exclusive for \code{distinct}.
 }
 \seealso{
-Other get functions: \code{\link{get_distinct_mir_vec}},
-  \code{\link{get_mir}}, \code{\link{get_pmid}},
-  \code{\link{get_shared_mir_df}},
-  \code{\link{get_shared_mir_vec}}, \code{\link{get_snp}}
+Other get functions: 
+\code{\link{get_distinct_mir_vec}()},
+\code{\link{get_mir}()},
+\code{\link{get_pmid}()},
+\code{\link{get_shared_mir_df}()},
+\code{\link{get_shared_mir_vec}()},
+\code{\link{get_snp}()}
 }
 \concept{get functions}

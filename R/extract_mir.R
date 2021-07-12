@@ -22,6 +22,8 @@ retrieve_mir <- function(string,
                          threshold = 1,
                          extract_letters = FALSE) {
 
+  . = NULL
+
   # This algorithm is trickier than expected; on the one hand, you would
   # like to make look ahead work, on the other hand, it might lead to trouble;
 
@@ -231,6 +233,9 @@ extract_mir_df <- function(df,
 extract_mir_string <- function(string,
                                threshold = 1,
                                extract_letters = FALSE) {
+
+  . = NULL
+
   #Extract first miRNAs
 
   miR <- stringr::str_extract_all(string, pattern_mir) %>%

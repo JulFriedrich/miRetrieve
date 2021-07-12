@@ -22,6 +22,7 @@ are reduced to one instance.
 \seealso{
 \code{\link[=get_mir]{get_mir()}}
 
-Other combine functions: \code{\link{combine_df}}
+Other combine functions: 
+\code{\link{combine_df}()}
 }
 \concept{combine functions}

@@ -4,9 +4,11 @@
 \name{df_panc}
 \alias{df_panc}
 \title{Dataset of PubMed data of miRNAs in Pancreatic Cancer}
-\format{A data frame.}
+\format{
+A data frame.
+}
 \source{
-\url{http://pubmed.org/}
+\url{https://pubmed.ncbi.nlm.nih.gov/}
 }
 \usage{
 df_panc

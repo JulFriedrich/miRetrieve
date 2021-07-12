@@ -4,9 +4,16 @@
 \alias{plot_score_animals}
 \title{Plot frequency of animal model scores in abstracts}
 \usage{
-plot_score_animals(df, keywords = animal_keywords, case = FALSE,
-  bins = NULL, colour = "steelblue3", col.abstract = Abstract,
-  col.pmid = PMID, title = NULL)
+plot_score_animals(
+  df,
+  keywords = animal_keywords,
+  case = FALSE,
+  bins = NULL,
+  colour = "steelblue3",
+  col.abstract = Abstract,
+  col.pmid = PMID,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame containing abstracts.}
@@ -49,13 +56,14 @@ which abstracts are considered to contain animal models.
 \seealso{
 \code{\link[=calculate_score_animals]{calculate_score_animals()}}
 
-Other score functions: \code{\link{assign_topic}},
-  \code{\link{calculate_score_animals}},
-  \code{\link{calculate_score_biomarker}},
-  \code{\link{calculate_score_patients}},
-  \code{\link{calculate_score_topic}},
-  \code{\link{plot_score_biomarker}},
-  \code{\link{plot_score_patients}},
-  \code{\link{plot_score_topic}}
+Other score functions: 
+\code{\link{assign_topic}()},
+\code{\link{calculate_score_animals}()},
+\code{\link{calculate_score_biomarker}()},
+\code{\link{calculate_score_patients}()},
+\code{\link{calculate_score_topic}()},
+\code{\link{plot_score_biomarker}()},
+\code{\link{plot_score_patients}()},
+\code{\link{plot_score_topic}()}
 }
 \concept{score functions}

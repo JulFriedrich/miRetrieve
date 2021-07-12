@@ -4,8 +4,7 @@
 \alias{get_snp}
 \title{Get SNPs from a data frame}
 \usage{
-get_snp(df, row = NULL, top = NULL, col.snp = SNPs,
-  col.pmid = PMID)
+get_snp(df, row = NULL, top = NULL, col.snp = SNPs, col.pmid = PMID)
 }
 \arguments{
 \item{df}{Data frame containing SNPs. If \code{top} is set, \code{df} must also
@@ -45,10 +44,12 @@ If neither \code{row} nor \code{top} is provided, \code{row} is automatically se
 \code{\link[=count_snp]{count_snp()}},
 \code{\link[=subset_snp]{subset_snp()}}
 
-Other get functions: \code{\link{get_distinct_mir_df}},
-  \code{\link{get_distinct_mir_vec}},
-  \code{\link{get_mir}}, \code{\link{get_pmid}},
-  \code{\link{get_shared_mir_df}},
-  \code{\link{get_shared_mir_vec}}
+Other get functions: 
+\code{\link{get_distinct_mir_df}()},
+\code{\link{get_distinct_mir_vec}()},
+\code{\link{get_mir}()},
+\code{\link{get_pmid}()},
+\code{\link{get_shared_mir_df}()},
+\code{\link{get_shared_mir_vec}()}
 }
 \concept{get functions}

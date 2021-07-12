@@ -26,9 +26,10 @@ names and their respective frequency.
 \seealso{
 \code{\link[=plot_mir_count]{plot_mir_count()}}, \code{\link[=count_mir_threshold]{count_mir_threshold()}}, \code{\link[=plot_mir_count_threshold]{plot_mir_count_threshold()}}
 
-Other count functions: \code{\link{count_mir_threshold}},
-  \code{\link{count_snp}},
-  \code{\link{plot_mir_count_threshold}},
-  \code{\link{plot_mir_count}}
+Other count functions: 
+\code{\link{count_mir_threshold}()},
+\code{\link{count_snp}()},
+\code{\link{plot_mir_count_threshold}()},
+\code{\link{plot_mir_count}()}
 }
 \concept{count functions}

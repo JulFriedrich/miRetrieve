@@ -4,8 +4,13 @@
 \alias{plot_mir_count}
 \title{Plot count of most frequently mentioned miRNA names}
 \usage{
-plot_mir_count(df, top = 10, colour = "steelblue3", col.mir = miRNA,
-  title = NULL)
+plot_mir_count(
+  df,
+  top = 10,
+  colour = "steelblue3",
+  col.mir = miRNA,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame containing miRNA names.}
@@ -35,8 +40,10 @@ or \code{top = 3}.
 \seealso{
 \code{\link[=count_mir]{count_mir()}}, \code{\link[=count_mir_threshold]{count_mir_threshold()}}, \code{\link[=plot_mir_count_threshold]{plot_mir_count_threshold()}}
 
-Other count functions: \code{\link{count_mir_threshold}},
-  \code{\link{count_mir}}, \code{\link{count_snp}},
-  \code{\link{plot_mir_count_threshold}}
+Other count functions: 
+\code{\link{count_mir_threshold}()},
+\code{\link{count_mir}()},
+\code{\link{count_snp}()},
+\code{\link{plot_mir_count_threshold}()}
 }
 \concept{count functions}

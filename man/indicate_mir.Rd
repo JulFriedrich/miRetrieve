@@ -35,6 +35,7 @@ if this miRNA name is contained in the corresponding abstract.
 \seealso{
 \code{\link[=extract_mir_df]{extract_mir_df()}}, \code{\link[=indicate_term]{indicate_term()}}
 
-Other indicate functions: \code{\link{indicate_term}}
+Other indicate functions: 
+\code{\link{indicate_term}()}
 }
 \concept{indicate functions}

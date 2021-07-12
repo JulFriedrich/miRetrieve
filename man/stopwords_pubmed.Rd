@@ -4,12 +4,14 @@
 \name{stopwords_pubmed}
 \alias{stopwords_pubmed}
 \title{Stop words for text mining from PubMed abstracts}
-\format{Tibble.
+\format{
+Tibble.
 \itemize{
 \item \code{word}: Column containing stop words. Pulled from various PubMed
 abstracts.
 \item \code{lexicon}: Column specifying lexicon.
-}}
+}
+}
 \source{
 Manually created from various PubMed abstracts.
 }

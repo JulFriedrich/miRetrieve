@@ -25,9 +25,12 @@ At the same time, abstracts from other article types such as \emph{Journal Artic
 \seealso{
 \code{\link[=subset_research]{subset_research()}}, \code{\link[=subset_year]{subset_year()}}
 
-Other subset functions: \code{\link{subset_df}},
-  \code{\link{subset_mir_threshold}},
-  \code{\link{subset_mir}}, \code{\link{subset_research}},
-  \code{\link{subset_snp}}, \code{\link{subset_year}}
+Other subset functions: 
+\code{\link{subset_df}()},
+\code{\link{subset_mir_threshold}()},
+\code{\link{subset_mir}()},
+\code{\link{subset_research}()},
+\code{\link{subset_snp}()},
+\code{\link{subset_year}()}
 }
 \concept{subset functions}

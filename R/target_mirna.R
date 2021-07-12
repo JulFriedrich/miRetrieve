@@ -22,6 +22,8 @@
 #'
 #' @family target functions
 #'
+#' @importFrom dplyr desc
+#'
 #' @export
 count_target <- function(df,
                          col.target = Target,
@@ -58,6 +60,8 @@ count_target <- function(df,
 #' @param col.target Symbol. Column with miRNA targets.
 #'
 #' @return Data frame with miRNA targets counted.
+#'
+#' @importFrom dplyr desc
 #'
 #' @noRd
 count_target_helper <- function(df,
@@ -210,6 +214,8 @@ plot_target_count <- function(df,
 #' @seealso [join_targets()]
 #'
 #' @family target functions
+#'
+#' @importFrom rlang :=
 #'
 #' @export
 plot_target_mir_scatter <- function(df,

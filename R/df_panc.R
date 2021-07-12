@@ -6,5 +6,5 @@
 #'
 #' @format A data frame.
 #'
-#' @source \url{http://pubmed.org/}
+#' @source \url{https://pubmed.ncbi.nlm.nih.gov/}
 "df_panc"

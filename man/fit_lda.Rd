@@ -4,9 +4,16 @@
 \alias{fit_lda}
 \title{Fit LDA-model}
 \usage{
-fit_lda(df, k, stopwords = stopwords_miretrieve, method = "gibbs",
-  control = NULL, seed = 42, col.abstract = Abstract,
-  col.pmid = PMID)
+fit_lda(
+  df,
+  k,
+  stopwords = stopwords_miretrieve,
+  method = "gibbs",
+  control = NULL,
+  seed = 42,
+  col.abstract = Abstract,
+  col.pmid = PMID
+)
 }
 \arguments{
 \item{df}{Data frame containing abstracts and PubMed-IDs.}
@@ -41,8 +48,9 @@ Fit LDA-model with \code{k} topics from a data frame.
 \seealso{
 \code{\link[=plot_perplexity]{plot_perplexity()}}
 
-Other LDA functions: \code{\link{assign_topic_lda}},
-  \code{\link{plot_lda_term}},
-  \code{\link{plot_perplexity}}
+Other LDA functions: 
+\code{\link{assign_topic_lda}()},
+\code{\link{plot_lda_term}()},
+\code{\link{plot_perplexity}()}
 }
 \concept{LDA functions}

@@ -45,6 +45,8 @@
 #'
 #' @family score functions
 #'
+#' @importFrom rlang :=
+#'
 #' @export
 calculate_score_topic<- function(df,
                                 keywords,

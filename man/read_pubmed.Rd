@@ -43,7 +43,9 @@ recommended.
 \seealso{
 \code{\link[=read_pubmed_jats]{read_pubmed_jats()}}
 
-Other external data functions: \code{\link{read_pubmed_jats}},
-  \code{\link{save_excel}}, \code{\link{save_plot}}
+Other external data functions: 
+\code{\link{read_pubmed_jats}()},
+\code{\link{save_excel}()},
+\code{\link{save_plot}()}
 }
 \concept{external data functions}

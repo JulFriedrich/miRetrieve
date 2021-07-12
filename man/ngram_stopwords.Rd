@@ -4,7 +4,9 @@
 \name{ngram_stopwords}
 \alias{ngram_stopwords}
 \title{Stop words for n-grams}
-\format{Character vector.}
+\format{
+Character vector.
+}
 \source{
 tidytext::stop_words
 }

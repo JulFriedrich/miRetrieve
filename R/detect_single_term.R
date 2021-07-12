@@ -62,6 +62,8 @@ detect_term <- function(string,
 #'
 #' @family indicate functions
 #'
+#' @importFrom rlang :=
+#'
 #' @export
 indicate_term <- function(df,
                           term,
@@ -69,6 +71,8 @@ indicate_term <- function(df,
                           case = FALSE,
                           discard = FALSE,
                           col.abstract = Abstract) {
+
+  . = NULL
 
   for (term_word in term) {
     col.term <- stringr::str_c("Term_", term_word)

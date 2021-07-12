@@ -4,8 +4,15 @@
 \alias{assign_topic}
 \title{Assign topics based on precalculated scores}
 \usage{
-assign_topic(df, col.topic, threshold, topic.names = NULL,
-  col.topic.name = "Topic", col.pmid = "PMID", discard = FALSE)
+assign_topic(
+  df,
+  col.topic,
+  threshold,
+  topic.names = NULL,
+  col.topic.name = "Topic",
+  col.pmid = "PMID",
+  discard = FALSE
+)
 }
 \arguments{
 \item{df}{Data frame containing precalculated topic scores and PubMed-IDs.}
@@ -48,13 +55,14 @@ If an abstract matches no topic, it is assigned to the topic "Unknown".
 \code{\link[=calculate_score_topic]{calculate_score_topic()}}, \code{\link[=plot_score_topic]{plot_score_topic()}},
 \code{\link[=add_col_topic]{add_col_topic()}}
 
-Other score functions: \code{\link{calculate_score_animals}},
-  \code{\link{calculate_score_biomarker}},
-  \code{\link{calculate_score_patients}},
-  \code{\link{calculate_score_topic}},
-  \code{\link{plot_score_animals}},
-  \code{\link{plot_score_biomarker}},
-  \code{\link{plot_score_patients}},
-  \code{\link{plot_score_topic}}
+Other score functions: 
+\code{\link{calculate_score_animals}()},
+\code{\link{calculate_score_biomarker}()},
+\code{\link{calculate_score_patients}()},
+\code{\link{calculate_score_topic}()},
+\code{\link{plot_score_animals}()},
+\code{\link{plot_score_biomarker}()},
+\code{\link{plot_score_patients}()},
+\code{\link{plot_score_topic}()}
 }
 \concept{score functions}

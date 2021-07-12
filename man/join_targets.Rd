@@ -4,9 +4,18 @@
 \alias{join_targets}
 \title{Add miRNA targets from an xlsx-file to a data frame}
 \usage{
-join_targets(df, excel_file, col.pmid.excel, col.target.excel,
-  col.mir.excel = NULL, col.pmid.df = PMID, col.topic.df = NULL,
-  filter_na = TRUE, stem_mir_excel = TRUE, reduce = FALSE)
+join_targets(
+  df,
+  excel_file,
+  col.pmid.excel,
+  col.target.excel,
+  col.mir.excel = NULL,
+  col.pmid.df = PMID,
+  col.topic.df = NULL,
+  filter_na = TRUE,
+  stem_mir_excel = TRUE,
+  reduce = FALSE
+)
 }
 \arguments{
 \item{df}{Data frame containing PubMed-IDs
@@ -67,9 +76,10 @@ must contain a column with miRNA names.
 }
 }
 \seealso{
-Other target functions: \code{\link{count_target}},
-  \code{\link{join_mirtarbase}},
-  \code{\link{plot_target_count}},
-  \code{\link{plot_target_mir_scatter}}
+Other target functions: 
+\code{\link{count_target}()},
+\code{\link{join_mirtarbase}()},
+\code{\link{plot_target_count}()},
+\code{\link{plot_target_mir_scatter}()}
 }
 \concept{target functions}

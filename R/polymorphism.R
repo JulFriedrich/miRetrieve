@@ -1,6 +1,6 @@
 #' Polymorphism pattern
 #' @noRd
-#' @export
+
 snp_pattern <- "rs\\d{3,20}"
 
 #' Extract polymorphism from string - helper.
@@ -107,6 +107,8 @@ extract_snp <- function(df,
 #' [subset_snp()]
 #'
 #' @family count functions
+#'
+#' @importFrom dplyr desc
 #'
 #' @export
 count_snp <- function(df,

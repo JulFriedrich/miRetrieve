@@ -16,6 +16,8 @@
 #'
 #' @family count functions
 #'
+#' @importFrom dplyr desc
+#'
 #' @export
 count_mir <- function(df,
                       col.mir = miRNA) {

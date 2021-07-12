@@ -48,6 +48,8 @@ get_top_words <- function(df,
 #'
 #' @return Data frame with terms counted per miRNA.
 #'
+#' @importFrom rlang :=
+#'
 #' @noRd
 count_words_mir <- function(df,
                             stopwords = stopwords_miretrieve,
@@ -72,9 +74,6 @@ count_words_mir <- function(df,
       dplyr::mutate({{col.abstract}} := stringr::str_replace_all({{col.abstract}},
                                                              ngram_stopwords, " "))
   }
-
-  df <-
-
 
   df_count <- df %>%
     tidytext::unnest_tokens(input = {{col.abstract}},

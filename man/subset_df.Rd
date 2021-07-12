@@ -33,9 +33,12 @@ such as '-' in their name.
 \seealso{
 \code{\link[=indicate_term]{indicate_term()}}, \code{\link[=indicate_mir]{indicate_mir()}}, \code{\link[=extract_snp]{extract_snp()}}
 
-Other subset functions: \code{\link{subset_mir_threshold}},
-  \code{\link{subset_mir}}, \code{\link{subset_research}},
-  \code{\link{subset_review}}, \code{\link{subset_snp}},
-  \code{\link{subset_year}}
+Other subset functions: 
+\code{\link{subset_mir_threshold}()},
+\code{\link{subset_mir}()},
+\code{\link{subset_research}()},
+\code{\link{subset_review}()},
+\code{\link{subset_snp}()},
+\code{\link{subset_year}()}
 }
 \concept{subset functions}

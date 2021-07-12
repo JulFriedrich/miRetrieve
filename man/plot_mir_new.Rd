@@ -4,9 +4,16 @@
 \alias{plot_mir_new}
 \title{Plot number of newly mentioned miRNA names/year}
 \usage{
-plot_mir_new(df, threshold = 1, start = NULL, end = NULL,
-  colour = "steelblue3", col.mir = miRNA, col.year = Year,
-  title = NULL)
+plot_mir_new(
+  df,
+  threshold = 1,
+  start = NULL,
+  end = NULL,
+  colour = "steelblue3",
+  col.mir = miRNA,
+  col.year = Year,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame containing miRNA names and publication years.}
@@ -42,6 +49,7 @@ miRNA is mentioned only twice in a year, it is not considered
 to be "mentioned" for this year.
 }
 \seealso{
-Other miR development functions: \code{\link{plot_mir_development}}
+Other miR development functions: 
+\code{\link{plot_mir_development}()}
 }
 \concept{miR development functions}

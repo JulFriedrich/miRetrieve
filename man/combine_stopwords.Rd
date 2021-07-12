@@ -23,6 +23,7 @@ data frames must have two columns named "word" and "lexicon".
 \seealso{
 \code{\link[=generate_stopwords]{generate_stopwords()}}, \link{stopwords_miretrieve}, \link[tidytext:stop_words]{tidytext::stop_words}
 
-Other stopword functions: \code{\link{generate_stopwords}}
+Other stopword functions: 
+\code{\link{generate_stopwords}()}
 }
 \concept{stopword functions}

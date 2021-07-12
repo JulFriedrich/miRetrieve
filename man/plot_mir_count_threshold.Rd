@@ -4,9 +4,16 @@
 \alias{plot_mir_count_threshold}
 \title{Plot occurence count of miRNA names over different thresholds}
 \usage{
-plot_mir_count_threshold(df, start = 1, end = 5, bins = NULL,
-  colour = "steelblue3", col.mir = miRNA, col.pmid = PMID,
-  title = NULL)
+plot_mir_count_threshold(
+  df,
+  start = 1,
+  end = 5,
+  bins = NULL,
+  colour = "steelblue3",
+  col.mir = miRNA,
+  col.pmid = PMID,
+  title = NULL
+)
 }
 \arguments{
 \item{df}{Data frame containing columns with miRNAs and PubMed-IDs.}
@@ -66,8 +73,10 @@ dominating the field.
 \seealso{
 \code{\link[=count_mir_threshold]{count_mir_threshold()}}, \code{\link[=count_mir]{count_mir()}}, \code{\link[=plot_mir_count]{plot_mir_count()}}
 
-Other count functions: \code{\link{count_mir_threshold}},
-  \code{\link{count_mir}}, \code{\link{count_snp}},
-  \code{\link{plot_mir_count}}
+Other count functions: 
+\code{\link{count_mir_threshold}()},
+\code{\link{count_mir}()},
+\code{\link{count_snp}()},
+\code{\link{plot_mir_count}()}
 }
 \concept{count functions}
