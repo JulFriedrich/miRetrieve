@@ -4,9 +4,9 @@ library(testthat)
 set.seed(42)
 
 toy_df <- data.frame("miRNA_" = sample(c("miR-30", "miR-29", "miR-28"),
-                                       size = 20,
+                                       size = nrow(df_test),
                                        replace = TRUE),
-                     "PMID_" = seq(1:20),
+                     "PMID_" = seq(1:nrow(df_test)),
                      "Abstract" = df_test["Abstract"],
                      stringsAsFactors = FALSE)
 

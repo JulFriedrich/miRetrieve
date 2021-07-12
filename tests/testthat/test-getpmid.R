@@ -19,6 +19,4 @@ pmid_vec <- get_pmid(toy_df,
 test_that("Tests that PMIDs are received from a dataframe", {
     expect_type(pmid_vec, "integer")
     expect_length(pmid_vec, 40)
-    expect_invisible(get_pmid(toy_df,
-                              col.pmid = PMID_))
 })

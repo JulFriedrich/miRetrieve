@@ -12,10 +12,10 @@ df_mir_1_let <- df_test %>%
 
 test_that("Tests that topic columns are created", {
     expect_equal(colnames(df_mir_1)[7], "miRNA")
-    expect_equal(nrow(df_mir_1), 13)
-    expect_equal(nrow(df_mir_3), 11)
+    expect_equal(nrow(df_mir_1), 6)
+    expect_equal(nrow(df_mir_3), 4)
     # Expect no miRNAs with a trailing letter
     expect_equal(sum(grepl("\\d[a-z]", df_mir_1$miRNA)), 0)
     # Expect 3 miRNAs with a trailing letter in _let
-    expect_equal(sum(grepl("\\d[a-z]", df_mir_1_let$miRNA)), 3)
+    expect_equal(sum(grepl("\\d[a-z]", df_mir_1_let$miRNA)), 2)
 })

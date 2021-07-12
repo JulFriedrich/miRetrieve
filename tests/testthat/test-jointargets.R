@@ -1,7 +1,7 @@
 library(miRetrieve)
 library(testthat)
 
-excel_target <- "/Users/Julian/Documents/Jupyter/miRetrieve/miRetrieve/tests/testthat/excel_target_test.xlsx"
+excel_target <- "excel_target_test.xlsx"
 
 set.seed(42)
 
