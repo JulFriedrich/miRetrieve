@@ -66,7 +66,7 @@ from abstracts when using ngrams. Only applied when \code{token = 'ngrams'}.}
 \item{title}{String. Plot title.}
 }
 \value{
-List containg bar plot comparing the log2-frequency of terms associated with a
+List containing bar plot comparing the log2-frequency of terms associated with a
 miRNA over two topics and its corresponding data frame.
 }
 \description{
@@ -82,7 +82,7 @@ from abstracts contained in \code{df}.
 Number of top terms to plot is regulated by \code{top}. Terms can either be
 evaluated as their raw count, e.g. in how many abstracts they are mentioned
 in conjunction with the miRNA name, or as their relative count, e.g.
-in how many abstracts containing the miRNAthey are mentioned compared to all
+in how many abstracts containing the miRNA they are mentioned compared to all
 abstracts containing the miRNA.
 \code{compare_mir_terms_log2()} is based on the tools available in the
 \pkg{tidytext} package.

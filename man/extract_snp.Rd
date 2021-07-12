@@ -35,7 +35,7 @@ Extract SNPs from abstracts in a data frame.
 }
 \details{
 Extract SNPs from abstracts in a data frame. SNPs are added to the data
-frame in a separate column. Furthermore, an optional column can indiciate if
+frame in a separate column. Furthermore, an optional column can indicate if
 SNPs are generally present in an abstract.
 }
 \seealso{

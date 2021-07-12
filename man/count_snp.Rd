@@ -18,10 +18,10 @@ Data frame. Data frame containing SNPs and their
 respective frequency.
 }
 \description{
-Count occurence of SNPs in a data frame.
+Count occurrence of SNPs in a data frame.
 }
 \details{
-Count occurence of SNPs in  a data frame. The count of SNPs
+Count occurrence of SNPs in  a data frame. The count of SNPs
 is returned as a separate data frame, only listing the SNPs
 and their respective frequency.
 }

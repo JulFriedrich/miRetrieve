@@ -44,7 +44,7 @@ Plot number of newly mentioned miRNA names/year.
 \details{
 Plot how many miRNAs are mentioned for the first time in different year.
 If a miRNA is considered to be "mentioned" in a year can be regulated
-via the \code{threshold} argument. If, for examle, \code{threshold} is set to 3, but a
+via the \code{threshold} argument. If, for example, \code{threshold} is set to 3, but a
 miRNA is mentioned only twice in a year, it is not considered
 to be "mentioned" for this year.
 }

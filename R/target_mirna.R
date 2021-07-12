@@ -1,10 +1,10 @@
 #' Count targets in data frame
 #'
-#' Count occurence of targets in  a data frame.
+#' Count occurrence of targets in  a data frame.
 #'
-#' Count occurence of targets in  a data frame. The count of targets
+#' Count occurrence of targets in  a data frame. The count of targets
 #' can either be returned as a separate data frame, only listing the targets
-#' and their respectice frequency, or it can be added to the
+#' and their respective frequency, or it can be added to the
 #' data frame provided as an extra column.
 #'
 #' @param df Data frame containing a column with targets.

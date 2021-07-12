@@ -9,7 +9,7 @@
 #' If terms are evaluated as their count, they can either be
 #' evaluated as their raw count, e.g. in how many abstracts they are mentioned
 #' in conjunction with the miRNA name, or as their relative count, e.g.
-#' in how many abstracts containing the miRNAthey are mentioned compared to all
+#' in how many abstracts containing the miRNA they are mentioned compared to all
 #' abstracts containing the miRNA.
 #' If terms are evaluated in a tf-idf fashion, miRNA names are considered as
 #' separate documents and
@@ -205,7 +205,7 @@ plot_mir_terms <- function(df,
 #' Number of top terms to plot is regulated by `top`. Terms can either be
 #' evaluated as their raw count, e.g. in how many abstracts they are mentioned
 #' in conjunction with the miRNA name, or as their relative count, e.g.
-#' in how many abstracts containing the miRNAthey are mentioned compared to all
+#' in how many abstracts containing the miRNA they are mentioned compared to all
 #' abstracts containing the miRNA.
 #' `compare_mir_terms()` is based on the tools available in the
 #' \pkg{tidytext} package.
@@ -409,7 +409,7 @@ compare_mir_terms <- function(df,
 #' Number of top terms to plot is regulated by `top`. Terms can either be
 #' evaluated as their raw count, e.g. in how many abstracts they are mentioned
 #' in conjunction with the miRNA name, or as their relative count, e.g.
-#' in how many abstracts containing the miRNAthey are mentioned compared to all
+#' in how many abstracts containing the miRNA they are mentioned compared to all
 #' abstracts containing the miRNA.
 #' `compare_mir_terms_log2()` is based on the tools available in the
 #' \pkg{tidytext} package.
@@ -445,7 +445,7 @@ compare_mir_terms <- function(df,
 #' @param col.pmid Symbol. Column containing PubMed-IDs.
 #' @param title String. Plot title.
 #'
-#' @return List containg bar plot comparing the log2-frequency of terms associated with a
+#' @return List containing bar plot comparing the log2-frequency of terms associated with a
 #' miRNA over two topics and its corresponding data frame.
 #'
 #' @seealso [compare_mir_terms()], [compare_mir_terms_scatter()]

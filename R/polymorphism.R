@@ -36,7 +36,7 @@ retrieve_polymorphism <- function(string,
 #' Extract SNPs from abstracts in a data frame.
 #'
 #' Extract SNPs from abstracts in a data frame. SNPs are added to the data
-#' frame in a separate column. Furthermore, an optional column can indiciate if
+#' frame in a separate column. Furthermore, an optional column can indicate if
 #' SNPs are generally present in an abstract.
 #'
 #' @param df Data frame containing abstracts.
@@ -89,9 +89,9 @@ extract_snp <- function(df,
 
 #' Count SNPs in a data frame
 #'
-#' Count occurence of SNPs in a data frame.
+#' Count occurrence of SNPs in a data frame.
 #'
-#' Count occurence of SNPs in  a data frame. The count of SNPs
+#' Count occurrence of SNPs in  a data frame. The count of SNPs
 #' is returned as a separate data frame, only listing the SNPs
 #' and their respective frequency.
 #'
@@ -183,7 +183,7 @@ subset_snp <- function(df,
 #' these SNPs are specified by the row they are listed in. To get the SNPs by
 #' row, set the `row` argument.
 #' * If a data frame with PubMed IDs is provided, these SNPs are specified by
-#' their top occurence. To get the SNPs by frequency, set the `top` argument.
+#' their top occurrence. To get the SNPs by frequency, set the `top` argument.
 #'
 #' If neither `row` nor `top` is provided, `row` is automatically set to `1`.
 #'

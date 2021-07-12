@@ -16,10 +16,10 @@ Data frame. Data frame containing miRNA names and their
 respective frequency.
 }
 \description{
-Count occurence of miRNA names in a data frame.
+Count occurrence of miRNA names in a data frame.
 }
 \details{
-Count occurence of miRNA names in  a data frame. The count of miRNA names
+Count occurrence of miRNA names in  a data frame. The count of miRNA names
 is returned as a separate data frame, only listing the miRNA
 names and their respective frequency.
 }

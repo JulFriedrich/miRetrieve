@@ -77,7 +77,7 @@ Terms can either be evaluated as their count or in a tf-idf fashion.
 If terms are evaluated as their count, they can either be
 evaluated as their raw count, e.g. in how many abstracts they are mentioned
 in conjunction with the miRNA name, or as their relative count, e.g.
-in how many abstracts containing the miRNAthey are mentioned compared to all
+in how many abstracts containing the miRNA they are mentioned compared to all
 abstracts containing the miRNA.
 If terms are evaluated in a tf-idf fashion, miRNA names are considered as
 separate documents and

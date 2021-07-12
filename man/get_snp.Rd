@@ -34,7 +34,7 @@ Get SNPs from a data frame.
 these SNPs are specified by the row they are listed in. To get the SNPs by
 row, set the \code{row} argument.
 \item If a data frame with PubMed IDs is provided, these SNPs are specified by
-their top occurence. To get the SNPs by frequency, set the \code{top} argument.
+their top occurrence. To get the SNPs by frequency, set the \code{top} argument.
 }
 
 If neither \code{row} nor \code{top} is provided, \code{row} is automatically set to \code{1}.

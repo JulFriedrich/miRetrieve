@@ -8,7 +8,7 @@
 #' This score is added to the data frame as an additional
 #' column, usually called `topic_score`, containing the calculated topic score.
 #' If there is more than one topic of interest, the column `topic_score` should
-#' be appropriatly renamed.
+#' be appropriately renamed.
 #' To decide which abstracts are considered to correspond to the topic of interest,
 #' a threshold
 #' can be set via the `threshold` argument. Furthermore, an additional

@@ -2,7 +2,7 @@
 % Please edit documentation in R/count_mir_threshold.R
 \name{count_mir_threshold}
 \alias{count_mir_threshold}
-\title{Count occurence of miRNA names above threshold}
+\title{Count occurrence of miRNA names above threshold}
 \usage{
 count_mir_threshold(df, threshold = 1, col.mir = miRNA, col.pmid = PMID)
 }
@@ -23,10 +23,10 @@ in at least \code{threshold} abstracts of all abstracts in \code{df}.}
 Integer with the number of distinct miRNA names in \code{df}.
 }
 \description{
-Count occurence of miRNA names above a threshold.
+Count occurrence of miRNA names above a threshold.
 }
 \details{
-Count occurence of miRNA names above a threshold. This threshold can either
+Count occurrence of miRNA names above a threshold. This threshold can either
 be an absolute value, e.g. 3, or a float between 0 and 1, e.g. 0.2.
 If \code{threshold} is an absolute value, number of distinct miRNA names mentioned
 in at least \code{threshold} abstracts is returned.

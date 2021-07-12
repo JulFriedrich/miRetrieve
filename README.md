@@ -25,7 +25,7 @@ devtools::install_github("JulFriedrich/miRetrieve",
 ```
 
 miRetrieve is built around the idea of using field-specific PubMed
-abstracts from [PubMed](https://pubmed.ncbi.nlm.nih.gov/) to charaterize and 
+abstracts from [PubMed](https://pubmed.ncbi.nlm.nih.gov/) to characterize and 
 analyze microRNAs in disease-related fields (e.g. "miRNAs in diabetes").
 
 To get started, download a microRNA-related abstract from PubMed via 

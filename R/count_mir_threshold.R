@@ -1,8 +1,8 @@
-#' Count occurence of miRNA names above threshold
+#' Count occurrence of miRNA names above threshold
 #'
-#' Count occurence of miRNA names above a threshold.
+#' Count occurrence of miRNA names above a threshold.
 #'
-#' Count occurence of miRNA names above a threshold. This threshold can either
+#' Count occurrence of miRNA names above a threshold. This threshold can either
 #' be an absolute value, e.g. 3, or a float between 0 and 1, e.g. 0.2.
 #' If `threshold` is an absolute value, number of distinct miRNA names mentioned
 #' in at least `threshold` abstracts is returned.
@@ -61,11 +61,11 @@ count_mir_threshold <- function(df,
   return(df_count)
 }
 
-#' Plot occurence count of miRNA names over different thresholds
+#' Plot occurrence count of miRNA names over different thresholds
 #'
-#' Plot occurence count of distinct miRNA names over different thresholds.
+#' Plot occurrence count of distinct miRNA names over different thresholds.
 #'
-#' Plot occurence of distinct miRNA names over different thresholds.
+#' Plot occurrence of distinct miRNA names over different thresholds.
 #' These thresholds can either be absolute values or floating values between 0
 #' and 1.
 #' If the thresholds are absolute values, number of distinct miRNA names
@@ -104,7 +104,7 @@ count_mir_threshold <- function(df,
 #' @param col.pmid Symbol. Column containing PubMed-IDs.
 #' @param title String. Plot title.
 #'
-#' @return Bar plot counting the occurence of miRNA names above different
+#' @return Bar plot counting the occurrence of miRNA names above different
 #' thresholds.
 #'
 #' @seealso [count_mir_threshold()], [count_mir()], [plot_mir_count()]

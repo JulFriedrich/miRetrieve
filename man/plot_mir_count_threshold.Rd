@@ -2,7 +2,7 @@
 % Please edit documentation in R/count_mir_threshold.R
 \name{plot_mir_count_threshold}
 \alias{plot_mir_count_threshold}
-\title{Plot occurence count of miRNA names over different thresholds}
+\title{Plot occurrence count of miRNA names over different thresholds}
 \usage{
 plot_mir_count_threshold(
   df,
@@ -48,14 +48,14 @@ not specified, \code{bins} is automatically set to \code{10}.}
 \item{title}{String. Plot title.}
 }
 \value{
-Bar plot counting the occurence of miRNA names above different
+Bar plot counting the occurrence of miRNA names above different
 thresholds.
 }
 \description{
-Plot occurence count of distinct miRNA names over different thresholds.
+Plot occurrence count of distinct miRNA names over different thresholds.
 }
 \details{
-Plot occurence of distinct miRNA names over different thresholds.
+Plot occurrence of distinct miRNA names over different thresholds.
 These thresholds can either be absolute values or floating values between 0
 and 1.
 If the thresholds are absolute values, number of distinct miRNA names
