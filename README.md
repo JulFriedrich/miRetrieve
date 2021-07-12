@@ -21,17 +21,30 @@ first, followed by
 ```
 devtools::install_github("JulFriedrich/miRetrieve",
         dependencies = TRUE,
-        repos = "https://cran.r-project.org/",
-        build_vignettes = TRUE)
+        repos = "https://cran.r-project.org/")
 ```
 
-An overview of the mechanisms behind miRetrieve are detailed in the
-vignette, that can be accessed with
+miRetrieve is built around the idea of using field-specific PubMed
+abstracts from [PubMed](https://pubmed.ncbi.nlm.nih.gov/) to charaterize and 
+analyze microRNAs in disease-related fields (e.g. "miRNAs in diabetes").
+
+To get started, download a microRNA-related abstract from PubMed via 
+*Save - Format: PMID - Create file* and load it into R using
+
 ```
-vignette("miRetrieve")
+df <- miRetrieve::read_pubmed("PubMed_file.txt")
 ```
 
-A full documentation is available [here](miRetrieve_1.1.0.pdf).
+and subsequently extract all microRNAs with 
+
+```
+df <- extract_mir_df(df)
+```
+
+An extensive Vignette with the underlying mechanism, functions, and a 
+complete workflow can be downloaded from 
+
+https://github.com/JulFriedrich/miRetrieveVignette/blob/main/miRetrieve.html
 
 ## Authors
 
@@ -50,32 +63,6 @@ Supplementary Files referenced in the manuscript are located
 in a different repository, freely available under
 
 https://github.com/JulFriedrich/miRetrieve-paper
-
-### Note
-
-miRetrieve runs smoothly with
-
-```
-    dplyr (1.0.3),
-    forcats (0.5.1),
-    ggplot2 (3.3.3),
-    knitr (1.31),
-    kableExtra (1.3.1),
-    magrittr (2.0.1),
-    openxlsx (4.2.3),
-    plotly (4.9.3),
-    purrr (0.3.4),
-    readr (1.4.0),
-    readxl (1.3.1),
-    scales (1.1.1),
-    stringr (1.4.0),
-    tidyr (1.1.2),
-    tidytext (0.3.0),
-    topicmodels (0.2.12),
-    wordcloud (2.6),
-    xml2 (1.3.2),
-    zoo (1.8.8)
-```
 
 ## Reference
 

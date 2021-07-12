@@ -1,0 +1,28 @@
+* using log directory ‘/Users/Julian/Documents/Jupyter/miRetrieve/miRetrieve/miRetrieve.Rcheck’
+* using R version 3.5.1 (2018-07-02)
+* using platform: x86_64-apple-darwin13.4.0 (64-bit)
+* using session charset: UTF-8
+* checking for file ‘miRetrieve/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘miRetrieve’ version ‘1.3.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Packages required but not available:
+  ‘kableExtra’ ‘openxlsx’ ‘plotly’ ‘tidytext’ ‘topicmodels’ ‘wordcloud’
+
+Package suggested but not available: ‘bookdown’
+
+Packages required and available but unsuitable versions:
+  ‘dplyr’ ‘forcats’ ‘ggplot2’ ‘knitr’ ‘magrittr’ ‘purrr’ ‘readr’
+  ‘readxl’ ‘reshape2’ ‘rlang’ ‘scales’ ‘stringr’ ‘tidyr’ ‘testthat’
+  ‘xml2’ ‘zoo’
+
+The suggested packages are required for a complete check.
+Checking can be attempted without them by setting the environment
+variable _R_CHECK_FORCE_SUGGESTS_ to a false value.
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR
