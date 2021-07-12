@@ -8,3 +8,5 @@
 ^miRetrieve_1\.3\.0\.pdf$
 ^comments-cran\.md$
 ^df_diabetes\.rda$
+^CRAN-RELEASE$
+^cran-comments\.md$
