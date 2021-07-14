@@ -57,14 +57,15 @@ test_that("Tests that terms are presented as ngrams", {
                lengths(strsplit(as.character(plot_terms_ngram2$data$word[1]), " ")))
 })
 
-options(warn = -1)
 
-plot_terms_tfidf <- plot_mir_terms(toy_df,
-                                   mir = "miR-30",
-                                   tf.idf = TRUE,
-                                   col.mir = miRNA_,
-                                   col.pmid = PMID_,
-                                   col.abstract = Abstract)
+plot_terms_tfidf <- suppressWarnings(
+    plot_mir_terms(toy_df,
+                   mir = "miR-30",
+                   tf.idf = TRUE,
+                   col.mir = miRNA_,
+                   col.pmid = PMID_,
+                   col.abstract = Abstract)
+)
 
 test_that("Tests that at least a tfidf plot is created", {
     expect_s3_class(plot_terms_tfidf, "ggplot")
@@ -75,5 +76,3 @@ test_that("Tests that at least a tfidf plot is created", {
     expect_gte(length(plot_terms_tfidf$data$mirna_count),
                0)
 })
-
-options(warn = 0)
