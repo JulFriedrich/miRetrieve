@@ -10,3 +10,8 @@
 ^df_diabetes\.rda$
 ^CRAN-RELEASE$
 ^cran-comments\.md$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^vignettes/articles$
+^\.travis\.yml$
