@@ -83,10 +83,12 @@
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting Started</h2>
 <p>An online version with the most important functions of miRetrieve is available under <a href="https://miretrieve.shinyapps.io/miRetrieve/" class="uri">https://miretrieve.shinyapps.io/miRetrieve/</a>.</p>
-<p>To install miRetrieve locally, run</p>
-<pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("devtools")</a></code></pre>
-<p>first, followed by</p>
-<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("JulFriedrich/miRetrieve",
+<p>To install miRetrieve from CRAN, run</p>
+<pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("miRetrieve")</a></code></pre>
+<p>Alternatively, you can also install miRetrieve from GitHub by running</p>
+<pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("devtools")
+
+devtools::install_github("JulFriedrich/miRetrieve",
         dependencies = TRUE,
         repos = "https://cran.r-project.org/")</a></code></pre>
 <p>miRetrieve is built around the idea of using field-specific PubMed abstracts from <a href="https://pubmed.ncbi.nlm.nih.gov/">PubMed</a> to characterize and analyze microRNAs in disease-related fields (e.g. “miRNAs in diabetes”).</p>
@@ -94,8 +96,8 @@
 <pre><code>df &lt;- miRetrieve::read_pubmed("PubMed_file.txt")</code></pre>
 <p>and subsequently extract all microRNAs with</p>
 <pre><code>df &lt;- extract_mir_df(df)</code></pre>
-<p>An extensive Vignette with the underlying mechanism, functions, and a complete workflow can be downloaded from</p>
-<p><a href="https://github.com/JulFriedrich/miRetrieveVignette/blob/main/miRetrieve.html" class="uri">https://github.com/JulFriedrich/miRetrieveVignette/blob/main/miRetrieve.html</a></p>
+<p>An extensive Vignette with the underlying mechanism, functions, and a complete workflow is available under</p>
+<p><a href="https://julfriedrich.github.io/miRetrieve/articles/miRetrieve.html" class="uri">https://julfriedrich.github.io/miRetrieve/articles/miRetrieve.html</a></p>
 </div>
 <div id="authors" class="section level2">
 <h2 class="hasAnchor">
