@@ -185,17 +185,23 @@ retrieve_mir <- function(string,
 #'
 #' @family extract functions
 #'
+#' @importFrom textclean replace_non_ascii
+#'
 #' @export
 extract_mir_df <- function(df,
                            threshold = 1,
                            col.abstract = Abstract,
                            extract_letters = FALSE) {
   df_miRNA <- df %>%
-    dplyr::mutate(miRNA = purrr::map({{col.abstract}}, ~ retrieve_mir(string = .x,
-                                                                      threshold = threshold,
-                                                                      extract_letters = extract_letters))) %>%
+    dplyr::mutate(miR_extract =
+                     textclean::replace_non_ascii({{col.abstract}},
+                                                  remove.nonconverted = FALSE)) %>%
+    dplyr::mutate(miRNA = purrr::map(miR_extract, ~ retrieve_mir(string = .x,
+                                                                 threshold = threshold,
+                                                                 extract_letters = extract_letters))) %>%
     tidyr::unnest(miRNA) %>%
-    dplyr::filter(miRNA != "")
+    dplyr::filter(miRNA != "") %>%
+    dplyr::select(-miR_extract)
 
   return(df_miRNA)
 }

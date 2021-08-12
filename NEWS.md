@@ -1,3 +1,15 @@
+# miRetrieve 1.3.2
+
+* Converts non-ASCII characters to ASCII characters when
+extracting miRNAs. miRetrieve now converts non-ASCII characters in text
+to ASCII characters using the `textclean` package. By doing so, miRetrieve
+is able to summarize miRNAs with apparently the same, but on a bit-code level
+different spelling, thereby increasing extraction efficacy.
+
+* Added a miRetrieve website. The package now comes with an own website,
+hosted on GitHub under https://julfriedrich.github.io/miRetrieve/, courtesy to 
+`pkgdown`.
+
 # miRetrieve 1.3.0
 
 * Added miRTarBase 8.0 to miRetrieve. miRTarBase 8.0 can now be queried

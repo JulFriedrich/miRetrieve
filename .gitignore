@@ -8,3 +8,12 @@ miRetrieve testing markdown.Rmd
 miRetrieve_0.1.0.pdf
 Meta
 doc
+inst/doc
+LDA_miRetrieve_resized.png
+miRetrieve.Rmd
+Stopwordremoval_miRetrieve_res.png
+Tokenization_miRetrieve_res.png
+/doc/
+/Meta/
+/vignettes/
+_pkgdown.yml

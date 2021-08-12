@@ -10,15 +10,17 @@ period of time.
 An online version with the most important functions of miRetrieve is available 
 under https://miretrieve.shinyapps.io/miRetrieve/.
 
-To install miRetrieve locally, run
+To install miRetrieve from CRAN, run
+
+```
+install.packages("miRetrieve")
+```
+
+Alternatively, you can also install miRetrieve from GitHub by running
 
 ```
 install.packages("devtools")
-```
 
-first, followed by
-
-```
 devtools::install_github("JulFriedrich/miRetrieve",
         dependencies = TRUE,
         repos = "https://cran.r-project.org/")
@@ -42,9 +44,9 @@ df <- extract_mir_df(df)
 ```
 
 An extensive Vignette with the underlying mechanism, functions, and a 
-complete workflow can be downloaded from 
+complete workflow is available under
 
-https://github.com/JulFriedrich/miRetrieveVignette/blob/main/miRetrieve.html
+https://julfriedrich.github.io/miRetrieve/articles/miRetrieve.html
 
 ## Authors
 

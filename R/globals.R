@@ -6,6 +6,6 @@ utils::globalVariables(c("AB", "Abstract", "Abstract_no", "Animal_score", "Bioma
                          "n_abstracts_word", "n_row", "new_miRNAs", "ngram_stopwords", "no_of_abstract",
                          "no_per_topic", "no_topic", "number_topic", "perc", "perc_abstract", "perc_per_topic",
                          "sort_out", "stopwords_miretrieve", "sums", "term", "term_score", "tf_idf", "threshold",
-                         "topic", "topic_score", "total", "value", "word"))
+                         "topic", "topic_score", "total", "value", "word", "miR_extract"))
 
 
