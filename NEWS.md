@@ -1,3 +1,11 @@
+# miRetrieve 1.3.4
+
+* Fixed a bug that prevented miRetrieve from loading MEDLINE-files
+after the dependency `readr` was updated.
+
+* Added a `device` argument in `save_plot()`, based on ggplot's
+`ggsave()` function.
+
 # miRetrieve 1.3.2
 
 * Converts non-ASCII characters to ASCII characters when

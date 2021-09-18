@@ -4,7 +4,14 @@
 \alias{save_plot}
 \title{Save the last generated figure}
 \usage{
-save_plot(plot_file, width = NULL, height = NULL, units = "in", dpi = 300)
+save_plot(
+  plot_file,
+  width = NULL,
+  height = NULL,
+  units = "in",
+  dpi = 300,
+  device = NULL
+)
 }
 \arguments{
 \item{plot_file}{String. File name that the figure
@@ -21,6 +28,9 @@ set to the height of the plotting window.}
 \item{units}{String. Units for \code{width} and \code{height}.}
 
 \item{dpi}{Integer. Resolution for raster graphics such as .pdf-files.}
+
+\item{device}{String or function. Specifies which device to use (such as
+"pdf" or \code{cairo_pdf})}
 }
 \value{
 Plot, locally saved.
@@ -30,7 +40,8 @@ Save the last generated figure locally.
 }
 \details{
 Saves the last generated figure locally. Wrapper
-function of \code{ggsave()} from \pkg{ggplot2}.
+function of \code{ggsave()} from \pkg{ggplot2}. For further details, please
+see ?ggplot2::ggsave.
 }
 \seealso{
 \code{\link[ggplot2:ggsave]{ggplot2::ggsave()}}

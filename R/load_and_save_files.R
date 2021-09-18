@@ -124,12 +124,13 @@ read_pubmed <- function(pubmed_file, topic = NULL) {
   . = NULL
 
   # Read in .txt file
-  df <- suppressMessages(readr::read_table(pubmed_file,
-                                    col_names = c("Term", "Content")))
+  df <- suppressMessages(readr::read_fwf(pubmed_file))
 
   # Clean Term column
   # Replace "" with NA and fill up
   df <- df %>%
+    dplyr::rename("Term" = 1,
+                  "Content" = 2) %>%
     mutate(Term = stringr::str_replace_all(Term, "-", ""),
            Term = stringr::str_trim(Term),
            Term = ifelse(Term == "", NA, Term),
@@ -205,7 +206,8 @@ save_excel <- function(...,
 #' Save the last generated figure locally.
 #'
 #' Saves the last generated figure locally. Wrapper
-#' function of `ggsave()` from \pkg{ggplot2}.
+#' function of `ggsave()` from \pkg{ggplot2}. For further details, please
+#' see ?ggplot2::ggsave.
 #'
 #' @param plot_file String. File name that the figure
 #' shall be saved to. Can end in either ".png", ".tiff",
@@ -217,6 +219,8 @@ save_excel <- function(...,
 #' set to the height of the plotting window.
 #' @param units String. Units for `width` and `height`.
 #' @param dpi Integer. Resolution for raster graphics such as .pdf-files.
+#' @param device String or function. Specifies which device to use (such as
+#' "pdf" or `cairo_pdf`)
 #'
 #' @return Plot, locally saved.
 #'
@@ -231,7 +235,8 @@ save_plot <- function(plot_file,
                       width = NULL,
                       height = NULL,
                       units = "in",
-                      dpi = 300) {
+                      dpi = 300,
+                      device = NULL) {
   if(is.null(width)) {
     width <- par("din")[1]
   }
@@ -244,6 +249,6 @@ save_plot <- function(plot_file,
          width = width,
          height = height,
          units = units,
-         dpi = dpi)
-
+         dpi = dpi,
+         device = device)
 }
